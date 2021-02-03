@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalog</title>
+    <style>
+        @font-face {
+            font-family: HelveticaNeue75;
+            src: url(./helvetica-neue-lt-std-75-bold.otf);
+        }
+
+        @font-face {
+            font-family: HelveticaNeue63;
+            src: url(helvetica-neue-lt-std-63-medium-extended.otf);
+        }
+
+        @font-face {
+            font-family: HelveticaNeue55;
+            src: url(helvetica-neue-lt-std-55-roman.otf);
+        }
+
+        @font-face {
+            font-family: HelveticaNeue45;
+            src: url(helvetica-neue-lt-std-45-light.otf);
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-width: 900px;
+            height: 100vh;
+            /* width: 100vw; */
+
+            font-family: HelveticaNeue45;
+
+            position: relative;
+        }
+
+        h1, h2, h4, h5, h6 {
+            font-family: HelveticaNeue63;
+
+            display: flex;
+
+            align-items: center;
+        }
+
+        h3 {
+            font-family: HelveticaNeue45;
+        }
+
+        a {
+            text-decoration: none;
+            color: #FFFFFF;
+        }
+
+        a, button {  
+            cursor: pointer;
+        }
+
+        button, input, select {
+            background: transparent;
+            border: none;
+
+            outline: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        section {
+            height: 100%;
+            width: 100%;
+
+            position: relative;
+        }
+
+        #home-page-header {
+            justify-content: space-between;
+
+            padding: 1% 5%;
+
+            position: fixed;
+            top: 0;
+            width: 100%;
+
+            z-index: 1;
+        }
+
+        #home-page-header, #home-page-header * {
+            display: flex;
+
+            align-items: center;
+
+            color: #FFFFFF;
+        }
+
+            .home-page-header-aside {
+                white-space: nowrap;
+
+                font-size: 0.8rem;
+            }
+            .home-page-header-aside#left > * {
+                margin-right: 2rem;
+            }
+
+            .home-page-header-aside#right > * {
+                margin-left: 2rem;
+            }
+
+            .home-page-header-aside svg {
+                height: 1rem;
+            }
+
+            #home-page-header-logo {
+                font-size: 30px;
+            }
+
+            main {
+                padding: 80px 5% 0;
+
+                display: flex;
+            }
+
+            aside {
+                width: 30%;
+                height: 100%;
+
+                padding-bottom: 3%;
+            }
+
+                .aside-title {
+                    font-family: HelveticaNeue45;
+
+                    margin-bottom: 40px;
+                }
+
+                .filter-title {
+                    color: #8C8C8C;
+
+                    margin: 40px 0;
+                }
+
+                aside li {
+                    margin: 20px 0;
+                }
+
+                    aside button {
+                        display: flex;
+                        align-items: center;
+
+                        font-size: 1rem;
+                    }
+
+                        aside button svg {
+                            margin-right: 10px;
+                        }
+
+                #sort-products-field {
+                    display: flex;
+                }
+                    #sort-products-field select {
+                        margin-left: 10px;
+                        font-size: 1rem;
+                    }
+
+            #catalog {
+                display: grid;
+
+                width: 70%;
+                max-width: 840px;
+
+                margin: 0 auto;
+
+                place-items: center;
+
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 1fr;
+                
+                gap: 40px;
+            }
+
+                .catalog-item {
+                    height: 500px;
+
+                    width: 100%;
+                    max-width: 400px;
+                    
+                    background: red;
+                }
+
+        footer {
+            display: flex;
+            flex-direction: column;
+
+            height: 70vh;
+
+            padding: 5%;
+        }
+
+            footer h3 {
+                font-family: HelveticaNeue55;
+
+                letter-spacing: 0.04em;
+            }
+
+            #sign-up-updates-field {
+                display: flex;
+                flex-direction: column;
+
+                width: 100%;
+
+                justify-content: center;
+                align-items: center;
+            }
+
+                #sign-up-updates-field p {
+                    line-height: 3rem;
+                }
+
+                #sign-up-updates-input-field {
+                    display: flex;
+
+                    width: 50%;
+
+                    margin-top: 3%;
+
+                    border-bottom: 2px solid #D8D8D8;
+                }
+
+                    #sign-up-updates-input-field > * {
+                        height: 30px;
+
+                        font-size: 1rem;
+                    }
+
+                    #sign-up-updates-input-field input {
+                        width: 90%;
+
+                        color: #8C8C8C;
+                    }
+
+                    #sign-up-updates-input-field button {
+                        width: 10%;
+
+                        letter-spacing: 0.04em;
+
+                        font-weight: 600;
+
+                        color: #000F08;
+                    }
+
+            #footer-info {
+                display: flex;
+
+                height: 100%;
+
+                padding-top: 5%;
+
+                justify-content: space-around;
+            }
+
+                #footer-info ul > * {
+                    text-align: left;
+
+                    margin: 15px 0;
+                }
+
+                #footer-info li, #footer-info li a {
+                    color: #000F08;
+                }
+
+                #footer-info li a {
+                    display: flex;
+                    
+                    align-items: center;
+                }
+
+                    #footer-info svg {
+                        margin-right: 10px;
+                    }
+    </style>
+</head>
+<body>
+    <header id='home-page-header'>
+        <div class="home-page-header-aside" id='left'>
+            <a>NEW ARRIVALS</a>
+            <a>SHOP</a>
+            <a>COLLECTIONS</a>
+        </div>
+        <h1 id='home-page-header-logo'>BACULEJO'S</h1>
+        <div class="home-page-header-aside" id='right'>
+            <a>
+                <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M23.7061 22.5568L17.9363 16.7669C19.3665 15.0172 20.2286 12.776 20.2286 10.3333C20.2286 4.73023 15.698 0.183899 10.1143 0.183899C4.52571 0.183899 0 4.73023 0 10.3333C0 15.9363 4.52571 20.4827 10.1143 20.4827C12.5486 20.4827 14.7771 19.6225 16.5208 18.1874L22.2906 23.9723C22.6824 24.3655 23.3143 24.3655 23.7061 23.9723C24.098 23.584 24.098 22.945 23.7061 22.5568ZM10.1143 18.4626C5.64245 18.4626 2.00816 14.8157 2.00816 10.3333C2.00816 5.85084 5.64245 2.19903 10.1143 2.19903C14.5812 2.19903 18.2204 5.85084 18.2204 10.3333C18.2204 14.8157 14.5812 18.4626 10.1143 18.4626Z" fill="white"/>
+                </svg>                        
+                SEARCH
+            </a>
+            <a>SIGN IN</a>
+            <a>BAG (2)</a>
+            <div>
+                <svg width="28" height="25" viewBox="0 0 28 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M25.0938 2.41975C23.6644 0.985319 21.7719 0.201321 19.7521 0.201321C17.7324 0.201321 15.8341 0.991127 14.4047 2.42555L13.6581 3.17471L12.9 2.41394C11.4705 0.979512 9.56646 0.183899 7.54669 0.183899C5.5327 0.183899 3.63447 0.973704 2.21079 2.40232C0.781319 3.83675 -0.00575563 5.74158 3.16897e-05 7.76836C3.16897e-05 9.79514 0.792894 11.6942 2.22236 13.1286L13.0909 24.0349C13.2414 24.1859 13.444 24.2672 13.6407 24.2672C13.8375 24.2672 14.0401 24.1917 14.1905 24.0407L25.0823 13.1518C26.5117 11.7174 27.2988 9.81256 27.2988 7.78578C27.3046 5.759 26.5233 3.85417 25.0938 2.41975ZM23.9827 12.0426L13.6407 22.3798L3.32195 12.0252C2.18764 10.8869 1.56261 9.37701 1.56261 7.76836C1.56261 6.15971 2.18185 4.64979 3.31616 3.51734C4.44469 2.3849 5.94939 1.7577 7.54669 1.7577C9.14978 1.7577 10.6603 2.3849 11.7946 3.52315L13.1025 4.83562C13.4092 5.14341 13.9012 5.14341 14.2079 4.83562L15.5042 3.53477C16.6386 2.39652 18.1491 1.76932 19.7463 1.76932C21.3436 1.76932 22.8484 2.39652 23.9827 3.52896C25.117 4.66721 25.7362 6.17713 25.7362 7.78578C25.742 9.39443 25.117 10.9044 23.9827 12.0426Z" fill="white"/>
+                </svg>                        
+            </div>
+        </div>
+    </header>
+    <main>
+        <aside>
+            <h2 class="aside-title">CATEGORIES</h2>
+            <ul>
+                <li><button>TOPS</button></li>
+                <li><button>TEES AND TANKS</button></li>
+                <li><button>SHIRTS</button></li>
+                <li><button>DRESSES</button></li>
+                <li><button>JACKETS</button></li>
+                <li><button>KNITWEAR</button></li>
+                <li><button>JUMPSUITS</button></li>
+                <li><button>BOTTOMS</button></li>
+                <li><button>INTIMATES</button></li>
+                <li><button>SHORTS</button></li>
+                <li><button>JEANS</button></li>
+                <li><button>SKIRTS</button></li>
+                <li><button>SALE</button></li>
+                <li><button>SHOP ALL</button></li>
+            </ul>
+    
+            <h3 class="aside-title filter-title">FILTERS</h3>
+            <ul>
+                <li>
+                    <button>
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0H6V6H0V8H6V14H8V8H14V6H8V0Z" fill="#000F08"/>
+                        </svg>
+                        SIZE   
+                    </button>                
+                </li>
+                <li>
+                    <button>
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0H6V6H0V8H6V14H8V8H14V6H8V0Z" fill="#000F08"/>
+                        </svg>
+                        PRICE    
+                    </button>           
+                </li>
+                <li>
+                    <button>
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0H6V6H0V8H6V14H8V8H14V6H8V0Z" fill="#000F08"/>
+                        </svg>
+                        COLOR 
+                    </button>            
+                </li>
+                <li>
+                    <button>
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0H6V6H0V8H6V14H8V8H14V6H8V0Z" fill="#000F08"/>
+                        </svg>
+                        FABRIC    
+                    </button>           
+                </li>
+            </ul>
+    
+            <div id='sort-products-field'>
+                <h3>SORT:</h3>
+                <select name="" id="">
+                    <option value="new" selected>NEWEST</option>
+                    <option value="old">OLDEST</option>
+                </select>
+            </div>
+        </aside>
+        <section id='catalog'>
+            <div class="catalog-item">
+
+            </div>
+            <div class="catalog-item">
+
+            </div>
+            <div class="catalog-item">
+
+            </div>
+            <div class="catalog-item">
+
+            </div>
+            <div class="catalog-item">
+
+            </div>
+            <div class="catalog-item">
+
+            </div>
+        </section>
+    </main>
+    <footer>
+        <form id="sign-up-updates-field">
+            <h3>SIGN UP FOR UPDATES</h3>
+            <p>Sign up for exclusive early sale access and tailored new arrivals.</p>
+
+            <div id='sign-up-updates-input-field'>
+                <input type="email" name="" id="" placeholder="Your e-mail address">
+                <button type="submit">JOIN</button>
+            </div>
+        </form>
+        <div id="footer-info">
+            <ul>
+                <h3>FOLLOW US</h3>
+                <li>
+                    <a href="">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.5 0H7.5C3.3585 0 0 3.3585 0 7.5V16.5C0 20.6415 3.3585 24 7.5 24H16.5C20.6415 24 24 20.6415 24 16.5V7.5C24 3.3585 20.6415 0 16.5 0ZM21.75 16.5C21.75 19.395 19.395 21.75 16.5 21.75H7.5C4.605 21.75 2.25 19.395 2.25 16.5V7.5C2.25 4.605 4.605 2.25 7.5 2.25H16.5C19.395 2.25 21.75 4.605 21.75 7.5V16.5Z" fill="black"/>
+                            <path d="M12 6C8.6865 6 6 8.6865 6 12C6 15.3135 8.6865 18 12 18C15.3135 18 18 15.3135 18 12C18 8.6865 15.3135 6 12 6ZM12 15.75C9.933 15.75 8.25 14.067 8.25 12C8.25 9.9315 9.933 8.25 12 8.25C14.067 8.25 15.75 9.9315 15.75 12C15.75 14.067 14.067 15.75 12 15.75Z" fill="black"/>
+                            <path d="M18.4499 6.35C18.8914 6.35 19.2494 5.99205 19.2494 5.55049C19.2494 5.10893 18.8914 4.75098 18.4499 4.75098C18.0083 4.75098 17.6504 5.10893 17.6504 5.55049C17.6504 5.99205 18.0083 6.35 18.4499 6.35Z" fill="black"/>
+                        </svg>                            
+                        GITHUB
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.4844 0H3.51562C1.57727 0 0 1.57727 0 3.51562V20.4844C0 22.4227 1.57727 24 3.51562 24H10.5938V15.5156H7.78125V11.2969H10.5938V8.4375C10.5938 6.11115 12.4861 4.21875 14.8125 4.21875H19.0781V8.4375H14.8125V11.2969H19.0781L18.375 15.5156H14.8125V24H20.4844C22.4227 24 24 22.4227 24 20.4844V3.51562C24 1.57727 22.4227 0 20.4844 0Z" fill="black"/>
+                        </svg>
+                        INSTAGRAM
+                    </a>
+                </li>
+            </ul>
+            <ul>
+                <h3>CONTACT US</h3>
+                <li>imcaiofelipe@outlook.com</li>
+                <li>Jaboatão dos Guararapes, PE, Brasil</li>
+            </ul>
+            <ul>
+                <h3>MADE USING</h3>
+                <li>NodeJS</li>
+                <li>Express</li>
+                <li>EJS</li>
+                <li>MySQL</li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
