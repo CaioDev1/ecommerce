@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @font-face {
+            font-family: HelveticaNeue75;
+            src: url(./helvetica-neue-lt-std-75-bold.otf);
+        }
+
+        @font-face {
+            font-family: HelveticaNeue63;
+            src: url(helvetica-neue-lt-std-63-medium-extended.otf);
+        }
+
+        @font-face {
+            font-family: HelveticaNeue55;
+            src: url(helvetica-neue-lt-std-55-roman.otf);
+        }
+
+        @font-face {
+            font-family: HelveticaNeue45;
+            src: url(helvetica-neue-lt-std-45-light.otf);
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-width: 900px;
+            height: 100vh;
+            /* width: 100vw; */
+
+            font-family: HelveticaNeue45;
+
+            position: relative;
+        }
+
+        h1, h2, h4, h5, h6 {
+            font-family: HelveticaNeue63;
+
+            display: flex;
+
+            align-items: center;
+        }
+
+        h3 {
+            font-family: HelveticaNeue45;
+        }
+
+        a {
+            text-decoration: none;
+            color: #FFFFFF;
+        }
+
+        a, button {  
+            cursor: pointer;
+        }
+
+        button, input, select {
+            background: transparent;
+            border: none;
+
+            outline: 0;
+        }
+
+        main {
+            height: 100vh;
+            width: 100vw;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            background: gray;
+        }
+
+        form {
+            padding: 5%;
+
+            display: flex;
+            flex-direction: column;
+            
+            background: #FFFFFF;
+            
+            min-width: 400px;
+            max-width: 600px;
+            min-height: 570px;
+            max-height: 700px;
+
+            width: 40%;
+            height: 80%;
+        }
+
+            fieldset {
+                border: none;
+
+                display: flex;
+                flex-direction: column;
+            }
+
+                legend {
+                    margin-bottom: 5%;
+
+                    width: 100%;
+
+                    display: flex;
+
+                    align-items: center;
+
+                    justify-content: space-between;
+                }
+
+                    legend svg {
+                        height: 20px;
+                        width: 20px;
+                    }
+
+                input {
+                    border-bottom: 1px solid black;
+
+                    padding: 15px 0;
+
+                    margin-top: 3%;
+                }
+
+                input, input::placeholder {
+                    font-size: 1rem;
+                }
+
+                fieldset > div {
+                    margin: 5% 0;
+
+                    display: flex;
+
+                    align-items: center;
+                }
+
+                input[type=checkbox] {
+                    min-height: 20px;
+                    min-width: 20px;
+
+                    background: black;
+
+                    margin: 0;
+                    margin-right: 15px;
+                }
+
+                label {
+                    color: black;
+
+                    line-height: 20px;
+                }
+
+            form > button {
+                background: black;
+
+                padding: 15px;
+
+                width: 40%;
+
+                display: block;
+
+                margin: 0 auto;
+
+                font-size: 1.2rem;
+            }
+
+            a {
+                color: black;
+
+                margin-top: 15px;
+
+                width: fit-content;
+
+                text-decoration: underline;
+            }
+            
+    </style>
+</head>
+<body>
+    <main>
+        <form action="">
+            <fieldset>
+                <legend>
+                    <h3>CREATE ACCOUNT</h3>
+                    <button>
+                        <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14.4697 16.0055L0.305137 30.2696C-0.0883785 30.6659 -0.0883785 31.3079 0.305137 31.7042C0.501645 31.9026 0.759655 32.0012 1.01716 32.0012C1.27517 32.0012 1.53268 31.9026 1.72919 31.7042L16.0002 17.3328L30.2713 31.7042C30.4683 31.9026 30.7258 32.0012 30.9833 32.0012C31.2408 32.0012 31.4989 31.9026 31.6954 31.7042C32.0889 31.3079 32.0889 30.6659 31.6954 30.2696L17.5313 16.0055L31.7049 1.7314C32.0984 1.33512 32.0984 0.693112 31.7049 0.296832C31.3113 -0.0989441 30.6738 -0.0989441 30.2808 0.296832L16.0007 14.6782L1.71919 0.297336C1.32568 -0.0984406 0.688652 -0.0984406 0.295137 0.297336C-0.0983788 0.693616 -0.0983788 1.33562 0.295137 1.7319L14.4697 16.0055Z" fill="#1D1D1B"/>
+                        </svg>
+                    </button>
+                </legend>
+                <input type="text" name="" id="" placeholder="First Name">
+                <input type="text" name="" id="" placeholder="Last Name">
+                <input type="email" name="" id="" placeholder="E-mail">
+                <input type="password" name="" id="" placeholder="Password">
+                <div>
+                    <input type="checkbox" name="" id="box">
+                    <label for="box">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor illum et eaque iste repellendus perspiciatis unde</label>
+                </div>
+            </fieldset>
+            <button>SIGN UP</button>
+            <a href="">I HAVE AN ACCOUNT</a>
+        </form>
+    </main>
+</body>
+</html>
