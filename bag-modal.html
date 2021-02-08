@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bag Modal</title>
+    <style>
+        @font-face {
+            font-family: HelveticaNeue75;
+            src: url(./helvetica-neue-lt-std-75-bold.otf);
+        }
+
+        @font-face {
+            font-family: HelveticaNeue63;
+            src: url(helvetica-neue-lt-std-63-medium-extended.otf);
+        }
+
+        @font-face {
+            font-family: HelveticaNeue55;
+            src: url(helvetica-neue-lt-std-55-roman.otf);
+        }
+
+        @font-face {
+            font-family: HelveticaNeue45;
+            src: url(helvetica-neue-lt-std-45-light.otf);
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-width: 900px;
+            height: 100vh;
+            /* width: 100vw; */
+
+            font-family: HelveticaNeue45;
+
+            position: relative;
+        }
+
+        h1, h2, h4, h5, h6 {
+            font-family: HelveticaNeue63;
+
+            display: flex;
+
+            align-items: center;
+        }
+
+        h3, h4 {
+            font-family: HelveticaNeue45;
+        }
+
+        a {
+            text-decoration: none;
+            color: #FFFFFF;
+        }
+
+        a, button {  
+            cursor: pointer;
+        }
+
+        button, input {
+            background: transparent;
+            border: none;
+
+            outline: 0;
+        }
+
+        main {
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+        }
+
+        section#bag-modal-preview {
+            width: 75%;
+            height: 100%;
+
+            background: darkgrey;
+        }
+
+        section#bag-modal-aside {
+            width: 25%;
+            height: 100%;
+
+            padding: 10px;
+
+            overflow-y: scroll;
+        }
+
+        section#bag-modal-aside::-webkit-scrollbar {
+            display: none;
+        }
+            header {
+                display: flex;
+
+                align-items: center;
+                justify-content: space-between;
+
+                margin-bottom: 5%;
+            }
+
+                header svg {
+                    height: 15px;
+                    width: 15px;
+                }
+
+            #button-field {
+                margin: 5% 0;
+
+                display: flex;
+                flex-direction: column;
+            }
+
+            #button-field button {
+                padding: 15px;
+
+                font-size: 1rem;
+            }
+
+                #view-bag-button {
+                    border: 2px solid black;
+                }
+
+                #checkout-button {
+                    background: black;
+
+                    margin-top: 5px;
+                }
+
+            .bag-modal-item {
+                height: 400px;
+
+                background: gray;
+
+                margin-bottom: 20px;
+
+                position: relative;
+            }
+
+            .bag-modal-item:last-child {
+                margin-bottom: 0;
+            }
+
+                .bag-modal-item-remove {
+                    position: absolute;
+
+                    top: 3%;
+                    right: 4%;
+
+                    font-size: 0.9rem;
+                }
+
+                    .bag-modal-item-remove svg {
+                        height: 10px;
+                        width: 10px;
+                    }
+
+                .bag-modal-item-info {
+                    position: absolute;
+
+                    bottom: 5%;
+                    left: 5%;
+
+                    line-height: 25px;
+
+                    font-size: 0.9rem;
+                }
+
+
+    </style>
+</head>
+<body>
+    <main>
+        <section id='bag-modal-preview'>
+
+        </section>
+        <section id='bag-modal-aside'>
+            <header>
+                <span id="bag-quantity">BAG (2)</span>
+                <button>
+                    <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14.4697 16.0055L0.305137 30.2696C-0.0883785 30.6659 -0.0883785 31.3079 0.305137 31.7042C0.501645 31.9026 0.759655 32.0012 1.01716 32.0012C1.27517 32.0012 1.53268 31.9026 1.72919 31.7042L16.0002 17.3328L30.2713 31.7042C30.4683 31.9026 30.7258 32.0012 30.9833 32.0012C31.2408 32.0012 31.4989 31.9026 31.6954 31.7042C32.0889 31.3079 32.0889 30.6659 31.6954 30.2696L17.5313 16.0055L31.7049 1.7314C32.0984 1.33512 32.0984 0.693112 31.7049 0.296832C31.3113 -0.0989441 30.6738 -0.0989441 30.2808 0.296832L16.0007 14.6782L1.71919 0.297336C1.32568 -0.0984406 0.688652 -0.0984406 0.295137 0.297336C-0.0983788 0.693616 -0.0983788 1.33562 0.295137 1.7319L14.4697 16.0055Z" fill="#1D1D1B"/>
+                    </svg>                        
+                </button>
+            </header>
+            <h3>TOTAL: USD $590.00</h3>
+            <div id='button-field'>
+                <button id='view-bag-button'>VIEW BAG</button>
+                <button id='checkout-button'>CHECKOUT</button>
+            </div>
+
+            <div class="bag-modal-item">
+                <span class='bag-modal-item-remove'>
+                    <button>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10.8518 12.0037L0.228844 22.7013C-0.0662813 22.9985 -0.0662813 23.48 0.228844 23.7772C0.376219 23.926 0.569719 24 0.762844 24C0.956344 24 1.14947 23.926 1.29684 23.7772L11.9997 12.9991L22.7026 23.7772C22.8503 23.926 23.0435 24 23.2366 24C23.4297 24 23.6232 23.926 23.7706 23.7772C24.0657 23.48 24.0657 22.9985 23.7706 22.7013L13.148 12.0037L23.7777 1.2985C24.0728 1.0013 24.0728 0.519814 23.7777 0.222616C23.4826 -0.0742052 23.0045 -0.0742052 22.7097 0.222616L12.0001 11.0082L1.28934 0.222993C0.994219 -0.0738276 0.516469 -0.0738276 0.221344 0.222993C-0.0737813 0.520192 -0.0737813 1.00168 0.221344 1.29887L10.8518 12.0037Z" fill="#1D1D1B"/>
+                        </svg>
+                        REMOVE    
+                    </button>          
+                </span>
+
+                <div class="bag-modal-item-info">
+                    <p>VICTORIOUS SPILT BACK TOP</p>
+                    <p>QUANTITY: 1</p>
+                    <p>SIZE: S</p>
+                    <p>USD $250.00</p>
+                </div>
+            </div>
+            <div class="bag-modal-item">
+                <span class='bag-modal-item-remove'>
+                    <button>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10.8518 12.0037L0.228844 22.7013C-0.0662813 22.9985 -0.0662813 23.48 0.228844 23.7772C0.376219 23.926 0.569719 24 0.762844 24C0.956344 24 1.14947 23.926 1.29684 23.7772L11.9997 12.9991L22.7026 23.7772C22.8503 23.926 23.0435 24 23.2366 24C23.4297 24 23.6232 23.926 23.7706 23.7772C24.0657 23.48 24.0657 22.9985 23.7706 22.7013L13.148 12.0037L23.7777 1.2985C24.0728 1.0013 24.0728 0.519814 23.7777 0.222616C23.4826 -0.0742052 23.0045 -0.0742052 22.7097 0.222616L12.0001 11.0082L1.28934 0.222993C0.994219 -0.0738276 0.516469 -0.0738276 0.221344 0.222993C-0.0737813 0.520192 -0.0737813 1.00168 0.221344 1.29887L10.8518 12.0037Z" fill="#1D1D1B"/>
+                        </svg>
+                        REMOVE    
+                    </button>          
+                </span>
+
+                <div class="bag-modal-item-info">
+                    <p>VICTORIOUS SPILT BACK TOP</p>
+                    <p>QUANTITY: 1</p>
+                    <p>SIZE: S</p>
+                    <p>USD $250.00</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
