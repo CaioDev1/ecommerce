@@ -1,0 +1,170 @@
+<style>
+    .home-page-header {
+        position: fixed;
+        top: 0;
+
+        width: 100%;
+
+        z-index: 1;
+    }
+
+    /* HEADER PADRÃO */
+    .home-page-header, .home-page-header * {
+        display: flex;
+
+        align-items: center;
+
+        color: #FFFFFF;
+    }
+
+        .home-page-header-aside {
+            white-space: nowrap;
+
+            font-size: 0.8rem;
+        }
+
+
+
+
+    /* HEADER MOBILE */
+    .home-page-header.mobile {
+        padding: 3% 2% 0;
+
+        flex-direction: column;
+    }
+
+        .home-page-header-aside.mobile {
+            height: 30px;
+
+            position: absolute;
+        }
+
+        .home-page-header-aside.mobile.left {
+            left: 2%;
+        }
+
+        .home-page-header-aside.mobile.right {
+            right: 2%;
+        }
+
+        .home-page-header-aside.mobile.right > * {
+            margin-left: 5px;
+
+            height: 100%;
+        }
+
+        .home-page-header-aside.mobile.right > *:first-child {
+            margin-left: 0;
+        }
+
+        .home-page-header-aside.mobile svg {
+            height: 1.2rem;
+            width: 1.6rem;
+        }
+
+        .home-page-header-logo.mobile {
+            font-size: 1.4rem;
+
+            width: 100%;
+            justify-content: center;
+        }
+
+
+        #header-burguer-field {
+            align-items: initial;
+
+            width: 100%;
+
+            height: 0;
+        }
+
+        #header-burguer-menu {
+            width: 0;
+
+            overflow: hidden;
+
+            margin-top: 15px;
+
+            background: gray;
+
+            transition: width 0.3s ease-out;
+        }
+
+        #header-burguer-field.active #header-burguer-menu /* #header-burguer-menu.active */ {
+            width: 100%;
+
+            transition: width 0.3s ease-out;
+        }
+
+        #header-burguer-menu * {
+            width: 100%;
+        }
+
+            #header-burguer-menu {
+                flex-direction: column;
+            }
+
+                #header-burguer-menu li:hover {
+                    background: darkgrey;
+                }
+
+                    #header-burguer-menu a {
+                        padding: 20px;
+
+                        font-size: 1rem;
+
+                        text-align: center;
+
+                        justify-content: center;
+                        
+                        white-space: nowrap;
+                    }
+
+        @media screen and (max-width: 350px) {
+            .home-page-header-logo.mobile {
+                margin: 0 10px;
+
+                align-items: initial;
+
+                width: fit-content;
+            }
+
+            .home-page-header-aside.mobile {
+                position: initial;
+            }
+
+            .home-page-header-aside.mobile.left {
+                margin-right: auto;
+            }
+        }
+
+
+
+
+
+
+    /* HEADER DESKTOP */
+    .home-page-header.desktop {
+        flex-direction: row;
+
+        justify-content: space-between;
+
+        padding: 1% 5%;
+    }
+
+        .home-page-header-aside.desktop.left > * {
+            margin-right: 2rem;
+        }
+
+        .home-page-header-aside.desktop.right > * {
+            margin-left: 2rem;
+        }
+
+        .home-page-header-aside.desktop svg {
+            height: 1rem;
+        }
+
+        .home-page-header-logo.desktop {
+            font-size: 30px;
+        }
+</style>
