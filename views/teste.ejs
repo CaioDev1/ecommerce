@@ -43,11 +43,11 @@
             .section-title h1 {
                 font-weight: 500;
 
-                font-size: 3vw;
+                font-size: calc(10px + 3vw);
             }
 
             .section-title p {
-                font-size: 1.5vw;
+                font-size: calc(3px + 1.5vw);
 
                 line-height: 150%;
             }
@@ -84,6 +84,8 @@
                 background: white;
 
                 padding: 0 5%;
+                
+                color: #000F08;
 
                 text-align: center;
 
@@ -93,17 +95,16 @@
                 .section-title h1 {
                     font-size: 2.8rem;
 
-                    height: 5rem;
+                    height: 4rem;
 
                     position: relative;
 
-                    top: -1.7rem;
+                    top: -1.4rem;
 
                     word-spacing: 100vw;
                 }
 
                 .section-title p {
-                    /* margin-bottom: 4%; */
 
                     font-size: 1rem;
 
@@ -112,7 +113,14 @@
                     width: 100%;
                 }
 
+                    .section-title p br {
+                        display: none;
+                    }
 
+                .section-title a {
+                    border-color: #000F08;
+                    color: #000F08;
+                }
         }
 
         section#section-photo-triple {
