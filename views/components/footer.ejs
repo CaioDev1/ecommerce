@@ -1,0 +1,98 @@
+<footer>
+    <form id="sign-up-updates-field">
+        <h3>SIGN UP FOR UPDATES</h3>
+        <p>Sign up for exclusive early sale access and tailored new arrivals.</p>
+
+        <div id='sign-up-updates-input-field'>
+            <input type="email" name="" id="" placeholder="Your e-mail address">
+            <button type="submit">JOIN</button>
+        </div>
+    </form>
+    <div id="footer-info">
+       <div>
+            <h3 class='footer-list-title'>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9 0H7V7L0 7V9H7V16H9V9H16V7L9 7V0Z" fill="#000F08"/>
+                </svg>                    
+                FOLLOW US
+            </h3>
+            <ul>
+                <li>
+                    <a href="">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.5 0H7.5C3.3585 0 0 3.3585 0 7.5V16.5C0 20.6415 3.3585 24 7.5 24H16.5C20.6415 24 24 20.6415 24 16.5V7.5C24 3.3585 20.6415 0 16.5 0ZM21.75 16.5C21.75 19.395 19.395 21.75 16.5 21.75H7.5C4.605 21.75 2.25 19.395 2.25 16.5V7.5C2.25 4.605 4.605 2.25 7.5 2.25H16.5C19.395 2.25 21.75 4.605 21.75 7.5V16.5Z" fill="black"/>
+                            <path d="M12 6C8.6865 6 6 8.6865 6 12C6 15.3135 8.6865 18 12 18C15.3135 18 18 15.3135 18 12C18 8.6865 15.3135 6 12 6ZM12 15.75C9.933 15.75 8.25 14.067 8.25 12C8.25 9.9315 9.933 8.25 12 8.25C14.067 8.25 15.75 9.9315 15.75 12C15.75 14.067 14.067 15.75 12 15.75Z" fill="black"/>
+                            <path d="M18.4499 6.35C18.8914 6.35 19.2494 5.99205 19.2494 5.55049C19.2494 5.10893 18.8914 4.75098 18.4499 4.75098C18.0083 4.75098 17.6504 5.10893 17.6504 5.55049C17.6504 5.99205 18.0083 6.35 18.4499 6.35Z" fill="black"/>
+                        </svg>                            
+                        GITHUB
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.4844 0H3.51562C1.57727 0 0 1.57727 0 3.51562V20.4844C0 22.4227 1.57727 24 3.51562 24H10.5938V15.5156H7.78125V11.2969H10.5938V8.4375C10.5938 6.11115 12.4861 4.21875 14.8125 4.21875H19.0781V8.4375H14.8125V11.2969H19.0781L18.375 15.5156H14.8125V24H20.4844C22.4227 24 24 22.4227 24 20.4844V3.51562C24 1.57727 22.4227 0 20.4844 0Z" fill="black"/>
+                        </svg>
+                        INSTAGRAM
+                    </a>
+                </li>
+            </ul>
+       </div>
+        <div>
+            <h3 class='footer-list-title'>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9 0H7V7L0 7V9H7V16H9V9H16V7L9 7V0Z" fill="#000F08"/>
+                </svg>
+                CONTACT US
+            </h3>
+            <ul>
+                <li>imcaiofelipe@outlook.com</li>
+                <li>Jaboatão dos Guararapes, PE, Brasil</li>
+            </ul>
+        </div>
+        <div>
+            <h3 class='footer-list-title'>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9 0H7V7L0 7V9H7V16H9V9H16V7L9 7V0Z" fill="#000F08"/>
+                </svg>                 
+                MADE USING
+            </h3>
+            <ul>
+                <li>NodeJS</li>
+                <li>Express</li>
+                <li>EJS</li>
+                <li>MySQL</li>
+            </ul>
+        </div>
+    </div>
+</footer>
+<script>
+    function createIcon(content) {
+        let svg = document.createElement('div')
+        
+        svg.innerHTML = content
+
+        return svg.firstElementChild
+    }
+
+    let plusIcon = `
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9 0H7V7L0 7V9H7V16H9V9H16V7L9 7V0Z" fill="#000F08"/>
+        </svg>
+    `
+
+    let minesIcon = `
+        <svg width="16" height="2" viewBox="0 0 16 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect y="2" width="2" height="16" transform="rotate(-90 0 2)" fill="#000F08"/>
+        </svg>  
+    `
+
+    document.querySelectorAll('.footer-list-title').forEach(el => {
+        el.addEventListener('click', e => {
+            let isListOpen = e.target.parentElement.querySelector('ul').classList.toggle('active')
+
+            let updatedIcon = isListOpen ? minesIcon : plusIcon
+
+            e.target.replaceChild(createIcon(updatedIcon), e.target.querySelector('svg'))
+        })
+    })
+</script>

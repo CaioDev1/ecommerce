@@ -1,0 +1,144 @@
+<style>
+    footer {
+        display: flex;
+        flex-direction: column;
+
+        /* height: 70vh; */
+
+        padding: 5%;
+    }
+
+            footer form h3 {
+                font-family: HelveticaNeue55;
+
+                letter-spacing: 0.04em;
+            }
+
+            #sign-up-updates-field {
+                display: flex;
+                flex-direction: column;
+
+                width: 100%;
+
+                justify-content: center;
+                align-items: center;
+            }
+
+                #sign-up-updates-field p {
+                    margin: 3% 0;
+
+                    text-align: center;
+                }
+
+                #sign-up-updates-input-field {
+                    display: flex;
+
+                    width: 50%;
+
+                    margin-top: 3%;
+
+                    border-bottom: 2px solid #D8D8D8;
+                }
+
+                    #sign-up-updates-input-field > * {
+                        height: 30px;
+
+                        font-size: 1rem;
+                    }
+
+                    #sign-up-updates-input-field input {
+                        width: 90%;
+
+                        color: #8C8C8C;
+                    }
+
+                    #sign-up-updates-input-field button {
+                        min-width: 40px;
+                        width: 10%;
+
+                        letter-spacing: 0.04em;
+
+                        font-weight: 600;
+
+                        color: #000F08;
+                    }
+
+            #footer-info {
+                display: flex;
+
+                height: 100%;
+
+                padding-top: 5%;
+
+                justify-content: space-around;
+            }
+
+                #footer-info ul > * {
+                    text-align: left;
+
+                    margin: 15px 0;
+                }
+
+                #footer-info li, #footer-info li a {
+                    color: #000F08;
+                }
+
+                #footer-info li a {
+                    display: flex;
+                    
+                    align-items: center;
+                }
+
+                    #footer-info svg {
+                        margin-right: 10px;
+                    }
+
+                    .footer-list-title svg {
+                        display: none;
+                    }
+
+    @media screen and (max-width: 800px) {
+        footer {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+            #sign-up-updates-input-field {
+                width: 95%;
+            }
+
+            #footer-info {
+                flex-direction: column;
+            }
+
+                .footer-list-title {
+                    padding: 20px;
+
+                    border-bottom: 2px dashed black;
+
+                    cursor: pointer;
+
+                    display: flex;
+                    align-items: center;
+                }
+
+                    .footer-list-title > svg {
+                        display: initial;
+                    }
+
+                #footer-info div:first-child .footer-list-title {
+                    border-top: 2px dashed black;
+                }
+
+                #footer-info ul {
+                    padding: 0 15px;
+
+                    display: none;
+                }
+
+                    #footer-info ul.active {
+                        display: flex;
+                        flex-direction: column;
+                    }
+    }
+</style>
