@@ -133,12 +133,21 @@
                 #footer-info ul {
                     padding: 0 15px;
 
-                    display: none;
+                    overflow: hidden;
+
+                    max-height: 0;
+
+                    transition: max-height 0.3s ease-out;
                 }
 
                     #footer-info ul.active {
-                        display: flex;
                         flex-direction: column;
+                    }
+
+                    #footer-info ul.active {
+                        max-height: 1000px;
+
+                        transition: max-height 0.3s ease-in;
                     }
     }
 </style>

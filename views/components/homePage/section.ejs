@@ -1,0 +1,15 @@
+<section style="background-image: url('<%= background_image %>');"> 
+    <div id='' class="section-title <%= positions %>">
+        <h1><%= title %></h1>
+        <p>
+            <% for(let el of text) { %>
+            <%   if(el == '<br>') { %>
+                    <br> 
+            <%   } else {            %>
+            <%=     el               %>
+            <%   }                   %>
+            <% }                     %>
+        </p>
+        <a><%= button_text %></a>
+    </div>
+</section>

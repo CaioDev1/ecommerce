@@ -14,6 +14,10 @@ app.get('/home', (req, res) => {
     res.render('home')
 })
 
+app.get('/catalog', (req, res) => {
+    res.render('catalog')
+})
+
 app.listen(3000, () => {
     console.log('Server iniciado na porta 3000')
 })

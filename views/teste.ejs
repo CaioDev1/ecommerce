@@ -1,323 +1,46 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <%- include('./components/style/style-preset') -%>
-    <%- include('./components/style/style-header') -%>
-    <%- include('./components/style/style-footer') -%> 
-    <style>
-        .left {
-            left: 10%;
-        }
-
-        .right {
-            right: 10%
-        }
-
-        .top {
-            top: 25%;
-        }
-
-        .bottom {
-            bottom: 10%;
-        }
-
-        .section-title {
-            display: flex;
-            flex-direction: column;
-
-            justify-content: left;
-
-            position: absolute;
-
-            color: #FFFFFF;
-        }
-
-            .section-title > * {
-                margin: 2% 0;
-            }
-
-            .section-title h1 {
-                font-weight: 500;
-
-                font-size: calc(10px + 3vw);
-            }
-
-            .section-title p {
-                font-size: calc(3px + 1.5vw);
-
-                line-height: 150%;
-            }
-
-            .section-title a {
-                display: flex;
-
-                border: 2px solid #FFFFFF;
-
-                justify-content: center;
-                align-items: center;
-
-                padding: 15px;
-
-                width: 40%;
-                min-width: 200px;
-                max-width: 300px;
-            }
-
-        @media screen and (max-width: 800px) {
-            .left, .right, .top, .bottom {
-                top: initial;
-                bottom: initial;
-                left: initial;
-                right: initial;
-            }
-
-            .section-title {
-                bottom: 0;
-                
-                min-height: 250px;
-                width: 100%;
-
-                background: white;
-
-                padding: 0 5%;
-                
-                color: #000F08;
-
-                text-align: center;
-
-                align-items: center;
-            }
-
-                .section-title h1 {
-                    font-size: 2.8rem;
-
-                    height: 4rem;
-
-                    position: relative;
-
-                    top: -1.4rem;
-
-                    word-spacing: 100vw;
-                }
-
-                .section-title p {
-
-                    font-size: 1rem;
-
-                    line-height: 25px;
-
-                    width: 100%;
-                }
-
-                    .section-title p br {
-                        display: none;
-                    }
-
-                .section-title a {
-                    border-color: #000F08;
-                    color: #000F08;
-                }
-        }
-
-        section#section-photo-triple {
-            display: flex;
-
-            height: 90vh;
-        }
-            section#section-photo-triple > div {
-                width: 100%;
-                height: 100%;
-            }
-
-        @media screen and (max-width: 800px) {
-            section#section-photo-triple {
-                display: none;
-            }
-        }
-
-        section#section-arrivals {
-            padding: 8% 6% 5%;
-
-            height: 85vh;
-        }
-
-            #arrivals {
-                position: relative;
-                
-                width: 100%;
-                height: 100%;
-
-                display: flex;
-            }
-                #arrivals h3 {
-                    position: absolute;
-
-                    top: -10%;
-                }
-
-                #arrivals > div {
-                    width: 100%;
-
-                    height: 100%;
-                }
-
-            @media screen and (max-width: 800px) {
-                section#section-arrivals {
-                    flex-direction: column;
-
-                    min-height: 100vh;
-                    height: initial;
-
-                    padding: 8vh 15px 2vh;
-                }
-
-                    #arrivals {
-                        flex-direction: column;
-                    }
-
-                    #arrivals h3 {
-                        top: -2rem;
-                    }
-
-                    #arrivals > div {
-                        min-height: 100vh;
-                    }
-            }
-
-        section#section-shop {
-            padding: 8% 6% 5%;
-        }
-
-            #shop {
-                height: 100%;
-                width: 100%;
-
-                position: relative;
-
-                display: grid;
-                grid-template-rows: 1fr 1fr;
-                grid-template-columns: 2fr 1fr 1fr;
-                grid-template-areas: 
-                    'A B C'
-                    'A D E';
-            }
-
-                #shop-title-top, #shop-title-bottom {
-                    position: absolute;
-                }
-
-                #shop-title-top {
-                    top: -10%;
-
-                    display: flex;
-
-                    align-items: center;
-                }
-
-                #shop-title-bottom {
-                    bottom: -10%;
-                }
-
-                #main-shop-photo {
-                    grid-area: A;
-                }
-
-        @media screen and (max-width: 800px) {
-            section#section-shop {
-                height: initial;
-
-                padding: 8vh 10px 5vh;
-            }
-
-                #shop {
-                    grid-template-rows: repeat(5, 100vh);
-                    grid-template-columns: 1fr;
-                    grid-template-areas: 
-                        'A'
-                        'B'
-                        'C'
-                        'D'
-                        'E';
-                }
-
-                    #shop-title-top {
-                        top: -3rem;
-                    }
-
-                    #shop-title-bottom {
-                        bottom: -2rem;
-                    }
-        }
-    </style>
-</head>
-<body>
-    <%- include('./components/header') -%>
-    <section style="background-image: url('https://images.unsplash.com/photo-1497378571960-a65470d60969?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80');"> 
-        <div id='' class="section-title left bottom">
-            <h1>NEW COLLECTION</h1>
-            <p>Our easiest chuck-on-and-go staples come with a serious style heritage <br> that’s liberating, sexy, comfy and supremely cool.</p>
-            <a>SHOP NEW ARRIVALS</a>
-        </div>
-    </section>
-    <section style="background-image: url('images/mike-palmowski-VHcrw_MENoc-unsplash.jpg');">
-        <div id='' class="section-title left top">
-            <h1>VINTAGE INSPIRED</h1>
-            <p>
-                Inspired by the ‘70s and 80’s), we know that if you sift through <br>
-                our vintage inspired collection you’re gonna rock the perfect silhouette.
-             </p>
-            <a>SHOP NOW</a>
-        </div>
-    </section>
+<%- include('./components/htmlTop', {page: 'home'}) %> 
+    <%- include('./components/homePage/section', {
+        background_image: 'https://images.unsplash.com/photo-1497378571960-a65470d60969?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
+        title: 'NEW COLLECTION',
+        positions: 'left bottom',
+        text: ['Our easiest chuck-on-and-go staples come with a serious style heritage', '<br>', 'that’s liberating, sexy, comfy and supremely cool.'],
+        button_text: 'SHOP NEW ARRIVALS'
+    }) %> 
+    <%- include('./components/homePage/section', {
+        background_image: 'images/mike-palmowski-VHcrw_MENoc-unsplash.jpg',
+        title: 'VINTAGE INSPIRED',
+        positions: 'left top',
+        text: ['Inspired by the ‘70s and 80’s, we know that if you sift through', '<br>', 'our vintage inspired collection you’re gonna rock the perfect silhouette.'],
+        button_text: 'SHOP NOW'
+    }) %>
     <section id='section-photo-triple'>
-        <div style="background-image: url('images/matthew-reyes-K6alnPrDWRY-unsplash.jpg');">
-            
-        </div>
-        <div style="background-image: url('images/pexels-labskiii-6135785.jpg');">
-
-        </div>
-        <div style="background-image: url('images/pexels-kevin-kabore-4966995.jpg');">
-
-        </div>
+        <div style="background-image: url('images/matthew-reyes-K6alnPrDWRY-unsplash.jpg');"></div>
+        <div style="background-image: url('images/pexels-labskiii-6135785.jpg');"></div>
+        <div style="background-image: url('images/pexels-kevin-kabore-4966995.jpg');"></div>
     </section>
-    <section style="background-image:url('https://images.unsplash.com/photo-1585774374371-a36f4a8c2578?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80');">
-        <div id='' class="section-title left top">
-            <h1>SUSTAINABLE DENIM</h1>
-            <p>What started as a true ‘80s vintage pair of jeans, <br> finished as a re-energised, wider leg vintage jean with versatile detailing. </p>
-            <a>SHOP DENIM</a>
-        </div>
-    </section>
+    <%- include('./components/homePage/section', {
+        background_image: 'https://images.unsplash.com/photo-1585774374371-a36f4a8c2578?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
+        title: 'SUSTAINABLE DENIM',
+        positions: 'left top',
+        text: ['What started as a true ‘80s vintage pair of jeans,', '<br>', 'finished as a re-energised, wider leg vintage jean with versatile detailing.'],
+        button_text: 'SHOP DENIM'
+    }) %>
     <section id='section-arrivals'>
         <div id='arrivals'>
             <h3>NEW ARRIVALS</h3>
-            <div style="background-image: url('images/autri-taheri-6h9scTr00Ls-unsplash.jpg');">
-                
-            </div>
-            <div style="background-image: url('images/clem-onojeghuo-YhgXfs80RJo-unsplash.jpg')">
-
-            </div>
-            <div style="background-image: url('images/mark-adriane-bO3S03I2Aw8-unsplash.jpg')">
-
-            </div>
-            <div style="background-image: url('images/matthew-reyes-gXCXqB9giWc-unsplash.jpg')">
-
-            </div>
+            <div style="background-image: url('images/autri-taheri-6h9scTr00Ls-unsplash.jpg');"></div>
+            <div style="background-image: url('images/clem-onojeghuo-YhgXfs80RJo-unsplash.jpg')"></div>
+            <div style="background-image: url('images/mark-adriane-bO3S03I2Aw8-unsplash.jpg')"></div>
+            <div style="background-image: url('images/matthew-reyes-gXCXqB9giWc-unsplash.jpg')"></div>
         </div>
     </section>
-    <section style="background-image: url('images/pexels-daniel-adesina-833052.jpg');">
-        <div id='' class="section-title bottom right">
-            <h1>PRAY FOR ROCK</h1>
-            <p>
-                Beloved and forever relevant, there’s a convenience <br>
-                factor in a well-built pair of all-in-ones.
-            </p>
-            <a>SHOP COLLECTION</a>
-        </div>
-    </section>
+    <%- include('./components/homePage/section', {
+        background_image: 'images/pexels-daniel-adesina-833052.jpg',
+        title: 'PRAY FOR ROCK',
+        positions: 'bottom right',
+        text: ['Beloved and forever relevant, there’s a convenience', '<br>', 'factor in a well-built pair of all-in-ones.'],
+        button_text: 'SHOP COLLECTION'
+    }) %>
     <section id='section-shop'>
         <div id="shop">
             <h3 id='shop-title-top'>
@@ -326,25 +49,12 @@
                     <path d="M18.4822 11.5516L7.16058 0.200447C6.89401 -0.0668158 6.4665 -0.0668158 6.19993 0.200447C5.93336 0.46771 5.93336 0.89634 6.19993 1.1636L17.0387 12.0306L6.19993 22.8976C5.93336 23.1649 5.93336 23.5935 6.19993 23.8608C6.3307 23.9919 6.50673 24.0625 6.67774 24.0625C6.84874 24.0625 7.02478 23.9969 7.15555 23.8608L18.4772 12.5097C18.7437 12.2475 18.7437 11.8138 18.4822 11.5516Z" fill="#000F08"/>
                 </svg>
             </h3>
-            <div id="main-shop-photo" style="background-image: url('images/hisu-lee-i2JDnMDMYv8-unsplash.jpg');">
-
-            </div>
-            <div id="shop-photo" style="background-image: url('images/seth-doyle-R5tHd-aYmPs-unsplash.jpg');">
-                
-            </div>
-            <div id="shop-photo" style="background-image: url('images/yogendra-singh-R73uOEn9tio-unsplash.jpg');">
-                
-            </div>
-            <div id="shop-photo" style="background-image: url('images/mubariz-mehdizadeh-o-wlIFT4zE4-unsplash.jpg');">
-                
-            </div>
-            <div id="shop-photo" style="background-image: url('images/sofia-3PgSkwoyIOM-unsplash.jpg');">
-                
-            </div>
+            <div id="main-shop-photo" style="background-image: url('images/hisu-lee-i2JDnMDMYv8-unsplash.jpg');"></div>
+            <div id="shop-photo" style="background-image: url('images/seth-doyle-R5tHd-aYmPs-unsplash.jpg');"></div>
+            <div id="shop-photo" style="background-image: url('images/yogendra-singh-R73uOEn9tio-unsplash.jpg');"></div>
+            <div id="shop-photo" style="background-image: url('images/mubariz-mehdizadeh-o-wlIFT4zE4-unsplash.jpg');"></div>
+            <div id="shop-photo" style="background-image: url('images/sofia-3PgSkwoyIOM-unsplash.jpg');"></div>
             <h3 id='shop-title-bottom'>#BACULEJOS</h3>
         </div>
     </section>
-    <%- include('./components/footer') %> 
-    <script src="controller.js"></script>
-</body>
-</html>
+<%- include('./components/htmlBottom') %> 

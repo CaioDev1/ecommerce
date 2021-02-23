@@ -1,0 +1,245 @@
+<style>
+    .left {
+        left: 10%;
+    }
+
+    .right {
+        right: 10%
+    }
+
+    .top {
+        top: 25%;
+    }
+
+    .bottom {
+        bottom: 10%;
+    }
+
+    .section-title {
+        display: flex;
+        flex-direction: column;
+
+        justify-content: left;
+
+        position: absolute;
+
+        color: #FFFFFF;
+    }
+
+        .section-title > * {
+            margin: 2% 0;
+        }
+
+        .section-title h1 {
+            font-weight: 500;
+
+            font-size: calc(10px + 3vw);
+        }
+
+        .section-title p {
+            font-size: calc(3px + 1.5vw);
+
+            line-height: 150%;
+        }
+
+        .section-title a {
+            display: flex;
+
+            border: 2px solid #FFFFFF;
+
+            justify-content: center;
+            align-items: center;
+
+            padding: 15px;
+
+            width: 40%;
+            min-width: 200px;
+            max-width: 300px;
+        }
+
+    @media screen and (max-width: 800px) {
+        .left, .right, .top, .bottom {
+            top: initial;
+            bottom: initial;
+            left: initial;
+            right: initial;
+        }
+
+        .section-title {
+            bottom: 0;
+            
+            min-height: 250px;
+            width: 100%;
+
+            background: white;
+
+            padding: 0 5%;
+            
+            color: #000F08;
+
+            text-align: center;
+
+            align-items: center;
+        }
+
+            .section-title h1 {
+                font-size: 2.8rem;
+
+                height: 4rem;
+
+                position: relative;
+
+                top: -1.4rem;
+
+                word-spacing: 100vw;
+            }
+
+            .section-title p {
+
+                font-size: 1rem;
+
+                line-height: 25px;
+
+                width: 100%;
+            }
+
+                .section-title p br {
+                    display: none;
+                }
+
+            .section-title a {
+                border-color: #000F08;
+                color: #000F08;
+            }
+    }
+
+    section#section-photo-triple {
+        display: flex;
+
+        height: 90vh;
+    }
+        section#section-photo-triple > div {
+            width: 100%;
+            height: 100%;
+        }
+
+    @media screen and (max-width: 800px) {
+        section#section-photo-triple {
+            display: none;
+        }
+    }
+
+    section#section-arrivals {
+        padding: 8% 6% 5%;
+
+        height: 85vh;
+    }
+
+        #arrivals {
+            position: relative;
+            
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+        }
+            #arrivals h3 {
+                position: absolute;
+
+                top: -10%;
+            }
+
+            #arrivals > div {
+                width: 100%;
+
+                height: 100%;
+            }
+
+        @media screen and (max-width: 800px) {
+            section#section-arrivals {
+                flex-direction: column;
+
+                min-height: 100vh;
+                height: initial;
+
+                padding: 8vh 15px 2vh;
+            }
+
+                #arrivals {
+                    flex-direction: column;
+                }
+
+                #arrivals h3 {
+                    top: -2rem;
+                }
+
+                #arrivals > div {
+                    min-height: 100vh;
+                }
+        }
+
+    section#section-shop {
+        padding: 8% 6% 5%;
+    }
+
+        #shop {
+            height: 100%;
+            width: 100%;
+
+            position: relative;
+
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-areas: 
+                'A B C'
+                'A D E';
+        }
+
+            #shop-title-top, #shop-title-bottom {
+                position: absolute;
+            }
+
+            #shop-title-top {
+                top: -10%;
+
+                display: flex;
+
+                align-items: center;
+            }
+
+            #shop-title-bottom {
+                bottom: -10%;
+            }
+
+            #main-shop-photo {
+                grid-area: A;
+            }
+
+    @media screen and (max-width: 800px) {
+        section#section-shop {
+            height: initial;
+
+            padding: 8vh 10px 5vh;
+        }
+
+            #shop {
+                grid-template-rows: repeat(5, 100vh);
+                grid-template-columns: 1fr;
+                grid-template-areas: 
+                    'A'
+                    'B'
+                    'C'
+                    'D'
+                    'E';
+            }
+
+                #shop-title-top {
+                    top: -3rem;
+                }
+
+                #shop-title-bottom {
+                    bottom: -2rem;
+                }
+    }
+</style>
