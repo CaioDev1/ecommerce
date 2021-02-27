@@ -4,8 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon -e js,ejs,html -w . -w public -w views -w routes -w models server.js",
-    "dev": "ts-node-dev --transpile-only --rs --ignore-watch node_modules --watch views server.ts"
+    "dev": "nodemon -e js,ejs,html -w . -w public -w views -w routes -w models server.js",
+    "start": "ts-node-dev --transpile-only --rs --ignore-watch node_modules --watch views server.ts"
   },
   "keywords": [],
   "author": "",
