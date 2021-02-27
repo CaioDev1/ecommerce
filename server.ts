@@ -18,6 +18,6 @@ app.get('/catalog', (req, res) => {
     res.render('catalog')
 })
 
-app.listen(PROCESS.env.port || 3000, () => {
+app.listen(process.env.port || 3000, () => {
     console.log('Server iniciado na porta 3000')
 })
