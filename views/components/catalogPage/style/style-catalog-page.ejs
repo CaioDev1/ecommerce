@@ -1,0 +1,246 @@
+<style>
+    main#catalog-container {
+        padding: 80px 5% 0;
+
+        display: flex;
+    }
+
+    aside {
+        width: 30%;
+        height: 100%;
+
+        padding-bottom: 3%;
+        padding-right: 10px;
+    }
+
+        #mobile-toggle-categories {
+            display: none;
+
+            align-items: center;
+
+            padding: 15px 0;
+
+            border-bottom: 1px dashed black;
+
+            width: 100%;
+
+            margin-bottom: 20px;
+        }
+
+            #mobile-toggle-categories svg {
+                margin-right: 10px;
+            }
+
+        .aside-title {
+            font-family: HelveticaNeue45;
+
+            margin-bottom: 20px;
+        }
+
+        .filter-title {
+            color: #8C8C8C;
+
+            margin: 20px 0;
+        }
+
+        #product-sizes,
+        #price-picker,
+        #color-previews-field,
+        #fabric-picker {
+            max-height: 0;
+
+            overflow: hidden;
+
+            transition: max-height 0.3s ease-in-out;
+        }
+
+        #product-sizes.active,
+        #price-picker.active,
+        #color-previews-field.active,
+        #fabric-picker.active {
+            max-height: 1000px;
+        }
+
+        aside li button {
+            display: flex;
+
+            align-items: center;
+
+            padding: 10px 0;
+
+            font-size: 1rem;
+        }
+
+        aside li button svg {
+            margin-right: 10px;
+
+            height: 15px;
+            width: 15px;
+        }
+
+        #price-picker {
+            display: flex;
+            align-items: center;
+
+            flex-wrap: wrap;
+        }
+
+        #price-picker input {
+            padding: 10px;
+
+            width: 130px;
+
+            border-radius: 0;
+
+            border: 1px solid black;
+
+            margin-bottom: 10px;
+        }
+
+            #price-picker input::placeholder {
+                font-size: 1rem;
+
+                font-family: HelveticaNeue45;
+            }
+
+            #price-picker input:first-child {
+                margin-right: 5px;
+            }
+
+        #fabric-picker li {
+            padding: 5px 10px;
+
+            margin: 5px 0;
+        }
+
+            #fabric-picker li.selected {
+                border-left: 3px solid white;
+            }
+
+        #sort-products-field {
+            display: flex;
+
+            padding: 15px 0 0;
+        }
+            #sort-products-field select {
+                margin-left: 10px;
+                font-size: 1rem;
+
+                border: none;
+
+                outline: 0;
+            }
+
+    #catalog {
+        display: grid;
+
+        width: 70%;
+        max-width: 840px;
+        height: 100%;
+
+        margin: 0 auto;
+
+        place-items: center;
+
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+        
+        gap: 30px;
+    }
+
+        @media screen and (max-width: 800px) {
+            #mobile-toggle-categories {
+                display: flex;
+            }
+
+            main#catalog-container {
+                flex-direction: column;
+
+                padding: 80px 2% 0;
+            }
+
+            aside, #catalog {
+                width: 100%;
+            }
+
+            aside {
+                margin-bottom: 40px;
+
+                max-height: 0;
+
+                overflow: hidden;
+
+                transition: max-height 0.3s ease-in-out;
+                
+                padding-bottom: 0;
+            }
+
+                aside.active {
+                    max-height: 3000px;
+
+                    padding-bottom: 3%;
+                }
+
+                #price-picker input {
+                    margin-bottom: 0;
+                }
+
+            #catalog {
+                column-gap: 10px;
+                row-gap: 20px;
+            }
+        }
+
+        @media screen and (max-width: 350px) {
+            #catalog {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .catalog-item {
+            display: flex;
+            flex-direction: column;
+
+            height: 100%;
+
+            width: 100%;
+            max-width: 400px;
+        }
+
+            .catalog-item-image {   
+                position: relative;
+            }
+
+                .catalog-item img {
+                    object-fit: contain;
+
+                    width: 100%;
+                }
+
+                .catalog-item-wishlist-add {
+                    position: absolute;
+
+                    left: 3%;
+                    bottom: 5%;
+                }
+
+                    .catalog-item-wishlist-add svg {
+                        height: 25px;
+                        width: 25px;
+                    }
+
+            .catalog-item-info {
+                padding-top: 10px;
+            }
+
+                .catalog-item-info h3 {
+                    margin-bottom: 10px;
+
+                    line-height: 25px;
+                }
+
+                /* .catalog-item-info img {
+                    height: 100%;
+                    width: 100%;
+                } */
+</style>

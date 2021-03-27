@@ -112,9 +112,9 @@
             }
 
                 .footer-list-title {
-                    padding: 20px;
+                    padding: 15px;
 
-                    border-bottom: 2px dashed black;
+                    border-bottom: 1px dashed black;
 
                     cursor: pointer;
 
@@ -127,7 +127,7 @@
                     }
 
                 #footer-info div:first-child .footer-list-title {
-                    border-top: 2px dashed black;
+                    border-top: 1px dashed black;
                 }
 
                 #footer-info ul {
@@ -135,9 +135,10 @@
 
                     overflow: hidden;
 
+                    height: auto;
                     max-height: 0;
 
-                    transition: max-height 0.3s ease-out;
+                    transition: max-height 0.5s ease-in-out;
                 }
 
                     #footer-info ul.active {
@@ -146,8 +147,6 @@
 
                     #footer-info ul.active {
                         max-height: 1000px;
-
-                        transition: max-height 0.3s ease-in;
                     }
     }
 </style>

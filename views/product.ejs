@@ -186,7 +186,8 @@
                     margin: 20px 0;
                 }
 
-                #color-previews-field {
+                /* COLOCADO NO FILE DO COMPONENTE COLOR-PICKER */
+                /* #color-previews-field {
                     display: flex;
                     flex-wrap: wrap;
                 }
@@ -202,9 +203,10 @@
 
                     #product-color-preview.selected {
                         border: 2px solid black;
-                    }
+                    } */
 
-                #product-sizes button {
+                /* COLOCADO NO FILE DO COMPONENTE SIZE-PICKER */
+                /* #product-sizes button {
                     padding: 10px;
 
                     font-size: 1rem;
@@ -212,7 +214,7 @@
 
                 #product-sizes button.selected {
                     border-bottom: 2px solid #000F08;;
-                }
+                } */
 
                 #product-buy-field {
                     height: 50px;
@@ -493,18 +495,24 @@
         
                 <div id='product-color-field'>
                     <span class='product-header-title'>COLOR</span>
-                    <div id='color-previews-field'>
+                    <!-- <div id='color-previews-field'>
                         <div id='product-color-preview' class="selected"></div>
-                    </div>
+                    </div> -->
+                    <%- include('./components/color-picker', {
+                        colors: ['blue', 'brown', 'gray', 'red']
+                    }) %> 
                 </div>
                 <div id='product-size-field'>
                     <span class='product-header-title'>SIZE</span>
-                    <div id='product-sizes'>
+                    <!-- <div id='product-sizes'>
                         <button>S</button>
                         <button>M</button>
                         <button class="selected">L</button>
                         <button>XL</button>
-                    </div>
+                    </div> -->
+                    <%- include('./components/size-picker', {
+                        sizes: ['S', 'M', 'L', 'XL']
+                    }) %>
                 </div>
         
                 <div id='product-buy-field'>

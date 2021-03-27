@@ -1,316 +1,11 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catalog</title>
-    <style>
-        @font-face {
-            font-family: HelveticaNeue75;
-            src: url(./helvetica-neue-lt-std-75-bold.otf);
-        }
-
-        @font-face {
-            font-family: HelveticaNeue63;
-            src: url(helvetica-neue-lt-std-63-medium-extended.otf);
-        }
-
-        @font-face {
-            font-family: HelveticaNeue55;
-            src: url(helvetica-neue-lt-std-55-roman.otf);
-        }
-
-        @font-face {
-            font-family: HelveticaNeue45;
-            src: url(helvetica-neue-lt-std-45-light.otf);
-        }
-
-        * {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            min-width: 900px;
-            height: 100vh;
-            /* width: 100vw; */
-
-            font-family: HelveticaNeue45;
-
-            position: relative;
-        }
-
-        h1, h2, h4, h5, h6 {
-            font-family: HelveticaNeue63;
-
-            display: flex;
-
-            align-items: center;
-        }
-
-        h3 {
-            font-family: HelveticaNeue45;
-        }
-
-        a {
-            text-decoration: none;
-            color: #FFFFFF;
-        }
-
-        a, button {  
-            cursor: pointer;
-        }
-
-        button, input, select {
-            background: transparent;
-            border: none;
-
-            outline: 0;
-        }
-
-        li {
-            list-style: none;
-        }
-
-        section {
-            height: 100%;
-            width: 100%;
-
-            position: relative;
-        }
-
-        #home-page-header {
-            justify-content: space-between;
-
-            padding: 1% 5%;
-
-            position: fixed;
-            top: 0;
-            width: 100%;
-
-            z-index: 1;
-        }
-
-        #home-page-header, #home-page-header * {
-            display: flex;
-
-            align-items: center;
-
-            color: #FFFFFF;
-        }
-
-            .home-page-header-aside {
-                white-space: nowrap;
-
-                font-size: 0.8rem;
-            }
-            .home-page-header-aside#left > * {
-                margin-right: 2rem;
-            }
-
-            .home-page-header-aside#right > * {
-                margin-left: 2rem;
-            }
-
-            .home-page-header-aside svg {
-                height: 1rem;
-            }
-
-            #home-page-header-logo {
-                font-size: 30px;
-            }
-
-            main {
-                padding: 80px 5% 0;
-
-                display: flex;
-            }
-
-            aside {
-                width: 30%;
-                height: 100%;
-
-                padding-bottom: 3%;
-            }
-
-                .aside-title {
-                    font-family: HelveticaNeue45;
-
-                    margin-bottom: 40px;
-                }
-
-                .filter-title {
-                    color: #8C8C8C;
-
-                    margin: 40px 0;
-                }
-
-                aside li {
-                    margin: 20px 0;
-                }
-
-                    aside button {
-                        display: flex;
-                        align-items: center;
-
-                        font-size: 1rem;
-                    }
-
-                        aside button svg {
-                            margin-right: 10px;
-                        }
-
-                #sort-products-field {
-                    display: flex;
-                }
-                    #sort-products-field select {
-                        margin-left: 10px;
-                        font-size: 1rem;
-                    }
-
-            #catalog {
-                display: grid;
-
-                width: 70%;
-                max-width: 840px;
-
-                margin: 0 auto;
-
-                place-items: center;
-
-                grid-template-columns: 1fr 1fr;
-                grid-template-rows: 1fr;
-                
-                gap: 40px;
-            }
-
-                .catalog-item {
-                    height: 500px;
-
-                    width: 100%;
-                    max-width: 400px;
-                    
-                    background: red;
-                }
-
-        footer {
-            display: flex;
-            flex-direction: column;
-
-            height: 70vh;
-
-            padding: 5%;
-        }
-
-            footer h3 {
-                font-family: HelveticaNeue55;
-
-                letter-spacing: 0.04em;
-            }
-
-            #sign-up-updates-field {
-                display: flex;
-                flex-direction: column;
-
-                width: 100%;
-
-                justify-content: center;
-                align-items: center;
-            }
-
-                #sign-up-updates-field p {
-                    line-height: 3rem;
-                }
-
-                #sign-up-updates-input-field {
-                    display: flex;
-
-                    width: 50%;
-
-                    margin-top: 3%;
-
-                    border-bottom: 2px solid #D8D8D8;
-                }
-
-                    #sign-up-updates-input-field > * {
-                        height: 30px;
-
-                        font-size: 1rem;
-                    }
-
-                    #sign-up-updates-input-field input {
-                        width: 90%;
-
-                        color: #8C8C8C;
-                    }
-
-                    #sign-up-updates-input-field button {
-                        width: 10%;
-
-                        letter-spacing: 0.04em;
-
-                        font-weight: 600;
-
-                        color: #000F08;
-                    }
-
-            #footer-info {
-                display: flex;
-
-                height: 100%;
-
-                padding-top: 5%;
-
-                justify-content: space-around;
-            }
-
-                #footer-info ul > * {
-                    text-align: left;
-
-                    margin: 15px 0;
-                }
-
-                #footer-info li, #footer-info li a {
-                    color: #000F08;
-                }
-
-                #footer-info li a {
-                    display: flex;
-                    
-                    align-items: center;
-                }
-
-                    #footer-info svg {
-                        margin-right: 10px;
-                    }
-    </style>
-</head>
-<body>
-    <header id='home-page-header'>
-        <div class="home-page-header-aside" id='left'>
-            <a>NEW ARRIVALS</a>
-            <a>SHOP</a>
-            <a>COLLECTIONS</a>
-        </div>
-        <h1 id='home-page-header-logo'>BACULEJO'S</h1>
-        <div class="home-page-header-aside" id='right'>
-            <a>
-                <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M23.7061 22.5568L17.9363 16.7669C19.3665 15.0172 20.2286 12.776 20.2286 10.3333C20.2286 4.73023 15.698 0.183899 10.1143 0.183899C4.52571 0.183899 0 4.73023 0 10.3333C0 15.9363 4.52571 20.4827 10.1143 20.4827C12.5486 20.4827 14.7771 19.6225 16.5208 18.1874L22.2906 23.9723C22.6824 24.3655 23.3143 24.3655 23.7061 23.9723C24.098 23.584 24.098 22.945 23.7061 22.5568ZM10.1143 18.4626C5.64245 18.4626 2.00816 14.8157 2.00816 10.3333C2.00816 5.85084 5.64245 2.19903 10.1143 2.19903C14.5812 2.19903 18.2204 5.85084 18.2204 10.3333C18.2204 14.8157 14.5812 18.4626 10.1143 18.4626Z" fill="white"/>
-                </svg>                        
-                SEARCH
-            </a>
-            <a>SIGN IN</a>
-            <a>BAG (2)</a>
-            <div>
-                <svg width="28" height="25" viewBox="0 0 28 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M25.0938 2.41975C23.6644 0.985319 21.7719 0.201321 19.7521 0.201321C17.7324 0.201321 15.8341 0.991127 14.4047 2.42555L13.6581 3.17471L12.9 2.41394C11.4705 0.979512 9.56646 0.183899 7.54669 0.183899C5.5327 0.183899 3.63447 0.973704 2.21079 2.40232C0.781319 3.83675 -0.00575563 5.74158 3.16897e-05 7.76836C3.16897e-05 9.79514 0.792894 11.6942 2.22236 13.1286L13.0909 24.0349C13.2414 24.1859 13.444 24.2672 13.6407 24.2672C13.8375 24.2672 14.0401 24.1917 14.1905 24.0407L25.0823 13.1518C26.5117 11.7174 27.2988 9.81256 27.2988 7.78578C27.3046 5.759 26.5233 3.85417 25.0938 2.41975ZM23.9827 12.0426L13.6407 22.3798L3.32195 12.0252C2.18764 10.8869 1.56261 9.37701 1.56261 7.76836C1.56261 6.15971 2.18185 4.64979 3.31616 3.51734C4.44469 2.3849 5.94939 1.7577 7.54669 1.7577C9.14978 1.7577 10.6603 2.3849 11.7946 3.52315L13.1025 4.83562C13.4092 5.14341 13.9012 5.14341 14.2079 4.83562L15.5042 3.53477C16.6386 2.39652 18.1491 1.76932 19.7463 1.76932C21.3436 1.76932 22.8484 2.39652 23.9827 3.52896C25.117 4.66721 25.7362 6.17713 25.7362 7.78578C25.742 9.39443 25.117 10.9044 23.9827 12.0426Z" fill="white"/>
-                </svg>                        
-            </div>
-        </div>
-    </header>
-    <main>
+<%- include('./components/htmlTop', {page: 'Catalog'}) %> 
+    <main id="catalog-container">
+        <button id='mobile-toggle-categories'>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M8.99994 0H6.99994V7H0V9H6.99994V16H8.99994V9H16V7H8.99994V0Z" fill="#000F08"/>
+            </svg>
+            <h3>REFINE ITEMS </h3>
+        </button>
         <aside>
             <h2 class="aside-title">CATEGORIES</h2>
             <ul>
@@ -333,36 +28,52 @@
             <h3 class="aside-title filter-title">FILTERS</h3>
             <ul>
                 <li>
-                    <button>
+                    <button id='title-size-filter'>
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0H6V6H0V8H6V14H8V8H14V6H8V0Z" fill="#000F08"/>
                         </svg>
                         SIZE   
-                    </button>                
+                    </button>
+                    <%- include('./components/size-picker', {
+                        sizes: ['S', 'M', 'L', 'XL']
+                    }) %>     
                 </li>
                 <li>
-                    <button>
+                    <button id='title-price-filter'>
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0H6V6H0V8H6V14H8V8H14V6H8V0Z" fill="#000F08"/>
                         </svg>
                         PRICE    
-                    </button>           
+                    </button>
+                    <div id='price-picker'>
+                        <input type="number" name="min_price" id="min-price" placeholder="Min. price" />
+                        <input type="number" name="max_price" id="max-price" placeholder="Max. price" />
+                    </div>        
                 </li>
                 <li>
-                    <button>
+                    <button id='title-color-filter'>
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0H6V6H0V8H6V14H8V8H14V6H8V0Z" fill="#000F08"/>
                         </svg>
                         COLOR 
-                    </button>            
+                    </button>
+                    <%- include('./components/color-picker', {
+                        colors: ['blue', 'brown', 'gray', 'red', 'green', 'pink']
+                    }) %>         
                 </li>
                 <li>
-                    <button>
+                    <button id='title-fabric-filter'>
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0H6V6H0V8H6V14H8V8H14V6H8V0Z" fill="#000F08"/>
                         </svg>
                         FABRIC    
-                    </button>           
+                    </button>
+                    <ul id='fabric-picker'>
+                        <li class="selected">COTTOM</li>
+                        <li>POLYESTER</li>
+                        <li>ELASTANE</li>
+                        <li>LUREX</li>
+                    </ul>       
                 </li>
             </ul>
     
@@ -376,13 +87,46 @@
         </aside>
         <section id='catalog'>
             <div class="catalog-item">
-
+                <div class="catalog-item-image">
+                    <img src="https://previews.123rf.com/images/indiraswork/indiraswork1608/indiraswork160800016/60704203-hot-summer-girl-beauty-sexy-lady-wear-fashion-dress-casual-clothes-party-date-time-model-woman-luxur.jpg" alt="">
+                    <button class="catalog-item-wishlist-add">
+                        <svg width="37" height="32" viewBox="0 0 37 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M33.9407 2.97082C32.0073 1.06487 29.4476 0.0231494 26.7158 0.0231494C23.9839 0.0231494 21.4165 1.07258 19.483 2.97854L18.4733 3.97396L17.4479 2.96311C15.5144 1.05715 12.9391 0 10.2073 0C7.48327 0 4.9158 1.04943 2.9902 2.94767C1.05677 4.85363 -0.00778478 7.38462 4.2862e-05 10.0776C4.2862e-05 12.7707 1.07243 15.2939 3.00586 17.1999L17.7062 31.6913C17.9097 31.892 18.1837 32 18.4498 32C18.7159 32 18.9899 31.8997 19.1934 31.6991L33.925 17.2308C35.8585 15.3248 36.923 12.7938 36.923 10.1008C36.9309 7.40776 35.8741 4.87678 33.9407 2.97082ZM32.4378 15.7569L18.4498 29.4922L4.49311 15.7338C2.95889 14.2214 2.11351 12.2151 2.11351 10.0776C2.11351 7.9402 2.95106 5.93393 4.48528 4.42923C6.01167 2.92452 8.04686 2.09115 10.2073 2.09115C12.3755 2.09115 14.4186 2.92452 15.9528 4.43694L17.7218 6.18085C18.1367 6.58982 18.802 6.58982 19.2169 6.18085L20.9703 4.45237C22.5045 2.93996 24.5475 2.10658 26.708 2.10658C28.8684 2.10658 30.9036 2.93996 32.4378 4.44466C33.972 5.95708 34.8096 7.96335 34.8096 10.1008C34.8174 12.2382 33.972 14.2445 32.4378 15.7569Z" fill="white"/>
+                        </svg>                        
+                    </button>
+                </div>
+                <div class="catalog-item-info">
+                    <h3>BLACK SPORT FOX BRALETTE adfasdfsadfa afsdfasdf</h3>
+                    <h4>USD $99.00</h4>
+                </div>
             </div>
             <div class="catalog-item">
-
+                <div class="catalog-item-image">
+                    <img src="https://previews.123rf.com/images/photosvit/photosvit1908/photosvit190801893/129245718-menswear-and-fashionable-clothing-daily-outfit-man-model-clothes-shop-man-looks-handsome-in-casual-s.jpg" alt="">
+                    <button class="catalog-item-wishlist-add">
+                        <svg width="37" height="32" viewBox="0 0 37 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M33.9407 2.97082C32.0073 1.06487 29.4476 0.0231494 26.7158 0.0231494C23.9839 0.0231494 21.4165 1.07258 19.483 2.97854L18.4733 3.97396L17.4479 2.96311C15.5144 1.05715 12.9391 0 10.2073 0C7.48327 0 4.9158 1.04943 2.9902 2.94767C1.05677 4.85363 -0.00778478 7.38462 4.2862e-05 10.0776C4.2862e-05 12.7707 1.07243 15.2939 3.00586 17.1999L17.7062 31.6913C17.9097 31.892 18.1837 32 18.4498 32C18.7159 32 18.9899 31.8997 19.1934 31.6991L33.925 17.2308C35.8585 15.3248 36.923 12.7938 36.923 10.1008C36.9309 7.40776 35.8741 4.87678 33.9407 2.97082ZM32.4378 15.7569L18.4498 29.4922L4.49311 15.7338C2.95889 14.2214 2.11351 12.2151 2.11351 10.0776C2.11351 7.9402 2.95106 5.93393 4.48528 4.42923C6.01167 2.92452 8.04686 2.09115 10.2073 2.09115C12.3755 2.09115 14.4186 2.92452 15.9528 4.43694L17.7218 6.18085C18.1367 6.58982 18.802 6.58982 19.2169 6.18085L20.9703 4.45237C22.5045 2.93996 24.5475 2.10658 26.708 2.10658C28.8684 2.10658 30.9036 2.93996 32.4378 4.44466C33.972 5.95708 34.8096 7.96335 34.8096 10.1008C34.8174 12.2382 33.972 14.2445 32.4378 15.7569Z" fill="white"/>
+                        </svg>                        
+                    </button>
+                </div>
+                <div class="catalog-item-info">
+                    <h3>PARADISE UTILITY JUMPSUIT</h3>
+                    <h4>USD $179.00</h4>
+                </div>
             </div>
             <div class="catalog-item">
-
+                <div class="catalog-item-image">
+                    <img src="https://previews.123rf.com/images/panicattack/panicattack1702/panicattack170200014/71400768-young-male-fashion-model-in-casual-clothes-carrying-leather-jacket-over-shoulder-full-body-length-po.jpg" alt="">
+                    <button class="catalog-item-wishlist-add">
+                        <svg width="37" height="32" viewBox="0 0 37 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M33.9407 2.97082C32.0073 1.06487 29.4476 0.0231494 26.7158 0.0231494C23.9839 0.0231494 21.4165 1.07258 19.483 2.97854L18.4733 3.97396L17.4479 2.96311C15.5144 1.05715 12.9391 0 10.2073 0C7.48327 0 4.9158 1.04943 2.9902 2.94767C1.05677 4.85363 -0.00778478 7.38462 4.2862e-05 10.0776C4.2862e-05 12.7707 1.07243 15.2939 3.00586 17.1999L17.7062 31.6913C17.9097 31.892 18.1837 32 18.4498 32C18.7159 32 18.9899 31.8997 19.1934 31.6991L33.925 17.2308C35.8585 15.3248 36.923 12.7938 36.923 10.1008C36.9309 7.40776 35.8741 4.87678 33.9407 2.97082ZM32.4378 15.7569L18.4498 29.4922L4.49311 15.7338C2.95889 14.2214 2.11351 12.2151 2.11351 10.0776C2.11351 7.9402 2.95106 5.93393 4.48528 4.42923C6.01167 2.92452 8.04686 2.09115 10.2073 2.09115C12.3755 2.09115 14.4186 2.92452 15.9528 4.43694L17.7218 6.18085C18.1367 6.58982 18.802 6.58982 19.2169 6.18085L20.9703 4.45237C22.5045 2.93996 24.5475 2.10658 26.708 2.10658C28.8684 2.10658 30.9036 2.93996 32.4378 4.44466C33.972 5.95708 34.8096 7.96335 34.8096 10.1008C34.8174 12.2382 33.972 14.2445 32.4378 15.7569Z" fill="white"/>
+                        </svg>                        
+                    </button>
+                </div>
+                <div class="catalog-item-info">
+                    <h3>KHAKI LEGEND HIGH WAIST MOM JEAN</h3>
+                    <h4>USD $150.00</h4>
+                </div>
             </div>
             <div class="catalog-item">
 
@@ -395,51 +139,17 @@
             </div>
         </section>
     </main>
-    <footer>
-        <form id="sign-up-updates-field">
-            <h3>SIGN UP FOR UPDATES</h3>
-            <p>Sign up for exclusive early sale access and tailored new arrivals.</p>
-
-            <div id='sign-up-updates-input-field'>
-                <input type="email" name="" id="" placeholder="Your e-mail address">
-                <button type="submit">JOIN</button>
-            </div>
-        </form>
-        <div id="footer-info">
-            <ul>
-                <h3>FOLLOW US</h3>
-                <li>
-                    <a href="">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M16.5 0H7.5C3.3585 0 0 3.3585 0 7.5V16.5C0 20.6415 3.3585 24 7.5 24H16.5C20.6415 24 24 20.6415 24 16.5V7.5C24 3.3585 20.6415 0 16.5 0ZM21.75 16.5C21.75 19.395 19.395 21.75 16.5 21.75H7.5C4.605 21.75 2.25 19.395 2.25 16.5V7.5C2.25 4.605 4.605 2.25 7.5 2.25H16.5C19.395 2.25 21.75 4.605 21.75 7.5V16.5Z" fill="black"/>
-                            <path d="M12 6C8.6865 6 6 8.6865 6 12C6 15.3135 8.6865 18 12 18C15.3135 18 18 15.3135 18 12C18 8.6865 15.3135 6 12 6ZM12 15.75C9.933 15.75 8.25 14.067 8.25 12C8.25 9.9315 9.933 8.25 12 8.25C14.067 8.25 15.75 9.9315 15.75 12C15.75 14.067 14.067 15.75 12 15.75Z" fill="black"/>
-                            <path d="M18.4499 6.35C18.8914 6.35 19.2494 5.99205 19.2494 5.55049C19.2494 5.10893 18.8914 4.75098 18.4499 4.75098C18.0083 4.75098 17.6504 5.10893 17.6504 5.55049C17.6504 5.99205 18.0083 6.35 18.4499 6.35Z" fill="black"/>
-                        </svg>                            
-                        GITHUB
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M20.4844 0H3.51562C1.57727 0 0 1.57727 0 3.51562V20.4844C0 22.4227 1.57727 24 3.51562 24H10.5938V15.5156H7.78125V11.2969H10.5938V8.4375C10.5938 6.11115 12.4861 4.21875 14.8125 4.21875H19.0781V8.4375H14.8125V11.2969H19.0781L18.375 15.5156H14.8125V24H20.4844C22.4227 24 24 22.4227 24 20.4844V3.51562C24 1.57727 22.4227 0 20.4844 0Z" fill="black"/>
-                        </svg>
-                        INSTAGRAM
-                    </a>
-                </li>
-            </ul>
-            <ul>
-                <h3>CONTACT US</h3>
-                <li>imcaiofelipe@outlook.com</li>
-                <li>Jaboatão dos Guararapes, PE, Brasil</li>
-            </ul>
-            <ul>
-                <h3>MADE USING</h3>
-                <li>NodeJS</li>
-                <li>Express</li>
-                <li>EJS</li>
-                <li>MySQL</li>
-            </ul>
-        </div>
-    </footer>
-</body>
-</html>
+<script src="utils/toggleIcon.js"></script>
+<script src="utils/toggleContent.js"></script>
+<script>
+    toggleContent([
+        {elClick: '#mobile-toggle-categories', elToggle: 'aside'},
+        {elClick: '#title-size-filter', elToggle: '#product-sizes'},
+        {elClick: '#title-price-filter', elToggle: '#price-picker'},
+        {elClick: '#title-color-filter', elToggle: '#color-previews-field'},
+        {elClick: '#title-fabric-filter', elToggle: '#fabric-picker'}
+    ], (icon, el) => {
+        toggleIcon(icon, el)
+    })
+</script>
+<%- include('./components/htmlBottom') %> 

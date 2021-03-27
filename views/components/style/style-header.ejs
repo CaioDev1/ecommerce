@@ -24,15 +24,40 @@
             font-size: 0.8rem;
         }
 
+        .home-page-header .slideTab {
+            background-color: red;
+
+            height: 100%;
+            width: 0;
+
+            display: flex;
+
+            position: absolute;
+            z-index: -1;
+
+            transition: width 0.5s ease-in-out;               
+        }
+
 
 
 
     /* HEADER MOBILE */
     .home-page-header.mobile {
-        padding: 2% 2% 0;
-
         flex-direction: column;
     }
+        .home-page-header.mobile main {
+            width: 100vw;
+
+            display: flex;
+
+            padding: 2% 0;
+
+            position: relative;
+        }
+
+            .home-page-header.mobile main a {
+                margin: 0 auto;
+            }
 
         .home-page-header-aside.mobile {
             height: 30px;
@@ -145,12 +170,14 @@
 
 
     /* HEADER DESKTOP */
-    .home-page-header.desktop {
+    .home-page-header.desktop main {
         flex-direction: row;
 
         justify-content: space-between;
 
         padding: 1% 5%;
+
+        width: 100vw;
     }
 
         .home-page-header-aside.desktop.left > * {

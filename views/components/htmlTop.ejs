@@ -4,15 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title><%= page %></title>
     <%- include('./style/style-preset') -%>
     <%- include('./style/style-header') -%>
     <%- include('./style/style-footer') -%>
     <% switch(page) {
-        case 'home': %>
+        case 'Home': %>
             <%- include('./homePage/style/style-home-page') %> 
             <% break
-    } %>
+        case 'Catalog': %>
+            <%- include('./catalogPage/style/style-catalog-page') %>
+            <%- include('./style/style-size-picker') %>
+            <%- include('./style/style-color-picker') %>
+            <% break
+        case 'Product': %>
+            <%- include('./style/style-size-picker') %>
+            <%- include('./style/style-color-picker') %>
+            <% break %>
+    <% } %>
 </head>
 <body>
     <%- include('./header') -%>
