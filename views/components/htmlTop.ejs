@@ -12,7 +12,8 @@
     <%- include('./style/style-footer') -%>
     <% switch(page) {
         case 'Home': %>
-            <%- include('./homePage/style/style-home-page') %> 
+            <%- include('./homePage/style/style-home-page') %>
+            <%- include('./style/style-arrivals') %>
             <% break
         case 'Catalog': %>
             <%- include('./catalogPage/style/style-catalog-page') %>
@@ -23,6 +24,7 @@
             <%- include('./productPage/style/style-product-page') %>
             <%- include('./style/style-size-picker') %>
             <%- include('./style/style-color-picker') %>
+            <%- include('./style/style-arrivals') %>
             <% break %>
     <% } %>
 </head>

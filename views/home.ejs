@@ -25,15 +25,15 @@
         text: ['What started as a true ‘80s vintage pair of jeans,', '<br>', 'finished as a re-energised, wider leg vintage jean with versatile detailing.'],
         button_text: 'SHOP DENIM'
     }) %>
-    <section id='section-arrivals'>
-        <div id='arrivals'>
-            <h3>NEW ARRIVALS</h3>
-            <div style="background-image: url('images/autri-taheri-6h9scTr00Ls-unsplash.jpg');"></div>
-            <div style="background-image: url('images/clem-onojeghuo-YhgXfs80RJo-unsplash.jpg')"></div>
-            <div style="background-image: url('images/mark-adriane-bO3S03I2Aw8-unsplash.jpg')"></div>
-            <div style="background-image: url('images/matthew-reyes-gXCXqB9giWc-unsplash.jpg')"></div>
-        </div>
-    </section>
+    <%- include('./components/arrivals', {
+        title: 'NEW ARRIVALS',
+        arrivals: [
+            'images/autri-taheri-6h9scTr00Ls-unsplash.jpg',
+            'images/clem-onojeghuo-YhgXfs80RJo-unsplash.jpg',
+            'images/mark-adriane-bO3S03I2Aw8-unsplash.jpg',
+            'images/matthew-reyes-gXCXqB9giWc-unsplash.jpg'
+        ]
+    }) %> 
     <%- include('./components/homePage/section', {
         background_image: 'images/pexels-daniel-adesina-833052.jpg',
         title: 'PRAY FOR ROCK',
@@ -57,4 +57,4 @@
             <h3 id='shop-title-bottom'>#BACULEJOS</h3>
         </div>
     </section>
-<%- include('./components/htmlBottom') %> 
+<%- include('./components/htmlBottom', {page: 'Home'}) %> 

@@ -1,0 +1,62 @@
+<style>
+    section#section-arrivals {
+        padding: 8% 6% 5%;
+
+        height: 80vh;
+    }
+
+        #arrivals {
+            position: relative;
+            
+            width: 100%;
+            max-width: 1300px;
+
+            margin: 0 auto;
+
+            height: 100%;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr;
+        }
+            #arrivals h3 {
+                position: absolute;
+
+                top: -10%;
+                left: 0;
+                right: 0;
+                
+                text-align: center;
+            }
+
+            #arrivals > img {
+                width: 100%;
+                height: 100%;
+
+                object-fit: cover;
+            }
+
+    @media screen and (max-width: 800px) {
+        section#section-arrivals {
+            height: 75vh;
+
+            height: initial;
+
+            padding: 8vh 10px 2vh;
+        }
+
+            #arrivals {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 1fr 1fr;
+            }
+
+            #arrivals h3 {
+                top: -4rem;
+            }
+
+            #arrivals > div {
+                height: 400px;
+            }
+    }
+</style>

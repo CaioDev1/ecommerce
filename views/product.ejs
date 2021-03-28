@@ -35,12 +35,12 @@
                 <ul id='product-info'>
                     <li>
                         <button>
-                            <svg width="14" height="2" viewBox="0 0 14 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="14" height="2" fill="#000F08"/>
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M6 8V14H8V8H14V6H8V0H6V6H0V8H6Z" fill="#000F08"/>
                             </svg>
                             PRODUCT DESCRIPTION  
                         </button>
-                        <p id='product-info-text'>
+                        <p class='product-info-text'>
                             Saints are a low-waist, drop crotch relaxed boyfriend jean. Straight fit across the hips, bow shape legs, with knee darts and tapered leg. Back pockets dropped slightly for slouch feel. 
                         </p>            
                     </li>
@@ -51,10 +51,15 @@
                             </svg>
                             FABRIC COMPOSITION
                         </button>
-                        <p id='product-info-text'>
+                        <p class='product-info-text'>
                             Saints are a low-waist, drop crotch relaxed boyfriend jean. Straight fit across the hips, bow shape legs, with knee darts and tapered leg. Back pockets dropped slightly for slouch feel. 
                         </p>
                     </li>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="arrow-icon" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 451.847 451.847" style="enable-background:new 0 0 451.847 451.847;" xml:space="preserve">
+                        <g>
+                            <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751   c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0   c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"/>
+                        </g>
+                    </svg>
                 </ul>
             </aside>
         </section>
@@ -65,24 +70,26 @@
                 <img src="https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="" class="extra-item">
             </div>
         </section>
-        <section id='section-arrivals'>
-            <div id='arrivals'>
-                <h3>YOU MAY ALSO LIKE</h3>
-                <div style="background: #E9E7E8;">
-                    
-                </div>
-                <div style="background: #E1E1DF;">
-    
-                </div>
-                <div style="background: #E8E8E6;">
-    
-                </div>
-                <div style="background: #D4D4D4;">
-    
-                </div>
-            </div>
-        </section>
+        <%- include('./components/arrivals', {
+            title: 'YOU MAY ALSO LIKE',
+            arrivals: [
+                'images/autri-taheri-6h9scTr00Ls-unsplash.jpg',
+                'images/clem-onojeghuo-YhgXfs80RJo-unsplash.jpg',
+                'images/mark-adriane-bO3S03I2Aw8-unsplash.jpg',
+                'images/matthew-reyes-gXCXqB9giWc-unsplash.jpg'
+            ]
+        }) %> 
     </main>
+    <script src="utils/toggleIcon.js"></script>
+    <script src="utils/toggleContent.js"></script>
+    <script src="utils/handleScrollArrow.js"></script>
+    <script>
+        toggleContent([
+            {elClick: '#product-info button', elToggle: 'p'}
+        ], (icon, el) => {
+            toggleIcon(icon, el)
+        })
+    </script>
 <%- include('./components/htmlBottom', {
     page: 'Product',
     carouselList: ['#product-photo-field', '#product-extra-items']
