@@ -8,7 +8,7 @@
         </button>
         <aside>
             <h2 class="aside-title">CATEGORIES</h2>
-            <ul>
+            <ul id='catalog-categories-list'>
                 <li><button>TOPS</button></li>
                 <li><button>TEES AND TANKS</button></li>
                 <li><button>SHIRTS</button></li>
@@ -26,7 +26,7 @@
             </ul>
     
             <h3 class="aside-title filter-title">FILTERS</h3>
-            <ul>
+            <ul id='catalog-filter-list'>
                 <li>
                     <button id='title-size-filter'>
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -86,57 +86,24 @@
             </div>
         </aside>
         <section id='catalog'>
-            <div class="catalog-item">
-                <div class="catalog-item-image">
-                    <img src="https://previews.123rf.com/images/indiraswork/indiraswork1608/indiraswork160800016/60704203-hot-summer-girl-beauty-sexy-lady-wear-fashion-dress-casual-clothes-party-date-time-model-woman-luxur.jpg" alt="">
-                    <button class="catalog-item-wishlist-add">
-                        <svg width="37" height="32" viewBox="0 0 37 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M33.9407 2.97082C32.0073 1.06487 29.4476 0.0231494 26.7158 0.0231494C23.9839 0.0231494 21.4165 1.07258 19.483 2.97854L18.4733 3.97396L17.4479 2.96311C15.5144 1.05715 12.9391 0 10.2073 0C7.48327 0 4.9158 1.04943 2.9902 2.94767C1.05677 4.85363 -0.00778478 7.38462 4.2862e-05 10.0776C4.2862e-05 12.7707 1.07243 15.2939 3.00586 17.1999L17.7062 31.6913C17.9097 31.892 18.1837 32 18.4498 32C18.7159 32 18.9899 31.8997 19.1934 31.6991L33.925 17.2308C35.8585 15.3248 36.923 12.7938 36.923 10.1008C36.9309 7.40776 35.8741 4.87678 33.9407 2.97082ZM32.4378 15.7569L18.4498 29.4922L4.49311 15.7338C2.95889 14.2214 2.11351 12.2151 2.11351 10.0776C2.11351 7.9402 2.95106 5.93393 4.48528 4.42923C6.01167 2.92452 8.04686 2.09115 10.2073 2.09115C12.3755 2.09115 14.4186 2.92452 15.9528 4.43694L17.7218 6.18085C18.1367 6.58982 18.802 6.58982 19.2169 6.18085L20.9703 4.45237C22.5045 2.93996 24.5475 2.10658 26.708 2.10658C28.8684 2.10658 30.9036 2.93996 32.4378 4.44466C33.972 5.95708 34.8096 7.96335 34.8096 10.1008C34.8174 12.2382 33.972 14.2445 32.4378 15.7569Z" fill="white"/>
-                        </svg>                        
-                    </button>
-                </div>
-                <div class="catalog-item-info">
-                    <h3>BLACK SPORT FOX BRALETTE adfasdfsadfa afsdfasdf</h3>
-                    <h4>USD $99.00</h4>
-                </div>
-            </div>
-            <div class="catalog-item">
-                <div class="catalog-item-image">
-                    <img src="https://previews.123rf.com/images/photosvit/photosvit1908/photosvit190801893/129245718-menswear-and-fashionable-clothing-daily-outfit-man-model-clothes-shop-man-looks-handsome-in-casual-s.jpg" alt="">
-                    <button class="catalog-item-wishlist-add">
-                        <svg width="37" height="32" viewBox="0 0 37 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M33.9407 2.97082C32.0073 1.06487 29.4476 0.0231494 26.7158 0.0231494C23.9839 0.0231494 21.4165 1.07258 19.483 2.97854L18.4733 3.97396L17.4479 2.96311C15.5144 1.05715 12.9391 0 10.2073 0C7.48327 0 4.9158 1.04943 2.9902 2.94767C1.05677 4.85363 -0.00778478 7.38462 4.2862e-05 10.0776C4.2862e-05 12.7707 1.07243 15.2939 3.00586 17.1999L17.7062 31.6913C17.9097 31.892 18.1837 32 18.4498 32C18.7159 32 18.9899 31.8997 19.1934 31.6991L33.925 17.2308C35.8585 15.3248 36.923 12.7938 36.923 10.1008C36.9309 7.40776 35.8741 4.87678 33.9407 2.97082ZM32.4378 15.7569L18.4498 29.4922L4.49311 15.7338C2.95889 14.2214 2.11351 12.2151 2.11351 10.0776C2.11351 7.9402 2.95106 5.93393 4.48528 4.42923C6.01167 2.92452 8.04686 2.09115 10.2073 2.09115C12.3755 2.09115 14.4186 2.92452 15.9528 4.43694L17.7218 6.18085C18.1367 6.58982 18.802 6.58982 19.2169 6.18085L20.9703 4.45237C22.5045 2.93996 24.5475 2.10658 26.708 2.10658C28.8684 2.10658 30.9036 2.93996 32.4378 4.44466C33.972 5.95708 34.8096 7.96335 34.8096 10.1008C34.8174 12.2382 33.972 14.2445 32.4378 15.7569Z" fill="white"/>
-                        </svg>                        
-                    </button>
-                </div>
-                <div class="catalog-item-info">
-                    <h3>PARADISE UTILITY JUMPSUIT</h3>
-                    <h4>USD $179.00</h4>
-                </div>
-            </div>
-            <div class="catalog-item">
-                <div class="catalog-item-image">
-                    <img src="https://previews.123rf.com/images/panicattack/panicattack1702/panicattack170200014/71400768-young-male-fashion-model-in-casual-clothes-carrying-leather-jacket-over-shoulder-full-body-length-po.jpg" alt="">
-                    <button class="catalog-item-wishlist-add">
-                        <svg width="37" height="32" viewBox="0 0 37 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M33.9407 2.97082C32.0073 1.06487 29.4476 0.0231494 26.7158 0.0231494C23.9839 0.0231494 21.4165 1.07258 19.483 2.97854L18.4733 3.97396L17.4479 2.96311C15.5144 1.05715 12.9391 0 10.2073 0C7.48327 0 4.9158 1.04943 2.9902 2.94767C1.05677 4.85363 -0.00778478 7.38462 4.2862e-05 10.0776C4.2862e-05 12.7707 1.07243 15.2939 3.00586 17.1999L17.7062 31.6913C17.9097 31.892 18.1837 32 18.4498 32C18.7159 32 18.9899 31.8997 19.1934 31.6991L33.925 17.2308C35.8585 15.3248 36.923 12.7938 36.923 10.1008C36.9309 7.40776 35.8741 4.87678 33.9407 2.97082ZM32.4378 15.7569L18.4498 29.4922L4.49311 15.7338C2.95889 14.2214 2.11351 12.2151 2.11351 10.0776C2.11351 7.9402 2.95106 5.93393 4.48528 4.42923C6.01167 2.92452 8.04686 2.09115 10.2073 2.09115C12.3755 2.09115 14.4186 2.92452 15.9528 4.43694L17.7218 6.18085C18.1367 6.58982 18.802 6.58982 19.2169 6.18085L20.9703 4.45237C22.5045 2.93996 24.5475 2.10658 26.708 2.10658C28.8684 2.10658 30.9036 2.93996 32.4378 4.44466C33.972 5.95708 34.8096 7.96335 34.8096 10.1008C34.8174 12.2382 33.972 14.2445 32.4378 15.7569Z" fill="white"/>
-                        </svg>                        
-                    </button>
-                </div>
-                <div class="catalog-item-info">
-                    <h3>KHAKI LEGEND HIGH WAIST MOM JEAN</h3>
-                    <h4>USD $150.00</h4>
-                </div>
-            </div>
-            <div class="catalog-item">
-
-            </div>
-            <div class="catalog-item">
-
-            </div>
-            <div class="catalog-item">
-
-            </div>
+            <%- include('./components/catalogPage/catalog-item', {
+                image: 'https://previews.123rf.com/images/indiraswork/indiraswork1608/indiraswork160800016/60704203-hot-summer-girl-beauty-sexy-lady-wear-fashion-dress-casual-clothes-party-date-time-model-woman-luxur.jpg',
+                url: '',
+                title: 'BLACK SPORT FOX BRALETTE adfasdfsadfa afsdfasdf',
+                price: '99.00'
+            }) %> 
+            <%- include('./components/catalogPage/catalog-item', {
+                image: 'https://previews.123rf.com/images/photosvit/photosvit1908/photosvit190801893/129245718-menswear-and-fashionable-clothing-daily-outfit-man-model-clothes-shop-man-looks-handsome-in-casual-s.jpg',
+                url: '',
+                title: 'PARADISE UTILITY JUMPSUIT',
+                price: '179.00'
+            }) %>
+            <%- include('./components/catalogPage/catalog-item', {
+                image: 'https://previews.123rf.com/images/panicattack/panicattack1702/panicattack170200014/71400768-young-male-fashion-model-in-casual-clothes-carrying-leather-jacket-over-shoulder-full-body-length-po.jpg',
+                url: '',
+                title: 'KHAKI LEGEND HIGH WAIST MOM JEAN',
+                price: '150.00'
+            }) %>
         </section>
     </main>
 <script src="utils/toggleIcon.js"></script>

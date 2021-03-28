@@ -7,6 +7,8 @@
 
     aside {
         width: 30%;
+        max-width: 400px;
+
         height: 100%;
 
         padding-bottom: 3%;
@@ -43,6 +45,41 @@
             margin: 20px 0;
         }
 
+        aside li button {
+            display: flex;
+
+            align-items: center;
+
+            padding: 10px;
+
+            font-size: 1rem;
+
+            border-radius: 0;
+        }
+
+        aside li button svg {
+            margin-right: 10px;
+
+            height: 15px;
+            width: 15px;
+        }
+
+        #catalog-categories-list button {
+            padding: 10px;
+        }
+
+            #catalog-categories-list button:hover {
+                background: red;
+
+                font-family: HelveticaNeue63;
+
+                text-decoration: underline;
+            }
+
+        #catalog-filter-list button:hover {
+            color: red;
+        } 
+
         #product-sizes,
         #price-picker,
         #color-previews-field,
@@ -59,23 +96,6 @@
         #color-previews-field.active,
         #fabric-picker.active {
             max-height: 1000px;
-        }
-
-        aside li button {
-            display: flex;
-
-            align-items: center;
-
-            padding: 10px 0;
-
-            font-size: 1rem;
-        }
-
-        aside li button svg {
-            margin-right: 10px;
-
-            height: 15px;
-            width: 15px;
         }
 
         #price-picker {
@@ -135,7 +155,7 @@
         display: grid;
 
         width: 70%;
-        max-width: 840px;
+        max-width: 500px;
         height: 100%;
 
         margin: 0 auto;
@@ -204,7 +224,7 @@
             height: 100%;
 
             width: 100%;
-            max-width: 400px;
+            max-width: 250px;
         }
 
             .catalog-item-image {   
@@ -239,8 +259,9 @@
                     line-height: 25px;
                 }
 
-                /* .catalog-item-info img {
-                    height: 100%;
-                    width: 100%;
-                } */
+                .catalog-item-info:hover h3 {
+                    text-decoration: underline;
+
+                    color: rgb(233, 233, 233);
+                }
 </style>

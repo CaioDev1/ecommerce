@@ -1,4 +1,26 @@
-    <%- include('./footer') %> 
-    <script src="controller.js"></script>
+    <%- include('./footer') %>
+    <% if(page == 'Product') { %>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+        <script>
+            let matchSize = window.matchMedia('(max-width: 900px')
+            handleCarouselUsage(matchSize, true)
+            matchSize.addListener(handleCarouselUsage)
+
+            function handleCarouselUsage(e, firstCheck=false) {
+                if(e.matches) {
+                    <% for(let item of carouselList) { %>
+                        $('<%= item %>').slick();
+                    <% } %>
+                } else {
+                    if(!firstCheck) {
+                        <% for(let item of carouselList) { %>
+                            $('<%= item %>').slick('unslick');
+                        <% } %>
+                    }
+                }
+            }
+        </script>
+    <% } %>
 </body>
 </html>
