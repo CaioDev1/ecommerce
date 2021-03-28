@@ -1,0 +1,144 @@
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    main {
+        width: 100%;
+
+        padding: 0 10px;
+    }
+
+        #bag {  
+            max-width: 500px;
+
+            margin: 0 auto 40px;
+
+            padding-top: 80px;
+        }
+
+            #bag header {
+                display: flex;
+
+                align-items: center;
+
+                padding: 10px 0;
+
+                border-bottom: 2px solid black;
+            }
+
+                #bag header h2 {
+                    font-family: HelveticaNeue45;
+                }
+
+                #bag header span {
+                    margin-left: 3%;
+                }
+
+            .bag-item {
+                padding: 5% 0;
+
+                border-bottom: 2px solid black;
+            }
+
+                .bag-item > div {
+                    display: flex;
+                }
+
+                .bag-item-photo {
+                    max-height: 260px;
+                    max-width: 160px;
+
+                    margin-right: 3%;
+
+                    object-fit: cover;
+                }
+
+                .bag-item-info {
+                    display: flex;
+                    flex-direction: column;
+
+                    width: 100%;
+                }
+
+                    .bag-item-info h4 {
+                        margin-top: 10px;
+                    }
+
+                    .bag-item-attributes {
+                        margin: 10px 0;
+                    }
+
+                        .bag-item-attributes p {
+                            margin: 2% 0;
+                        }
+
+                        .bag-item-attributes select {
+                            font-size: 1rem;
+                        }
+
+                .bag-item-remove {
+                    display: flex;
+
+                    justify-content: flex-end;
+
+                    padding: 20px 0;
+                }
+
+                    .bag-item-remove button {
+                        display: flex;
+
+                        align-items: center;
+                    }
+
+                    .bag-item-remove button svg {
+                        height: 20px;
+                        width: 20px;
+
+                        margin-right: 10px;
+                    }
+
+                #bag-checkout {
+                    display: flex;
+                    flex-direction: column;
+
+                    justify-content: center;
+                    align-items: center;
+
+                    padding: 5%;
+                }
+
+                    #bag-checkout button {
+                        padding: 15px;
+
+                        background: #000F08;
+
+                        margin-top: 15px;
+                    }
+
+                    #bag-checkout-icons {
+                        width: 300px;
+
+                        padding-top: 10px;
+
+                        display: flex;
+
+                        justify-content: center;
+                    }
+
+                    #bag-checkout-icons span, #bag-checkout-icons svg {
+                        height: 40px;
+                        width: 40px;
+                    }
+
+                    #bag-checkout-icons span {
+                        margin: 0 10px;
+                    }
+
+            @media screen and (max-width: 400px) {
+                .bag-item-info h3 {
+                    font-size: 1rem;
+                }
+            }
+</style>
