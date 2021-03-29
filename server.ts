@@ -22,6 +22,14 @@ app.get('/bag', (req, res) => {
     res.render('bag')
 })
 
+app.get('/bag-modal', (req, res) => {
+    res.render('bag-modal')
+})
+
+app.get('/sign-up', (req, res) => {
+    res.render('sign-up')
+})
+
 app.listen(process.env.PORT || 3000, () => {
     console.log('Server iniciado na porta 3000')
 })

@@ -10,13 +10,13 @@
     </form>
     <div id="footer-info">
        <div>
-            <h3 class='footer-list-title'>
+            <h3 class='footer-list-title toggle'>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M9 0H7V7L0 7V9H7V16H9V9H16V7L9 7V0Z" fill="#000F08"/>
                 </svg>                    
                 FOLLOW US
             </h3>
-            <ul>
+            <ul class="toggleable">
                 <li>
                     <a href="">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -38,25 +38,25 @@
             </ul>
        </div>
         <div>
-            <h3 class='footer-list-title'>
+            <h3 class='footer-list-title toggle'>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M9 0H7V7L0 7V9H7V16H9V9H16V7L9 7V0Z" fill="#000F08"/>
                 </svg>
                 CONTACT US
             </h3>
-            <ul>
+            <ul class="toggleable">
                 <li>imcaiofelipe@outlook.com</li>
                 <li>Jaboatão dos Guararapes, PE, Brasil</li>
             </ul>
         </div>
         <div>
-            <h3 class='footer-list-title'>
+            <h3 class='footer-list-title toggle'>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M9 0H7V7L0 7V9H7V16H9V9H16V7L9 7V0Z" fill="#000F08"/>
                 </svg>                 
                 MADE USING
             </h3>
-            <ul>
+            <ul class="toggleable">
                 <li>NodeJS</li>
                 <li>Express</li>
                 <li>EJS</li>
@@ -65,10 +65,3 @@
         </div>
     </div>
 </footer>
-<script src="utils/toggleIcon.js"></script>
-<script src="utils/toggleContent.js"></script>
-<script>
-    toggleContent([{elClick: '.footer-list-title', elToggle: 'ul'}], (icon, el) => {
-        toggleIcon(icon, el)
-    })
-</script>

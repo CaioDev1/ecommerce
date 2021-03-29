@@ -1,12 +1,12 @@
 <%- include('./components/htmlTop', {page: 'Catalog'}) %> 
     <main id="catalog-container">
-        <button id='mobile-toggle-categories'>
+        <button id='mobile-toggle-categories' class="toggle">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M8.99994 0H6.99994V7H0V9H6.99994V16H8.99994V9H16V7H8.99994V0Z" fill="#000F08"/>
             </svg>
             <h3>REFINE ITEMS </h3>
         </button>
-        <aside>
+        <aside class="toggleable">
             <h2 class="aside-title">CATEGORIES</h2>
             <ul id='catalog-categories-list'>
                 <li><button>TOPS</button></li>
@@ -28,47 +28,49 @@
             <h3 class="aside-title filter-title">FILTERS</h3>
             <ul id='catalog-filter-list'>
                 <li>
-                    <button id='title-size-filter'>
+                    <button id='title-size-filter' class="toggle">
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0H6V6H0V8H6V14H8V8H14V6H8V0Z" fill="#000F08"/>
                         </svg>
                         SIZE   
                     </button>
                     <%- include('./components/size-picker', {
-                        sizes: ['S', 'M', 'L', 'XL']
+                        sizes: ['S', 'M', 'L', 'XL'],
+                        className: 'toggleable'
                     }) %>     
                 </li>
                 <li>
-                    <button id='title-price-filter'>
+                    <button id='title-price-filter' class="toggle">
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0H6V6H0V8H6V14H8V8H14V6H8V0Z" fill="#000F08"/>
                         </svg>
                         PRICE    
                     </button>
-                    <div id='price-picker'>
+                    <div id='price-picker' class="toggleable">
                         <input type="number" name="min_price" id="min-price" placeholder="Min. price" />
                         <input type="number" name="max_price" id="max-price" placeholder="Max. price" />
                     </div>        
                 </li>
                 <li>
-                    <button id='title-color-filter'>
+                    <button id='title-color-filter' class="toggle">
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0H6V6H0V8H6V14H8V8H14V6H8V0Z" fill="#000F08"/>
                         </svg>
                         COLOR 
                     </button>
                     <%- include('./components/color-picker', {
-                        colors: ['blue', 'brown', 'gray', 'red', 'green', 'pink']
+                        colors: ['blue', 'brown', 'gray', 'red', 'green', 'pink'],
+                        className: 'toggleable'
                     }) %>         
                 </li>
                 <li>
-                    <button id='title-fabric-filter'>
+                    <button id='title-fabric-filter' class="toggle">
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0H6V6H0V8H6V14H8V8H14V6H8V0Z" fill="#000F08"/>
                         </svg>
                         FABRIC    
                     </button>
-                    <ul id='fabric-picker'>
+                    <ul id='fabric-picker' class="toggleable">
                         <li class="selected">COTTOM</li>
                         <li>POLYESTER</li>
                         <li>ELASTANE</li>
@@ -106,17 +108,4 @@
             }) %>
         </section>
     </main>
-<script src="utils/toggleIcon.js"></script>
-<script src="utils/toggleContent.js"></script>
-<script>
-    toggleContent([
-        {elClick: '#mobile-toggle-categories', elToggle: 'aside'},
-        {elClick: '#title-size-filter', elToggle: '#product-sizes'},
-        {elClick: '#title-price-filter', elToggle: '#price-picker'},
-        {elClick: '#title-color-filter', elToggle: '#color-previews-field'},
-        {elClick: '#title-fabric-filter', elToggle: '#fabric-picker'}
-    ], (icon, el) => {
-        toggleIcon(icon, el)
-    })
-</script>
 <%- include('./components/htmlBottom', {page: 'Catalog'}) %> 

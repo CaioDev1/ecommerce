@@ -87,4 +87,18 @@
         background-repeat: no-repeat;
         background-size: cover;
     }
+
+    @media screen and (max-width: 800px) {
+        .toggleable {
+            max-height: 0;
+
+            overflow: hidden;
+
+            transition: max-height 0.5s ease-in-out;
+        }
+
+        .toggleable.active {
+            max-height: 1200px;
+        }
+    }
 </style>
