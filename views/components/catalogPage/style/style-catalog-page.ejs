@@ -64,6 +64,20 @@
             width: 15px;
         }
 
+        /* ATIVA O TOGGLE DOS BOTÕES PARA O DESKTOP */
+        #catalog-filter-list .toggleable {
+            max-height: 0;
+
+            overflow: hidden;
+
+            transition: max-height 0.5s ease-in-out;
+        }
+
+        #catalog-filter-list .toggleable.active {
+            max-height: 1200px;
+        }
+        /* ------------------------------------------ */
+
         #catalog-categories-list button {
             padding: 10px;
         }
@@ -79,24 +93,6 @@
         #catalog-filter-list button:hover {
             color: red;
         } 
-
-        /* #product-sizes,
-        #price-picker,
-        #color-previews-field,
-        #fabric-picker {
-            max-height: 0;
-
-            overflow: hidden;
-
-            transition: max-height 0.3s ease-in-out;
-        }
-
-        #product-sizes.active,
-        #price-picker.active,
-        #color-previews-field.active,
-        #fabric-picker.active {
-            max-height: 1000px;
-        } */
 
         #price-picker {
             display: flex;
@@ -135,6 +131,10 @@
 
             #fabric-picker li.selected {
                 border-left: 3px solid white;
+            }
+
+            #fabric-picker li button {
+                padding: 0;
             }
 
         #sort-products-field {
@@ -181,19 +181,11 @@
 
             aside {
                 margin-bottom: 40px;
-
-                /* max-height: 0;
-
-                overflow: hidden;
-
-                transition: max-height 0.3s ease-in-out; */
                 
                 padding-bottom: 0;
             }
 
                 aside.active {
-                    /* max-height: 3000px; */
-
                     padding-bottom: 3%;
                 }
 

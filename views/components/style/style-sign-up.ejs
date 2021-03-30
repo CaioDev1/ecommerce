@@ -1,20 +1,33 @@
 <style>
-    main {
+    #sign-up-container {
         height: 100vh;
         width: 100%;
+
+        position: fixed;
 
         padding: 5px;
 
         display: flex;
 
-        justify-content: center;
-        align-items: center;
+        background: rgba(128, 128, 128, 0.274);
 
-        background: gray;
+        backdrop-filter: blur(10px);
+
+        z-index: -1;
+
+        opacity: 0;
+
+        transition: all 0.3s ease-in-out;
     }
 
-    form {
-        padding: 5%;
+        #sign-up-container.on {
+            z-index: 1;
+
+            opacity: 1;
+        }
+
+    #sign-up-container form {
+        padding: 50px;
 
         display: flex;
         flex-direction: column;
@@ -28,17 +41,19 @@
 
         height: 80%;
 
+        margin: auto;
+
         position: relative;
     }
 
-        fieldset {
+        #sign-up-container fieldset {
             border: none;
 
             display: flex;
             flex-direction: column;
         }
 
-            legend {
+            #sign-up-container legend {
                 margin-bottom: 5%;
 
                 width: 100%;
@@ -50,12 +65,12 @@
                 justify-content: space-between;
             }
 
-                legend svg {
+                #sign-up-container legend svg {
                     height: 20px;
                     width: 20px;
                 }
 
-            input {
+            #sign-up-container input {
                 border-bottom: 1px solid black;
 
                 padding: 15px 0;
@@ -63,11 +78,11 @@
                 margin-top: 3%;
             }
 
-            input, input::placeholder {
+            #sign-up-container input, #sign-up-container input::placeholder {
                 font-size: 1rem;
             }
 
-            fieldset > div {
+            #sign-up-container fieldset > div {
                 margin: 5% 0;
 
                 display: flex;
@@ -75,7 +90,7 @@
                 align-items: center;
             }
 
-            input[type=checkbox] {
+            #sign-up-container input[type=checkbox] {
                 min-height: 20px;
                 min-width: 20px;
 
@@ -87,13 +102,13 @@
                 margin-right: 15px;
             }
 
-            label {
+            #sign-up-container label {
                 color: black;
 
                 line-height: 20px;
             }
 
-        form > button {
+        #sign-up-container form > button {
             background: black;
 
             padding: 15px 50px;
@@ -107,7 +122,7 @@
             font-size: 1.2rem;
         }
 
-        a {
+        #sign-up-container a {
             color: black;
 
             margin-top: 15px;

@@ -73,7 +73,7 @@
 
             background: white;
 
-            padding: 0 5%;
+            padding: 0 5% 30px;
             
             color: #000F08;
 
@@ -116,12 +116,27 @@
     section#section-photo-triple {
         display: flex;
 
-        height: 90vh;
+        justify-content: center;
+        align-items: center;
+
+        height: fit-content;
     }
-        section#section-photo-triple > div {
+        #photo-triple {
             width: 100%;
-            height: 100%;
+
+            height: fit-content;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr 1fr;
         }
+
+            #photo-triple img {
+                width: 100%;
+                height: 100%;
+
+                object-fit: cover;
+            }
 
     @media screen and (max-width: 800px) {
         section#section-photo-triple {
@@ -130,17 +145,28 @@
     }
 
     section#section-shop {
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
+
         padding: 8% 6% 5%;
+
+        height: fit-content;
     }
 
         #shop {
-            height: 100%;
             width: 100%;
+
+            max-width: 1200px;
+
+            height: fit-content;
 
             position: relative;
 
             display: grid;
-            grid-template-rows: 1fr 1fr;
+            
+            grid-template-rows: 35vh 35vh;
             grid-template-columns: 2fr 1fr 1fr;
             grid-template-areas: 
                 'A B C'
@@ -152,7 +178,7 @@
             }
 
             #shop-title-top {
-                top: -10%;
+                top: -8%;
 
                 display: flex;
 
@@ -165,6 +191,13 @@
 
             #main-shop-photo {
                 grid-area: A;
+            }
+
+            #main-shop-photo, .shop-photo {
+                height: 100%;
+                width: 100%;
+
+                object-fit: cover;
             }
 
     @media screen and (max-width: 800px) {
