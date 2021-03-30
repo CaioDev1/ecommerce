@@ -4,190 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        @font-face {
-            font-family: HelveticaNeue75;
-            src: url(./helvetica-neue-lt-std-75-bold.otf);
-        }
-
-        @font-face {
-            font-family: HelveticaNeue63;
-            src: url(helvetica-neue-lt-std-63-medium-extended.otf);
-        }
-
-        @font-face {
-            font-family: HelveticaNeue55;
-            src: url(helvetica-neue-lt-std-55-roman.otf);
-        }
-
-        @font-face {
-            font-family: HelveticaNeue45;
-            src: url(helvetica-neue-lt-std-45-light.otf);
-        }
-
-        * {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            min-width: 900px;
-            height: 100vh;
-            /* width: 100vw; */
-
-            font-family: HelveticaNeue45;
-
-            position: relative;
-        }
-
-        h1, h2, h4, h5, h6 {
-            font-family: HelveticaNeue63;
-
-            display: flex;
-
-            align-items: center;
-        }
-
-        h3 {
-            font-family: HelveticaNeue45;
-        }
-
-        a {
-            text-decoration: none;
-            color: #FFFFFF;
-        }
-
-        a, button {  
-            cursor: pointer;
-        }
-
-        button, input, select {
-            background: transparent;
-            border: none;
-
-            outline: 0;
-        }
-
-        main {
-            height: 100%;
-            width: 100%;
-
-            display: flex;
-
-            justify-content: center;
-            align-items: center;
-
-            background: gray;
-        }
-
-        form {
-            padding: 5%;
-
-            display: flex;
-            flex-direction: column;
-            
-            background: #FFFFFF;
-            
-            min-width: 400px;
-            max-width: 600px;
-            min-height: 570px;
-            max-height: 700px;
-
-            width: 40%;
-            height: 80%;
-        }
-
-            fieldset {
-                border: none;
-
-                display: flex;
-                flex-direction: column;
-            }
-
-                legend {
-                    margin-bottom: 5%;
-
-                    width: 100%;
-
-                    display: flex;
-
-                    align-items: center;
-
-                    justify-content: space-between;
-                }
-
-                    legend svg {
-                        height: 20px;
-                        width: 20px;
-                    }
-
-                input {
-                    border-bottom: 1px solid black;
-
-                    padding: 15px 0;
-
-                    margin-top: 3%;
-                }
-
-                input, input::placeholder {
-                    font-size: 1rem;
-                }
-
-                fieldset > div {
-                    margin: 5% 0;
-
-                    display: flex;
-
-                    align-items: center;
-                }
-
-                input[type=checkbox] {
-                    min-height: 20px;
-                    min-width: 20px;
-
-                    border-radius: 0;
-
-                    background: black;
-
-                    margin: 0;
-                    margin-right: 15px;
-                }
-
-                label {
-                    color: black;
-
-                    line-height: 20px;
-                }
-
-            form > button {
-                background: black;
-
-                padding: 15px;
-
-                width: 40%;
-
-                display: block;
-
-                margin: 0 auto;
-
-                color: white;
-
-                font-size: 1.2rem;
-            }
-
-            a {
-                color: black;
-
-                margin-top: 15px;
-
-                width: fit-content;
-
-                text-decoration: underline;
-            }
-            
-    </style>
+    <title>Sign up</title>
+    <%- include('./components/style/style-preset') %> 
+    <%- include('./components/signUpPage/style/style-sign-up-page') %> 
 </head>
 <body>
     <main>
@@ -201,10 +20,10 @@
                         </svg>
                     </button>
                 </legend>
-                <input type="text" name="" id="" placeholder="First Name">
-                <input type="text" name="" id="" placeholder="Last Name">
-                <input type="email" name="" id="" placeholder="E-mail">
-                <input type="password" name="" id="" placeholder="Password">
+                <input type="text" name="" placeholder="First Name">
+                <input type="text" name="" placeholder="Last Name">
+                <input type="email" name="" placeholder="E-mail">
+                <input type="password" name="" placeholder="Password">
                 <div>
                     <input type="checkbox" name="" id="box">
                     <label for="box">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor illum et eaque iste repellendus perspiciatis unde</label>

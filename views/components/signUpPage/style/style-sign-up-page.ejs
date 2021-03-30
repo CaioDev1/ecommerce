@@ -1,0 +1,123 @@
+<style>
+    main {
+        height: 100vh;
+        width: 100%;
+
+        padding: 5px;
+
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
+
+        background: gray;
+    }
+
+    form {
+        padding: 5%;
+
+        display: flex;
+        flex-direction: column;
+        
+        background: #FFFFFF;
+        
+        max-width: 600px;
+
+        min-height: 570px;
+        max-height: 700px;
+
+        height: 80%;
+
+        position: relative;
+    }
+
+        fieldset {
+            border: none;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+            legend {
+                margin-bottom: 5%;
+
+                width: 100%;
+
+                display: flex;
+
+                align-items: center;
+
+                justify-content: space-between;
+            }
+
+                legend svg {
+                    height: 20px;
+                    width: 20px;
+                }
+
+            input {
+                border-bottom: 1px solid black;
+
+                padding: 15px 0;
+
+                margin-top: 3%;
+            }
+
+            input, input::placeholder {
+                font-size: 1rem;
+            }
+
+            fieldset > div {
+                margin: 5% 0;
+
+                display: flex;
+
+                align-items: center;
+            }
+
+            input[type=checkbox] {
+                min-height: 20px;
+                min-width: 20px;
+
+                border-radius: 0;
+
+                background: black;
+
+                margin: 0;
+                margin-right: 15px;
+            }
+
+            label {
+                color: black;
+
+                line-height: 20px;
+            }
+
+        form > button {
+            background: black;
+
+            padding: 15px 50px;
+
+            display: block;
+
+            margin: auto;
+
+            color: white;
+
+            font-size: 1.2rem;
+        }
+
+        a {
+            color: black;
+
+            margin-top: 15px;
+
+            width: fit-content;
+
+            text-decoration: underline;
+
+            position: absolute;
+
+            bottom: 5%;
+        }
+</style>

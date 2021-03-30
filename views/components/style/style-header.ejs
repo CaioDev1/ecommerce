@@ -39,14 +39,12 @@
         }
 
 
-
-
     /* HEADER MOBILE */
     .home-page-header.mobile {
         flex-direction: column;
     }
         .home-page-header.mobile main {
-            width: 100vw;
+            width: 100%;
 
             display: flex;
 
@@ -100,51 +98,49 @@
             align-items: initial;
 
             width: 100%;
-
-            height: 0;
         }
 
         #header-burguer-menu {
             width: 0;
 
+            position: absolute;
+
             overflow: hidden;
 
-            margin-top: 15px;
+            margin-top: 5px;
 
             background: gray;
 
             transition: width 0.3s ease-out;
         }
 
-        #header-burguer-field.active #header-burguer-menu /* #header-burguer-menu.active */ {
-            width: 100%;
-
-            transition: width 0.3s ease-out;
-        }
-
-        #header-burguer-menu * {
+        #header-burguer-field.active #header-burguer-menu {
             width: 100%;
         }
 
-            #header-burguer-menu {
-                flex-direction: column;
+            #header-burguer-menu * {
+                width: 100%;
             }
 
-                #header-burguer-menu li:hover {
-                    background: darkgrey;
+                #header-burguer-menu {
+                    flex-direction: column;
                 }
 
-                    #header-burguer-menu a {
-                        padding: 20px;
-
-                        font-size: 1rem;
-
-                        text-align: center;
-
-                        justify-content: center;
-                        
-                        white-space: nowrap;
+                    #header-burguer-menu li:hover {
+                        background: darkgrey;
                     }
+
+                        #header-burguer-menu a {
+                            padding: 20px;
+
+                            font-size: 1rem;
+
+                            text-align: center;
+
+                            justify-content: center;
+                            
+                            white-space: nowrap;
+                        }
 
         @media screen and (max-width: 350px) {
             .home-page-header-logo.mobile {
