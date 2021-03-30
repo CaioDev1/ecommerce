@@ -37,6 +37,7 @@ var InterfaceController = /** @class */ (function () {
         });
         this.toggleHeaderMenu();
         this.handleHeaderScrollAnimation();
+        this.handleSignUp();
     };
     InterfaceController.prototype.togglePlusMinesIcon = function (isOpen, el) {
         var plusIcon = "\n        <svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n            <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M9 0H7V7L0 7V9H7V16H9V9H16V7L9 7V0Z\" fill=\"#000F08\"/>\n        </svg>\n        ";
@@ -122,6 +123,15 @@ var InterfaceController = /** @class */ (function () {
         var matchSize = window.matchMedia('(max-width: 1000px)');
         this.toggleCarouselUsage(matchSize.matches, carouselList, true);
         matchSize.onchange = function (e) { return _this.toggleCarouselUsage(e.matches, carouselList); };
+    };
+    InterfaceController.prototype.handleSignUp = function () {
+        var signUpContainer = document.querySelector('#sign-up-container');
+        document.querySelector('#sign-up-close-button').addEventListener('click', function (e) {
+            signUpContainer.classList.toggle('on');
+        });
+        document.querySelector('#sign-up-open-button').addEventListener('click', function (e) {
+            signUpContainer.classList.toggle('on');
+        });
     };
     return InterfaceController;
 }());

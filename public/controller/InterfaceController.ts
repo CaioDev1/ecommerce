@@ -44,6 +44,7 @@ class InterfaceController {
 
         this.toggleHeaderMenu()
         this.handleHeaderScrollAnimation()
+        this.handleSignUp()
     }
 
     togglePlusMinesIcon(isOpen: boolean, el: Element) {
@@ -152,5 +153,17 @@ class InterfaceController {
         this.toggleCarouselUsage(matchSize.matches, carouselList, true)
 
         matchSize.onchange = (e) => this.toggleCarouselUsage(e.matches, carouselList)
+    }
+
+    handleSignUp() {
+        let signUpContainer = document.querySelector('#sign-up-container')
+
+        document.querySelector('#sign-up-close-button').addEventListener('click', e => {
+            signUpContainer.classList.toggle('on')
+        })
+
+        document.querySelector('#sign-up-open-button').addEventListener('click', e => {
+            signUpContainer.classList.toggle('on')
+        })
     }
 }
