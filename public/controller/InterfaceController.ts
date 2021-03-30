@@ -1,11 +1,49 @@
-interface itemInterface {
-    elClick: string,
-    elToggle: string
-}
-
 class InterfaceController {
     constructor() {
+        this.handleHeader()
         this.toggleContent()
+    }
+
+    // troca entre o header do desktop e mobile
+    switchHeader(device: string) {
+        (<HTMLElement>document.querySelector('.home-page-header.desktop')).style.display = device == 'desktop' ? 'flex' : 'none';
+        (<HTMLElement>document.querySelector('.home-page-header.mobile')).style.display = device == 'mobile' ? 'flex' : 'none'
+    }
+
+    toggleHeaderMenu() {
+        let headerBurguerField = document.querySelector('#header-burguer-field') as HTMLElement
+    
+        document.querySelector('.home-page-header-aside.mobile.left button').addEventListener('click', e => {
+            if(headerBurguerField.className != 'active') headerBurguerField.style.height = 'initial'
+
+            headerBurguerField.classList.toggle('active')
+        })
+    }
+
+    handleHeaderScrollAnimation() {
+        document.onscroll = e => {
+            (document.querySelectorAll('.home-page-header .slideTab') as NodeListOf<HTMLElement>).forEach((el) => {
+
+                if(window.scrollY !== 0) {
+                    el.style.width = '100vw'
+                } else {
+                    el.style.width = '0vw'
+                }
+            })
+        }
+    }
+
+    handleHeader() {
+        let matchMedia = window.matchMedia('(min-width: 900px)')
+
+        this.switchHeader(matchMedia.matches ? 'desktop' : 'mobile')
+
+        matchMedia.addEventListener('change', e => {
+            this.switchHeader(matchMedia.matches ? 'desktop' : 'mobile')
+        })
+
+        this.toggleHeaderMenu()
+        this.handleHeaderScrollAnimation()
     }
 
     togglePlusMinesIcon(isOpen: boolean, el: Element) {
