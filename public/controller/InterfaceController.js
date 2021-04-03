@@ -2,6 +2,7 @@ var InterfaceController = /** @class */ (function () {
     function InterfaceController() {
         this.handleHeader();
         this.toggleContent();
+        this.handleRevealTransitions();
     }
     // troca entre o header do desktop e mobile
     InterfaceController.prototype.switchHeader = function (device) {
@@ -106,7 +107,10 @@ var InterfaceController = /** @class */ (function () {
         if (matches) {
             for (var _i = 0, carouselList_1 = carouselList; _i < carouselList_1.length; _i++) {
                 var item = carouselList_1[_i];
-                $(item).slick();
+                $(item).slick({
+                    autoplay: true,
+                    autoplaySpeed: 3000
+                });
             }
         }
         else {
@@ -132,6 +136,22 @@ var InterfaceController = /** @class */ (function () {
         document.querySelector('#sign-up-open-button').addEventListener('click', function (e) {
             signUpContainer.classList.toggle('on');
         });
+    };
+    InterfaceController.prototype.handleRevealTransitions = function () {
+        window.addEventListener('scroll', function (e) {
+            document.querySelectorAll('.reveal').forEach(function (item) {
+                var windowHeight = window.innerHeight;
+                var revealTop = item.getBoundingClientRect().top;
+                var revealPoint = 150;
+                if (revealTop < windowHeight - revealPoint) {
+                    item.classList.add('active');
+                }
+                else {
+                    item.classList.remove('active');
+                }
+            });
+        });
+        window.dispatchEvent(new Event('scroll'));
     };
     return InterfaceController;
 }());

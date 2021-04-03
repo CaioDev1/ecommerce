@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css"/>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +13,10 @@
 <body>
     <main>
         <section id='bag-modal-preview'>
-
+            <img src="https://media.istockphoto.com/photos/fashion-pretty-woman-model-in-colorful-clothes-over-white-background-picture-id603862106" alt="">
+            <img src="https://previews.123rf.com/images/panicattack/panicattack1702/panicattack170200014/71400768-young-male-fashion-model-in-casual-clothes-carrying-leather-jacket-over-shoulder-full-body-length-po.jpg" alt="">
+            <img src="https://previews.123rf.com/images/korobkova/korobkova1507/korobkova150700048/42194237-beautiful-brunette-model-in-fashion-clothes-posing-in-studio-wearing-coat-handbag-red-shoes.jpg" alt="">
+            <img src="https://i.pinimg.com/originals/82/c5/74/82c57469c23ea2e22ab9dfe384b49afe.jpg" alt="">
         </section>
         <section id='bag-modal-aside'>
             <header>
@@ -42,5 +47,32 @@
             }) %>
         </section>
     </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script>
+        $('#bag-modal-preview').slick({
+            dots: false,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            responsive: [
+                {
+                    breakpoint: 1100,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 900,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+            });
+    </script>
 </body>
 </html>

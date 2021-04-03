@@ -15,9 +15,27 @@
     }) %>
     <section id='section-photo-triple'>
         <div id='photo-triple'>
-            <img src='images/matthew-reyes-K6alnPrDWRY-unsplash.jpg' />
-            <img src='images/pexels-labskiii-6135785.jpg' />
-            <img src='images/pexels-kevin-kabore-4966995.jpg' />
+            <div class="photo-triple-item">
+                <%- include('./components/hover-content', {
+                    title: 'Roupa nova muito braba',
+                    content: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis error labore quae'
+                }) %> 
+                <img src='images/matthew-reyes-K6alnPrDWRY-unsplash.jpg' />
+            </div>
+            <div class="photo-triple-item">
+                <%- include('./components/hover-content', {
+                    title: 'Roupa nova muito braba',
+                    content: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis error labore quae'
+                }) %>
+                <img src='images/pexels-labskiii-6135785.jpg' />
+            </div>
+            <div class="photo-triple-item">
+                <%- include('./components/hover-content', {
+                    title: 'Roupa nova muito braba',
+                    content: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis error labore quae'
+                }) %>
+                <img src='images/pexels-kevin-kabore-4966995.jpg' />
+            </div>
         </div>
     </section>
     <%- include('./components/homePage/section', {
@@ -51,11 +69,41 @@
                     <path d="M18.4822 11.5516L7.16058 0.200447C6.89401 -0.0668158 6.4665 -0.0668158 6.19993 0.200447C5.93336 0.46771 5.93336 0.89634 6.19993 1.1636L17.0387 12.0306L6.19993 22.8976C5.93336 23.1649 5.93336 23.5935 6.19993 23.8608C6.3307 23.9919 6.50673 24.0625 6.67774 24.0625C6.84874 24.0625 7.02478 23.9969 7.15555 23.8608L18.4772 12.5097C18.7437 12.2475 18.7437 11.8138 18.4822 11.5516Z" fill="#000F08"/>
                 </svg>
             </h3>
-            <img id="main-shop-photo" src='images/hisu-lee-i2JDnMDMYv8-unsplash.jpg' />
-            <img class="shop-photo" src='images/seth-doyle-R5tHd-aYmPs-unsplash.jpg' />
-            <img class="shop-photo" src='images/yogendra-singh-R73uOEn9tio-unsplash.jpg' />
-            <img class="shop-photo" src='images/mubariz-mehdizadeh-o-wlIFT4zE4-unsplash.jpg' />
-            <img class="shop-photo" src='images/sofia-3PgSkwoyIOM-unsplash.jpg' />
+            <div class="shop-item">
+                <%- include('./components/hover-content', {
+                    title: 'Teste',
+                    content: 'ONASODFNAOSDNFOASNDFOANSDFON'
+                }) %> 
+                <img id="main-shop-photo" src='images/hisu-lee-i2JDnMDMYv8-unsplash.jpg' />
+            </div>
+            <div class="shop-item">
+                <%- include('./components/hover-content', {
+                    title: 'Teste',
+                    content: 'ONASODFNAOSDNFOASNDFOANSDFON'
+                }) %> 
+                <img class="shop-photo" src='images/seth-doyle-R5tHd-aYmPs-unsplash.jpg' />
+            </div>
+            <div class="shop-item">
+                <%- include('./components/hover-content', {
+                    title: 'Teste',
+                    content: 'ONASODFNAOSDNFOASNDFOANSDFON'
+                }) %> 
+                <img class="shop-photo" src='images/yogendra-singh-R73uOEn9tio-unsplash.jpg' />
+            </div>
+            <div class="shop-item">
+                <%- include('./components/hover-content', {
+                    title: 'Teste',
+                    content: 'ONASODFNAOSDNFOASNDFOANSDFON'
+                }) %> 
+                <img class="shop-photo" src='images/mubariz-mehdizadeh-o-wlIFT4zE4-unsplash.jpg' />
+            </div>
+            <div class="shop-item">
+                <%- include('./components/hover-content', {
+                    title: 'Teste',
+                    content: 'ONASODFNAOSDNFOASNDFOANSDFON'
+                }) %> 
+                <img class="shop-photo" src='images/sofia-3PgSkwoyIOM-unsplash.jpg' />
+            </div>
             <h3 id='shop-title-bottom'>#BACULEJOS</h3>
         </div>
     </section>

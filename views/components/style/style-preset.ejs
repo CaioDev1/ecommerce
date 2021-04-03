@@ -19,6 +19,10 @@
         src: url(fonts/helvetica-neue-lt-std-45-light.otf);
     }
 
+    html {
+        scroll-behavior: smooth;
+    }
+
     * {
         padding: 0;
         margin: 0;
@@ -89,6 +93,33 @@
         background-repeat: no-repeat;
         background-size: cover;
     }
+
+    .slick-list, .slick-track, .slick-track img {
+        height: 100%;
+        width: 100%;
+
+        object-fit: cover;
+    }
+
+    .slick-prev {
+        left: 0px;
+    }
+
+    .slick-next {
+        right: 30px;
+    }
+
+    .slick-prev, .slick-next {
+        position: absolute;
+
+        z-index: 1;
+    }
+
+    .slick-prev::before, .slick-next::before {
+        font-size: 50px;
+    }
+
+    
 
     @media screen and (max-width: 800px) {
         .toggleable {

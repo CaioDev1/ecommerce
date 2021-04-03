@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <!-- SLICK STYLE CDN -->
     <% if(page && page == 'Product') { %>
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css"/>
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css"/>
@@ -12,6 +13,7 @@
     <%- include('./style/style-preset') -%>
     <%- include('./style/style-header') -%>
     <%- include('./style/style-sign-up') -%>
+    <%- include('./style/style-hover-content') %> <!-- hover --> 
     <%- include('./style/style-footer') -%>
     <% switch(page) {
         case 'Home': %>

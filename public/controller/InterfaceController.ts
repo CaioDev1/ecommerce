@@ -2,6 +2,7 @@ class InterfaceController {
     constructor() {
         this.handleHeader()
         this.toggleContent()
+        this.handleRevealTransitions()
     }
 
     // troca entre o header do desktop e mobile
@@ -73,7 +74,7 @@ class InterfaceController {
         el.replaceChild(createIcon(updatedIcon), el.querySelector('svg'))
     }
 
-    toggleContent(): boolean{
+    toggleContent(): boolean {
         try {
             document.querySelectorAll('.toggle').forEach(el => {
                 el.addEventListener('click', e => {
@@ -136,7 +137,10 @@ class InterfaceController {
     toggleCarouselUsage(matches: boolean, carouselList: String[], firstCheck=false) {
         if(matches) {
             for(let item of carouselList) {
-                (<any>$(item)).slick();
+                (<any>$(item)).slick({
+                    autoplay: true,
+                    autoplaySpeed: 3000
+                });
             }
         } else {
             if(!firstCheck) {
@@ -165,5 +169,23 @@ class InterfaceController {
         document.querySelector('#sign-up-open-button').addEventListener('click', e => {
             signUpContainer.classList.toggle('on')
         })
+    }
+
+    handleRevealTransitions() {
+        window.addEventListener('scroll', e => {
+            document.querySelectorAll('.reveal').forEach(item => {
+                let windowHeight = window.innerHeight
+                let revealTop = item.getBoundingClientRect().top
+                let revealPoint = 150;
+
+                if(revealTop < windowHeight - revealPoint) {
+                    item.classList.add('active')
+                } else {
+                    item.classList.remove('active')
+                }
+            })
+        })
+
+        window.dispatchEvent(new Event('scroll'))
     }
 }
