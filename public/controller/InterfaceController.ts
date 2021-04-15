@@ -121,17 +121,32 @@ class InterfaceController {
         return element.scrollWidth > element.clientWidth || element.scrollHeight > element.clientHeight;
     }
 
+    handleArrowScrollMutation(parentOfArrowElement: Element, arrowIcon: HTMLElement) {
+        // ESCUTA QUANDO OS BOTÕES DE TOGGLE ATIVAREM O SCROLL
+        let resizer = new ResizeObserver(e => {
+            if(this.isScrollable(parentOfArrowElement)) {
+                arrowIcon.style.visibility = 'initial'
+            } else {
+                arrowIcon.style.visibility = 'hidden'
+            }
+        })
+
+        // ADICIONA OS TOGGLEABLES NO LISTENER DO RESIZER
+        parentOfArrowElement.querySelectorAll('.toggleable').forEach((item: Element) => {
+            resizer.observe(item)
+        })
+    }
+
     handleScrollArrow(parentElString: string = 'section#product-buy aside', arrowElString: string = '#arrow-icon') {
         let parentOfArrowElement = document.querySelector(parentElString);
         let arrowIcon = document.querySelector(arrowElString) as HTMLElement
 
-        if(this.isScrollable(parentOfArrowElement)) {
-            arrowIcon.style.visibility = 'initial'
-        } else {
-            arrowIcon.style.visibility = 'hidden'
-        }
+        this.handleArrowScrollMutation(parentOfArrowElement, arrowIcon)
 
-        parentOfArrowElement.addEventListener('scroll', (e) => this.toggleScrollArrow(e, arrowIcon));
+        parentOfArrowElement.addEventListener('scroll', e => this.toggleScrollArrow(e, arrowIcon));
+
+        // ATIVA A VERIFICAÇÃO JÁ NO LOADING DA PÁGINA
+        parentOfArrowElement.dispatchEvent(new Event('scroll'))
     }
 
     toggleCarouselUsage(matches: boolean, carouselList: String[], firstCheck=false) {
@@ -154,9 +169,9 @@ class InterfaceController {
     handleCarouselSlider(carouselList: String[]) {
         let matchSize = window.matchMedia('(max-width: 1000px)')
 
-        this.toggleCarouselUsage(matchSize.matches, carouselList, true)
-
         matchSize.onchange = (e) => this.toggleCarouselUsage(e.matches, carouselList)
+        
+        this.toggleCarouselUsage(matchSize.matches, carouselList, true)
     }
 
     handleSignUp() {
@@ -187,5 +202,56 @@ class InterfaceController {
         })
 
         window.dispatchEvent(new Event('scroll'))
+    }
+
+    static handleCheckoutProgressStatus(hr: HTMLElement) {
+        let lastStepEl = document.querySelector('#checkout-progress .step:last-child')
+
+        hr.addEventListener('transitionend', e => {
+            // se o HR está com 100% de width, o segundo estágio do progresso fica verde, se não, branco.
+            lastStepEl.querySelector('i').style.borderColor = (e.target as HTMLElement).style.width == '100%' ? 'green' : 'white'
+        })
+    }
+
+    static handleMultistepForm() {
+        let forms = document.querySelectorAll('#checkout-form-list form') as NodeListOf<HTMLElement>
+        let checkoutProgressHrEl = document.querySelector('#checkout-progress hr') as HTMLElement;
+
+        InterfaceController.handleCheckoutProgressStatus(checkoutProgressHrEl);
+
+        (document.querySelectorAll('#checkout-form-list .btn-checkout') as NodeListOf<HTMLElement>).forEach(item => {
+            item.onclick = () => {
+                let newPosition: string
+
+                switch(item.id) {
+                    case 'btn-next-1':
+                        newPosition = 'translateX(-100%)'
+                        checkoutProgressHrEl.style.width = '100%'
+                        break
+                    case 'btn-prev-1':
+                        newPosition = 'translateX(0%)'
+                        checkoutProgressHrEl.style.width = '0%'
+                        break
+                }
+
+                forms.forEach(f => {
+                    f.style.transform = newPosition
+                })
+            }
+        })
+    }
+
+    handlePicker() {
+        let items = document.querySelectorAll('.picker') as NodeListOf<HTMLElement>
+
+        items.forEach(item => {
+            item.onclick = () => {
+                item.parentElement.querySelectorAll('.picker').forEach(i => {
+                    i.classList.remove('selected')
+                })
+
+                item.classList.add('selected')
+            }
+        })
     }
 }

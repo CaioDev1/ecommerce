@@ -88,19 +88,32 @@ var InterfaceController = /** @class */ (function () {
     InterfaceController.prototype.isScrollable = function (element) {
         return element.scrollWidth > element.clientWidth || element.scrollHeight > element.clientHeight;
     };
+    InterfaceController.prototype.handleArrowScrollMutation = function (parentOfArrowElement, arrowIcon) {
+        var _this = this;
+        // ESCUTA QUANDO OS BOTÕES DE TOGGLE ATIVAREM O SCROLL
+        var resizer = new ResizeObserver(function (e) {
+            if (_this.isScrollable(parentOfArrowElement)) {
+                arrowIcon.style.visibility = 'initial';
+            }
+            else {
+                arrowIcon.style.visibility = 'hidden';
+            }
+        });
+        // ADICIONA OS TOGGLEABLES NO LISTENER DO RESIZER
+        parentOfArrowElement.querySelectorAll('.toggleable').forEach(function (item) {
+            resizer.observe(item);
+        });
+    };
     InterfaceController.prototype.handleScrollArrow = function (parentElString, arrowElString) {
         var _this = this;
         if (parentElString === void 0) { parentElString = 'section#product-buy aside'; }
         if (arrowElString === void 0) { arrowElString = '#arrow-icon'; }
         var parentOfArrowElement = document.querySelector(parentElString);
         var arrowIcon = document.querySelector(arrowElString);
-        if (this.isScrollable(parentOfArrowElement)) {
-            arrowIcon.style.visibility = 'initial';
-        }
-        else {
-            arrowIcon.style.visibility = 'hidden';
-        }
+        this.handleArrowScrollMutation(parentOfArrowElement, arrowIcon);
         parentOfArrowElement.addEventListener('scroll', function (e) { return _this.toggleScrollArrow(e, arrowIcon); });
+        // ATIVA A VERIFICAÇÃO JÁ NO LOADING DA PÁGINA
+        parentOfArrowElement.dispatchEvent(new Event('scroll'));
     };
     InterfaceController.prototype.toggleCarouselUsage = function (matches, carouselList, firstCheck) {
         if (firstCheck === void 0) { firstCheck = false; }
@@ -125,8 +138,8 @@ var InterfaceController = /** @class */ (function () {
     InterfaceController.prototype.handleCarouselSlider = function (carouselList) {
         var _this = this;
         var matchSize = window.matchMedia('(max-width: 1000px)');
-        this.toggleCarouselUsage(matchSize.matches, carouselList, true);
         matchSize.onchange = function (e) { return _this.toggleCarouselUsage(e.matches, carouselList); };
+        this.toggleCarouselUsage(matchSize.matches, carouselList, true);
     };
     InterfaceController.prototype.handleSignUp = function () {
         var signUpContainer = document.querySelector('#sign-up-container');
@@ -152,6 +165,47 @@ var InterfaceController = /** @class */ (function () {
             });
         });
         window.dispatchEvent(new Event('scroll'));
+    };
+    InterfaceController.handleCheckoutProgressStatus = function (hr) {
+        var lastStepEl = document.querySelector('#checkout-progress .step:last-child');
+        hr.addEventListener('transitionend', function (e) {
+            // se o HR está com 100% de width, o segundo estágio do progresso fica verde, se não, branco.
+            lastStepEl.querySelector('i').style.borderColor = e.target.style.width == '100%' ? 'green' : 'white';
+        });
+    };
+    InterfaceController.handleMultistepForm = function () {
+        var forms = document.querySelectorAll('#checkout-form-list form');
+        var checkoutProgressHrEl = document.querySelector('#checkout-progress hr');
+        InterfaceController.handleCheckoutProgressStatus(checkoutProgressHrEl);
+        document.querySelectorAll('#checkout-form-list .btn-checkout').forEach(function (item) {
+            item.onclick = function () {
+                var newPosition;
+                switch (item.id) {
+                    case 'btn-next-1':
+                        newPosition = 'translateX(-100%)';
+                        checkoutProgressHrEl.style.width = '100%';
+                        break;
+                    case 'btn-prev-1':
+                        newPosition = 'translateX(0%)';
+                        checkoutProgressHrEl.style.width = '0%';
+                        break;
+                }
+                forms.forEach(function (f) {
+                    f.style.transform = newPosition;
+                });
+            };
+        });
+    };
+    InterfaceController.prototype.handleColorPicker = function () {
+        var colorItems = document.querySelectorAll('.product-color-preview');
+        colorItems.forEach(function (item) {
+            item.onclick = function () {
+                item.parentElement.querySelectorAll('.product-color-preview').forEach(function (i) {
+                    i.classList.remove('selected');
+                });
+                item.classList.add('selected');
+            };
+        });
     };
     return InterfaceController;
 }());
