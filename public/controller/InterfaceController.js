@@ -29,6 +29,22 @@ var InterfaceController = /** @class */ (function () {
             });
         };
     };
+    InterfaceController.prototype.toggleHeaderSearch = function () {
+        document.querySelectorAll('.search-button').forEach(function (button) {
+            button.onclick = function () {
+                Utils.findElementThroughtParents(button, '.header-search-container', function (el) {
+                    el.querySelector('.header-search-container').classList.add('active');
+                });
+            };
+        });
+        document.querySelectorAll('.header-search-container').forEach(function (item) {
+            var cancelButton = item.querySelector('.search-cancel-button');
+            var submitButton = item.querySelector('.search-submit-button');
+            cancelButton.onclick = function () {
+                item.classList.remove('active');
+            };
+        });
+    };
     InterfaceController.prototype.handleHeader = function () {
         var _this = this;
         var matchMedia = window.matchMedia('(min-width: 900px)');
@@ -39,6 +55,7 @@ var InterfaceController = /** @class */ (function () {
         this.toggleHeaderMenu();
         this.handleHeaderScrollAnimation();
         this.handleSignUp();
+        this.toggleHeaderSearch();
     };
     InterfaceController.prototype.togglePlusMinesIcon = function (isOpen, el) {
         var plusIcon = "\n        <svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n            <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M9 0H7V7L0 7V9H7V16H9V9H16V7L9 7V0Z\" fill=\"#000F08\"/>\n        </svg>\n        ";
@@ -49,24 +66,19 @@ var InterfaceController = /** @class */ (function () {
             svg.innerHTML = content;
             return svg.firstElementChild;
         };
-        el.replaceChild(createIcon(updatedIcon), el.querySelector('svg'));
+        el.querySelector('.toggle').replaceChild(createIcon(updatedIcon), el.querySelector('svg'));
     };
     InterfaceController.prototype.toggleContent = function () {
         var _this = this;
         try {
             document.querySelectorAll('.toggle').forEach(function (el) {
                 el.addEventListener('click', function (e) {
-                    var target = e.target;
-                    var parentElTree = target;
+                    var startEl = e.target;
                     var isListOpen;
-                    while (parentElTree) {
-                        if (parentElTree.querySelector('.toggleable')) {
-                            isListOpen = parentElTree.querySelector('.toggleable').classList.toggle('active');
-                            break;
-                        }
-                        parentElTree = parentElTree.parentElement;
-                    }
-                    _this.togglePlusMinesIcon(isListOpen, el);
+                    Utils.findElementThroughtParents(startEl, '.toggleable', function (el) {
+                        isListOpen = el.querySelector('.toggleable').classList.toggle('active');
+                        _this.togglePlusMinesIcon(isListOpen, el);
+                    });
                     return;
                 });
             });
@@ -196,11 +208,11 @@ var InterfaceController = /** @class */ (function () {
             };
         });
     };
-    InterfaceController.prototype.handleColorPicker = function () {
-        var colorItems = document.querySelectorAll('.product-color-preview');
-        colorItems.forEach(function (item) {
+    InterfaceController.prototype.handlePicker = function () {
+        var items = document.querySelectorAll('.picker');
+        items.forEach(function (item) {
             item.onclick = function () {
-                item.parentElement.querySelectorAll('.product-color-preview').forEach(function (i) {
+                item.parentElement.querySelectorAll('.picker').forEach(function (i) {
                     i.classList.remove('selected');
                 });
                 item.classList.add('selected');

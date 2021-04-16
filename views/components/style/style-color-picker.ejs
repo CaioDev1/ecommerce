@@ -4,16 +4,27 @@
         flex-wrap: wrap;
     }
 
-        #product-color-preview {
+        .product-color-preview {
             height: 35px;
             width: 35px;
 
             margin: 3px;
 
+            cursor: pointer;
+
             border-radius: 0;
+
+            position: relative;
         }
 
-        #product-color-preview.selected {
+            .picker input {
+                display: none;
+                height: 0;
+                width: 0;
+                opacity: 0;
+            }
+
+        .product-color-preview.selected {
             border: 2px solid black;
         }
 </style>

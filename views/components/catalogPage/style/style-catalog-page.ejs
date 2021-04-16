@@ -122,19 +122,24 @@
             #price-picker input:first-child {
                 margin-right: 5px;
             }
+            
 
-        #fabric-picker li {
+        #fabric-picker .picker {
+            display: block;
+
             padding: 5px 10px;
+
+            cursor: pointer;
 
             margin: 5px 0;
         }
 
-            #fabric-picker li.selected {
+            #fabric-picker .picker.selected {
                 border-left: 3px solid white;
             }
 
-            #fabric-picker li button {
-                padding: 0;
+            #fabric-picker .picker:hover {
+                border-left: 3px solid rgba(255, 255, 255, 0.637);
             }
 
         #sort-products-field {
@@ -230,12 +235,18 @@
 
                     left: 3%;
                     bottom: 5%;
+
+                    height: 25px;
                 }
 
                     .catalog-item-wishlist-add svg {
                         height: 25px;
                         width: 25px;
                     }
+
+                        .catalog-item-wishlist-add svg:hover * {
+                            fill: red;
+                        }
 
             .catalog-item-info {
                 padding-top: 10px;

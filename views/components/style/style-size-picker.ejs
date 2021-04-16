@@ -3,13 +3,22 @@
         display: flex;
     }
     
-    #product-sizes button {
+    #product-sizes .picker {
         padding: 10px;
 
         font-size: 1rem;
+
+        cursor: pointer;
     }
 
-    #product-sizes button.selected {
+        .picker input {
+            display: none;
+            height: 0;
+            width: 0;
+            opacity: 0;
+        }
+
+    #product-sizes .picker.selected {
         border-bottom: 2px solid #000F08;;
     }
 </style>

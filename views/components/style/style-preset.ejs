@@ -63,6 +63,12 @@
         border: none;
 
         outline: 0;
+
+        border-radius: 0;
+    }
+
+    fieldset {
+        border: 0;
     }
 
     select {
@@ -119,7 +125,11 @@
         font-size: 50px;
     }
 
-    
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
 
     @media screen and (max-width: 800px) {
         .toggleable {

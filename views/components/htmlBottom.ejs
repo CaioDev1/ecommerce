@@ -1,4 +1,5 @@
     <%- include('./footer') %>
+    <script src="./utils/Utils.js"></script>
     <script src="./controller/InterfaceController.js"></script>
     <script src="index.js"></script>
 
@@ -10,9 +11,13 @@
             <script>
                 appInterface.handleScrollArrow()
                 appInterface.handleCarouselSlider(<%-JSON.stringify(carouselList)%>)
+                appInterface.handlePicker()
             </script>
             <% break
-        case '': %>
+        case 'Catalog': %>
+            <script>
+                appInterface.handlePicker()    
+            </script>
     <% } %>
 </body>
 </html>

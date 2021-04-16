@@ -1,5 +1,7 @@
 <div id='color-previews-field' class="<%= className %>">
     <% for(let c of colors) { %>
-        <button id='product-color-preview' class="" style="background-color: <%= c %>;"></button>
+        <label for="btn_<%= c %>" class='product-color-preview picker' style="background-color: <%= c %>;">
+            <input type="radio" name="color" id="btn_<%= c %>">
+        </label>
     <% } %>
 </div>

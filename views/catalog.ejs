@@ -70,12 +70,14 @@
                         </svg>
                         FABRIC    
                     </button>
-                    <ul id='fabric-picker' class="toggleable">
-                        <li class="selected"><button>COTTOM</button></li>
-                        <li><button>POLYESTER</button></li>
-                        <li><button>ELASTANE</button></li>
-                        <li><button>LUREX</button></li>
-                    </ul>       
+                    <div id='fabric-picker' class="toggleable">
+                        <% ['COTTOM', 'POLYESTER', 'ELASTANE', 'LUREX'].map(item => { %>
+                            <label for="fabric_<%= item %>" class="picker">
+                                <input type="radio" name="fabric" id="fabric_<%= item %>">
+                                <p><%= item %></p>
+                            </label>
+                        <% }) %>
+                    </div>       
                 </li>
             </ul>
     

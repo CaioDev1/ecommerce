@@ -1,5 +1,8 @@
 <div id='product-sizes' class="<%= className %>">
     <% for(let s of sizes) { %>
-        <button><%= s %></button>
+        <label for="size_<%= s %>" class="picker">
+            <input type="radio" name="size" id="size_<%= s %>">
+            <%= s %>
+        </label>
     <% } %>
 </div>

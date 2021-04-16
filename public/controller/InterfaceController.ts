@@ -34,6 +34,25 @@ class InterfaceController {
         }
     }
 
+    toggleHeaderSearch() {
+        (document.querySelectorAll('.search-button') as NodeListOf<HTMLElement>).forEach(button => {
+            button.onclick = () => {
+                Utils.findElementThroughtParents(button, '.header-search-container', el => {
+                    el.querySelector('.header-search-container').classList.add('active')
+                })
+            }
+        });
+
+        (document.querySelectorAll('.header-search-container') as NodeListOf<HTMLElement>).forEach(item => {
+            let cancelButton = item.querySelector('.search-cancel-button') as HTMLElement
+            let submitButton = item.querySelector('.search-submit-button') as HTMLElement
+
+            cancelButton.onclick = () => {
+                item.classList.remove('active')
+            }
+        })
+    }
+
     handleHeader() {
         let matchMedia = window.matchMedia('(min-width: 900px)')
 
@@ -46,9 +65,10 @@ class InterfaceController {
         this.toggleHeaderMenu()
         this.handleHeaderScrollAnimation()
         this.handleSignUp()
+        this.toggleHeaderSearch()
     }
 
-    togglePlusMinesIcon(isOpen: boolean, el: Element) {
+    togglePlusMinesIcon(isOpen: boolean, el: HTMLElement) {
         let plusIcon = `
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M9 0H7V7L0 7V9H7V16H9V9H16V7L9 7V0Z" fill="#000F08"/>
@@ -71,30 +91,22 @@ class InterfaceController {
             return svg.firstElementChild
         }
             
-        el.replaceChild(createIcon(updatedIcon), el.querySelector('svg'))
+        el.querySelector('.toggle').replaceChild(createIcon(updatedIcon), el.querySelector('svg'))
     }
 
     toggleContent(): boolean {
         try {
             document.querySelectorAll('.toggle').forEach(el => {
                 el.addEventListener('click', e => {
-                    let target = e.target as HTMLElement
-                    
-                    let parentElTree = target
+                    let startEl = e.target as HTMLElement
                     let isListOpen: boolean
-    
-                    while(parentElTree) {
-                        if(parentElTree.querySelector('.toggleable')) {
-                            isListOpen = parentElTree.querySelector('.toggleable').classList.toggle('active')
-    
-                            break
-                        }
-    
-                        parentElTree = parentElTree.parentElement
-                    }
-    
-                    this.togglePlusMinesIcon(isListOpen, el)
-    
+
+                    Utils.findElementThroughtParents(startEl, '.toggleable', el => {
+                        isListOpen = el.querySelector('.toggleable').classList.toggle('active')
+
+                        this.togglePlusMinesIcon(isListOpen, el)
+                    })
+                
                     return
                 })
             })

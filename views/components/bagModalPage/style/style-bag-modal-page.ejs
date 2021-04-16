@@ -48,10 +48,14 @@
             flex-direction: column;
         }
 
-        #button-field button {
+        #button-field a {
             padding: 15px;
 
             font-size: 1rem;
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
             #view-bag-button {
@@ -74,6 +78,10 @@
             margin-bottom: 20px;
 
             position: relative;
+
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
 
         .bag-modal-item:last-child {
@@ -110,6 +118,9 @@
                 line-height: 25px;
 
                 font-size: 0.9rem;
+
+                text-shadow: 1px 1px 2px black;
+                font-weight: bold;
             }
 
     @media screen and (max-width: 600px) {

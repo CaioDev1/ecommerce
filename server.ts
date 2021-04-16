@@ -26,8 +26,8 @@ app.get('/bag-modal', (req, res) => {
     res.render('bag-modal')
 })
 
-app.get('/sign-up', (req, res) => {
-    res.render('sign-up')
+app.get('/checkout', (req, res) => {
+    res.render('checkout-page')
 })
 
 app.listen(process.env.PORT || 3000, () => {
