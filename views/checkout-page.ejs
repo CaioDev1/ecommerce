@@ -10,6 +10,13 @@
 </head>
 <body>
     <main id="checkout-container">
+        <a href="javascript:history.back()" id="checkout-return-button">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 477.175 477.175" style="enable-background:new 0 0 477.175 477.175;" xml:space="preserve">
+                <g>
+                    <path d="M145.188,238.575l215.5-215.5c5.3-5.3,5.3-13.8,0-19.1s-13.8-5.3-19.1,0l-225.1,225.1c-5.3,5.3-5.3,13.8,0,19.1l225.1,225   c2.6,2.6,6.1,4,9.5,4s6.9-1.3,9.5-4c5.3-5.3,5.3-13.8,0-19.1L145.188,238.575z"/>
+                </g>
+            </svg>
+        </a>
         <section id="checkout-form">
             <div id='checkout-progress'>
                 <div id='shipping-step' class="step">
@@ -31,18 +38,43 @@
                     <h1>Insert your shipping details</h1>
                     <fieldset id='shipping-cep-field'>
                         <label for="cep-input">CEP:</label>
-                        <input type="number" name="" id="cep-input" placeholder="00000-000">
+                        <input name="cep" id="cep-input" placeholder="00000-000" maxlength="9" pattern="\d{5}-\d{3}">
                     </fieldset>
                     <fieldset>
                         <fieldset id='shipping-address-field'> 
-                            <input type="text" name="" id="street-input" placeholder="Street">
-                            <input type="number" name="" id="number-input" placeholder="Number">
+                            <input type="text" name="street" id="street-input" placeholder="Street">
+                            <input type="text" name="number" id="number-input" placeholder="Number" maxlength="15">
                         </fieldset>
-                        <input type="text" name="" id="complement-input" placeholder="Complement (Optional)">
-                        <input type="text" name="" id='city-input' placeholder="City">
-                        <select name="" id="state-input">
-                            <option value="PE">PE</option>
-                            <option value="SP">SP</option>
+                        <input type="text" name="complement" id="complement-input" placeholder="Complement (Optional)">
+                        <input type="text" name="city" id='city-input' placeholder="City">
+                        <select name="state" id="state-input">
+                            <option value="AC">Acre</option>
+                            <option value="AL">Alagoas</option>
+                            <option value="AP">Amapá</option>
+                            <option value="AM">Amazonas</option>
+                            <option value="BA">Bahia</option>
+                            <option value="CE">Ceará</option>
+                            <option value="DF">Distrito Federal</option>
+                            <option value="ES">Espírito Santo</option>
+                            <option value="GO">Goiás</option>
+                            <option value="MA">Maranhão</option>
+                            <option value="MT">Mato Grosso</option>
+                            <option value="MS">Mato Grosso do Sul</option>
+                            <option value="MG">Minas Gerais</option>
+                            <option value="PA">Pará</option>
+                            <option value="PB">Paraíba</option>
+                            <option value="PR">Paraná</option>
+                            <option value="PE">Pernambuco</option>
+                            <option value="PI">Piauí</option>
+                            <option value="RJ">Rio de Janeiro</option>
+                            <option value="RN">Rio Grande do Norte</option>
+                            <option value="RS">Rio Grande do Sul</option>
+                            <option value="RO">Rondônia</option>
+                            <option value="RR">Roraima</option>
+                            <option value="SC">Santa Catarina</option>
+                            <option value="SP">São Paulo</option>
+                            <option value="SE">Sergipe</option>
+                            <option value="TO">Tocantins</option>
                         </select>
                     </fieldset>
                     
@@ -53,11 +85,11 @@
                 <form action="" id='payment-form'>
                     <h1>Payment details</h1>
                     <fieldset id='card-info-field-1'> 
-                        <input type="text" name="" id="card-name-input" placeholder="Name (Same as card)">
-                        <input type="number" name="" id="card-number-input" placeholder="Card number">
+                        <input type="text" name="card_name" id="card-name-input" placeholder="Name (Same as card)">
+                        <input type="tel" name="card_number" id="card-number-input" placeholder="Card number" maxlength="19">
                     </fieldset>
                     <fieldset id='card-info-field-2'>
-                        <select name="" id="card-month-exp">
+                        <select name="card_exp_month" id="card-month-exp">
                             <option value="" disabled selected hidden>MONTH EXP.</option>
                             <option value="JAN">JANUARY</option>
                             <option value="FEB">FEBRUARY</option>
@@ -70,20 +102,13 @@
                             <option value="NOV">NOVEMBER</option>
                             <option value="DEC">DECEMBER</option>
                         </select>
-                        <select name="" id="card-year-exp">
+                        <select name="card_exp_year" id="card-year-exp">
                             <option value="" disabled selected hidden>YEAR EXP.</option>
-                            <option value="2021">2021</option>
-                            <option value="2022">2022</option>
-                            <option value="2023">2023</option>
-                            <option value="2024">2024</option>
-                            <option value="2025">2025</option>
-                            <option value="2026">2026</option>
-                            <option value="2027">2027</option>
-                            <option value="2028">2028</option>
-                            <option value="2029">2029</option>
-                            <option value="2030">2030</option>
+                            <% for(let i = new Date().getFullYear(); i <= new Date().getFullYear() + 10; i++) { %>
+                                <option value="20<%= i %>"><%= i %></option>
+                            <% } %>
                         </select>
-                        <input type="number" name="" id="card-cvv" placeholder="CVV" maxlength="4" minlength="3" max="4" min="3">
+                        <input type="tel" name="card_cvv" id="card-cvv" placeholder="CVV" maxlength="4">
                     </fieldset>
     
                     <fieldset class="checkout-button-field">
@@ -132,9 +157,4 @@
             </div>
         </aside>
     </main>
-    <script src="./controller/InterfaceController.js"></script>
-    <script>
-        InterfaceController.handleMultistepForm()
-    </script>
-</body>
-</html>
+<%- include('./components/htmlBottom', {page: 'Checkout', hasFooter: false}) %> 

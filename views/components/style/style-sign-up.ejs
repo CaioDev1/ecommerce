@@ -1,5 +1,5 @@
 <style>
-    #sign-up-container {
+    #sign-container {
         height: 100vh;
         width: 100%;
 
@@ -20,13 +20,13 @@
         transition: all 0.3s ease-in-out;
     }
 
-        #sign-up-container.on {
+        #sign-container.on {
             z-index: 6;
 
             opacity: 1;
         }
 
-    #sign-up-container form {
+    #sign-box {
         padding: 50px;
 
         display: flex;
@@ -34,26 +34,31 @@
         
         background: #FFFFFF;
         
+        min-width: 320px;
+        width: 100vw;
         max-width: 600px;
 
-        min-height: 570px;
-        max-height: 700px;
-
+        min-height: 600px;
         height: 80%;
+        max-height: 700px;
 
         margin: auto;
 
         position: relative;
     }
 
-        #sign-up-container fieldset {
-            border: none;
+        #sign-form-list {
+            height: 100%;
 
             display: flex;
-            flex-direction: column;
+
+            overflow-x: hidden;
+            overflow-y: initial;
+
+            position: relative;
         }
 
-            #sign-up-container legend {
+            #sign-container header {
                 margin-bottom: 5%;
 
                 width: 100%;
@@ -65,24 +70,48 @@
                 justify-content: space-between;
             }
 
-                #sign-up-container legend svg {
-                    height: 20px;
-                    width: 20px;
+                #sign-container header #sign-close-button {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
                 }
 
-            #sign-up-container input {
+                    #sign-container header #sign-close-button svg {
+                        height: 20px;
+                        width: 20px;
+                    }
+
+            #sign-container form {
+                display: flex;
+                flex-direction: column;
+
+                position: absolute;
+
+                height: 100%;
+                width: 100%;
+
+                transition: transform 0.5s ease-in-out;
+            }
+
+            #sign-container input {
                 border-bottom: 1px solid black;
+
+                width: 100%;
 
                 padding: 15px 0;
 
                 margin-top: 3%;
             }
 
-            #sign-up-container input, #sign-up-container input::placeholder {
+            #sign-container input[type='checkbox'] {
+                width: initial;
+            }
+
+            #sign-container input, #sign-container input::placeholder {
                 font-size: 1rem;
             }
 
-            #sign-up-container fieldset > div {
+            #sign-container #sign-condition-box {
                 margin: 5% 0;
 
                 display: flex;
@@ -90,7 +119,7 @@
                 align-items: center;
             }
 
-            #sign-up-container input[type=checkbox] {
+            #sign-container input[type=checkbox] {
                 min-height: 20px;
                 min-width: 20px;
 
@@ -102,37 +131,37 @@
                 margin-right: 15px;
             }
 
-            #sign-up-container label {
+            #sign-container label {
                 color: black;
 
                 line-height: 20px;
             }
 
-        #sign-up-container form > button {
-            background: black;
+            #sign-container form > .sign-submit-button {
+                background: black;
 
-            padding: 15px 50px;
+                padding: 15px 50px;
 
-            display: block;
+                display: block;
 
-            margin: auto;
+                margin: auto auto 3%;
 
-            color: white;
+                color: white;
 
-            font-size: 1.2rem;
-        }
+                font-size: 1.2rem;
+            }
 
-        #sign-up-container a {
-            color: black;
+            #sign-container form .toggle-form-button {
+                color: black;
 
-            margin-top: 15px;
+                margin-top: 15px;
 
-            width: fit-content;
+                width: fit-content;
 
-            text-decoration: underline;
+                text-decoration: underline;
+            }
 
-            position: absolute;
-
-            bottom: 5%;
+        #sign-in-form {
+            left: 100%;
         }
 </style>

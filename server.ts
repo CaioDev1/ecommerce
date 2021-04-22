@@ -22,8 +22,8 @@ app.get('/bag', (req, res) => {
     res.render('bag')
 })
 
-app.get('/bag-modal', (req, res) => {
-    res.render('bag-modal')
+app.get('/loved-items', (req, res) => {
+    res.render('loved-items')
 })
 
 app.get('/checkout', (req, res) => {

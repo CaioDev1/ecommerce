@@ -2,13 +2,13 @@
     <div id='arrivals'>
         <h3><%= title %></h3>
         <% for(let item of arrivals) { %>
-            <div class="arrival-item">
+            <a href="/product" class="arrival-item">
                 <%- include('./hover-content', {
                     title: 'Roupa nova muito braba',
                     content: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis error labore quae'
                 }) %> 
                 <img src="<%= item %>">
-            </div>
+            </a>
         <% } %>
     </div>
 </section>

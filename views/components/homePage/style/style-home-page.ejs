@@ -213,11 +213,18 @@
 
             #shop-title-top {
                 top: -8%;
-
-                display: flex;
-
-                align-items: center;
             }
+
+                #shop-title-top h3 {
+                    display: flex;
+
+                    align-items: center;
+                }
+
+                    #shop-title-top h3 svg {
+                        height: 100%;
+                        width: 20px;
+                    }
 
             #shop-title-bottom {
                 bottom: -10%;
@@ -227,9 +234,9 @@
                 position: relative;
             }
 
-                .shop-item:first-of-type {
-                    grid-area: A;
-                }
+            #main-shop {
+                grid-area: A !important;
+            }
 
             #main-shop-photo, .shop-photo {
                 height: 100%;

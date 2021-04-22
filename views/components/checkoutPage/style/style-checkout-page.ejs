@@ -1,4 +1,26 @@
 <style>
+    #checkout-return-button {
+        position: fixed;
+
+        z-index: 5;
+
+        top: 0%;
+        left: 0px;
+
+        background: red;
+
+        padding: 10px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        #checkout-return-button svg {
+            height: 30px;
+            width: 30px;
+        }
+
     #checkout-container {
         display: flex;
 
@@ -182,7 +204,7 @@
 
                         #checkout-form select {
                             min-width: 100px;
-                            width: 20%;
+                            width: 50%;
                         }
                         
                         .checkout-button-field button {
@@ -197,6 +219,14 @@
         #payment-form {
             left: 100%;
         }
+
+            #card-name-input {
+                text-transform: uppercase;
+            }
+
+                #card-name-input::placeholder {
+                    text-transform: capitalize;
+                }
 
             #card-info-field-2 {
                 flex-direction: row !important;
@@ -213,6 +243,8 @@
             .checkout-button-field {
                 margin-left: auto;
                 margin-top: 5%;
+
+                justify-content: flex-end;
                 
                 flex-direction: row !important;
                 flex-wrap: wrap;
@@ -354,8 +386,8 @@
                     margin-left: 0 !important;
                 }
 
-                .checkout-button-field button:first-child {
-                    margin-right: 5px !important;
+                .checkout-button-field button:last-child {
+                    margin-left: 5px !important;
                 }
 
             #checkout-info {

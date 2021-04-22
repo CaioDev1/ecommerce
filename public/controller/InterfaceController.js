@@ -1,8 +1,30 @@
 var InterfaceController = /** @class */ (function () {
-    function InterfaceController() {
-        this.handleHeader();
-        this.toggleContent();
-        this.handleRevealTransitions();
+    function InterfaceController(page) {
+        var patternMethods = ['Home', 'Catalog', 'Bag', 'Product'];
+        if (patternMethods.indexOf(page) !== -1) {
+            this.handleHeader();
+            this.toggleContent();
+        }
+        switch (page) {
+            case 'Home':
+                this.handleHomePageRevealTransitions();
+                break;
+            case 'Product':
+                this.handleScrollArrow();
+                this.handleCarouselSlider(['#product-photo-field', '#product-extra-items']);
+                this.handlePicker();
+                break;
+            case 'Catalog':
+                this.handlePicker();
+                break;
+            case 'Checkout':
+                this.handleCheckoutForm();
+                this.handleCheckoutAddressAPICall();
+                break;
+            case 'Loved Items':
+                this.handleLovedItemsCarousel();
+                break;
+        }
     }
     // troca entre o header do desktop e mobile
     InterfaceController.prototype.switchHeader = function (device) {
@@ -54,7 +76,7 @@ var InterfaceController = /** @class */ (function () {
         });
         this.toggleHeaderMenu();
         this.handleHeaderScrollAnimation();
-        this.handleSignUp();
+        this.handleSign();
         this.toggleHeaderSearch();
     };
     InterfaceController.prototype.togglePlusMinesIcon = function (isOpen, el) {
@@ -153,16 +175,30 @@ var InterfaceController = /** @class */ (function () {
         matchSize.onchange = function (e) { return _this.toggleCarouselUsage(e.matches, carouselList); };
         this.toggleCarouselUsage(matchSize.matches, carouselList, true);
     };
-    InterfaceController.prototype.handleSignUp = function () {
-        var signUpContainer = document.querySelector('#sign-up-container');
-        document.querySelector('#sign-up-close-button').addEventListener('click', function (e) {
-            signUpContainer.classList.toggle('on');
+    InterfaceController.prototype.handleSign = function () {
+        var signContainer = document.querySelector('#sign-container');
+        var signBoxTitle = document.querySelector('#sign-box-title');
+        document.querySelector('#sign-close-button').addEventListener('click', function (e) {
+            signContainer.classList.toggle('on');
         });
-        document.querySelector('#sign-up-open-button').addEventListener('click', function (e) {
-            signUpContainer.classList.toggle('on');
+        document.querySelectorAll('.sign-open-button').forEach(function (item) {
+            item.addEventListener('click', function (e) {
+                signContainer.classList.toggle('on');
+            });
+        });
+        this.handleMultistepForm({
+            formDOM: '#sign-form-list form',
+            stepsButtons: {
+                dom: '.toggle-form-button',
+                nextBtn: 'btn-skip',
+                backBtn: 'btn-prev'
+            },
+            callback: function (isNextStep) {
+                signBoxTitle.textContent = isNextStep ? 'LOG IN WITH YOUR ACCOUNT' : 'CREATE ACCOUNT';
+            }
         });
     };
-    InterfaceController.prototype.handleRevealTransitions = function () {
+    InterfaceController.prototype.handleHomePageRevealTransitions = function () {
         window.addEventListener('scroll', function (e) {
             document.querySelectorAll('.reveal').forEach(function (item) {
                 var windowHeight = window.innerHeight;
@@ -178,36 +214,6 @@ var InterfaceController = /** @class */ (function () {
         });
         window.dispatchEvent(new Event('scroll'));
     };
-    InterfaceController.handleCheckoutProgressStatus = function (hr) {
-        var lastStepEl = document.querySelector('#checkout-progress .step:last-child');
-        hr.addEventListener('transitionend', function (e) {
-            // se o HR está com 100% de width, o segundo estágio do progresso fica verde, se não, branco.
-            lastStepEl.querySelector('i').style.borderColor = e.target.style.width == '100%' ? 'green' : 'white';
-        });
-    };
-    InterfaceController.handleMultistepForm = function () {
-        var forms = document.querySelectorAll('#checkout-form-list form');
-        var checkoutProgressHrEl = document.querySelector('#checkout-progress hr');
-        InterfaceController.handleCheckoutProgressStatus(checkoutProgressHrEl);
-        document.querySelectorAll('#checkout-form-list .btn-checkout').forEach(function (item) {
-            item.onclick = function () {
-                var newPosition;
-                switch (item.id) {
-                    case 'btn-next-1':
-                        newPosition = 'translateX(-100%)';
-                        checkoutProgressHrEl.style.width = '100%';
-                        break;
-                    case 'btn-prev-1':
-                        newPosition = 'translateX(0%)';
-                        checkoutProgressHrEl.style.width = '0%';
-                        break;
-                }
-                forms.forEach(function (f) {
-                    f.style.transform = newPosition;
-                });
-            };
-        });
-    };
     InterfaceController.prototype.handlePicker = function () {
         var items = document.querySelectorAll('.picker');
         items.forEach(function (item) {
@@ -217,6 +223,112 @@ var InterfaceController = /** @class */ (function () {
                 });
                 item.classList.add('selected');
             };
+        });
+    };
+    InterfaceController.prototype.handleLovedItemsCarousel = function () {
+        $('#bag-modal-preview').slick({
+            dots: false,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            responsive: [
+                {
+                    breakpoint: 1100,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 900,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        });
+    };
+    InterfaceController.prototype.handleMultistepForm = function (_a) {
+        var formDOM = _a.formDOM, stepsButtons = _a.stepsButtons, callback = _a.callback;
+        var formArray = document.querySelectorAll(formDOM);
+        var stepsButtonArray = document.querySelectorAll(stepsButtons.dom);
+        stepsButtonArray.forEach(function (item) {
+            item.onclick = function () {
+                var newPosition;
+                var isNextStep;
+                switch (item.id) {
+                    case stepsButtons.nextBtn:
+                        newPosition = 'translateX(-100%)';
+                        isNextStep = true;
+                        break;
+                    case stepsButtons.backBtn:
+                        newPosition = 'translateX(0%)';
+                        isNextStep = false;
+                        break;
+                }
+                formArray.forEach(function (f) {
+                    f.style.transform = newPosition;
+                });
+                callback && callback(isNextStep);
+            };
+        });
+    };
+    InterfaceController.prototype.handleCheckoutProgressStatus = function (hr) {
+        var lastStepEl = document.querySelector('#checkout-progress .step:last-child');
+        hr.addEventListener('transitionend', function (e) {
+            var hrCurrentWidth = e.target.style.width;
+            // se o HR está com 100% de width, o segundo estágio do progresso fica verde, se não, branco.
+            lastStepEl.querySelector('i').style.borderColor = hrCurrentWidth == '100%' ? 'green' : 'white';
+        });
+    };
+    InterfaceController.prototype.handleCheckoutForm = function () {
+        var checkoutProgressHrEl = document.querySelector('#checkout-progress hr');
+        this.handleCheckoutProgressStatus(checkoutProgressHrEl);
+        this.handleMultistepForm({
+            formDOM: '#checkout-form-list form',
+            stepsButtons: {
+                dom: '#checkout-form-list .btn-checkout',
+                nextBtn: 'btn-next-1',
+                backBtn: 'btn-prev-1'
+            },
+            callback: function (isNextStep) {
+                isNextStep ? checkoutProgressHrEl.style.width = '100%' : checkoutProgressHrEl.style.width = '0%';
+            }
+        });
+        Utils.formatInput({ type: 'string', inputDOM: '#number-input', maxLength: 15 });
+        Utils.formatInput({
+            inputDOM: '#cep-input',
+            maxLength: 9,
+            mask: '#####-###'
+        });
+        Utils.formatInput({
+            inputDOM: '#card-number-input',
+            maxLength: 19,
+            mask: '#### #### #### ####'
+        });
+        Utils.formatInput({ inputDOM: '#card-cvv', maxLength: 4 });
+    };
+    InterfaceController.prototype.handleCheckoutAddressAPICall = function () {
+        var cepInput = document.querySelector('#cep-input');
+        cepInput.addEventListener('keyup', function (e) {
+            if (cepInput.value.length == 9) {
+                var cepOnlyNumbers = cepInput.value.match(/\d/g).join('');
+                fetch("https://viacep.com.br/ws/" + cepOnlyNumbers + "/json/").then(function (res) { return res.json(); })
+                    .then(function (response) {
+                    var streetInput = document.querySelector('#street-input');
+                    var complementInput = document.querySelector('#complement-input');
+                    var cityInput = document.querySelector('#city-input');
+                    var stateInput = document.querySelector('#state-input');
+                    streetInput.value = response.logradouro;
+                    complementInput.value = response.complemento;
+                    cityInput.value = response.localidade;
+                    stateInput.value = response.uf;
+                })["catch"](function (err) {
+                    console.error(err);
+                });
+            }
         });
     };
     return InterfaceController;

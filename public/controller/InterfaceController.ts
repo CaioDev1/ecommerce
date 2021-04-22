@@ -1,8 +1,42 @@
+interface IHandleMultistepForm {
+    formDOM: string, 
+    stepsButtons: {
+        dom: string, 
+        nextBtn: string,
+        backBtn: string
+    }, 
+    callback?: (isNextStep: boolean) => void
+}
+
 class InterfaceController {
-    constructor() {
-        this.handleHeader()
-        this.toggleContent()
-        this.handleRevealTransitions()
+    constructor(page: string) {
+        let patternMethods = ['Home', 'Catalog', 'Bag', 'Product']
+        
+        if(patternMethods.indexOf(page) !== -1) {
+            this.handleHeader()
+            this.toggleContent()
+        }
+
+        switch(page) {
+            case 'Home':
+                this.handleHomePageRevealTransitions()
+                break
+            case 'Product':
+                this.handleScrollArrow()
+                this.handleCarouselSlider(['#product-photo-field', '#product-extra-items'])
+                this.handlePicker()
+                break
+            case 'Catalog':
+                this.handlePicker()
+                break
+            case 'Checkout':
+                this.handleCheckoutForm()
+                this.handleCheckoutAddressAPICall()
+                break
+            case 'Loved Items':
+                this.handleLovedItemsCarousel()
+                break
+        }
     }
 
     // troca entre o header do desktop e mobile
@@ -64,7 +98,7 @@ class InterfaceController {
 
         this.toggleHeaderMenu()
         this.handleHeaderScrollAnimation()
-        this.handleSignUp()
+        this.handleSign()
         this.toggleHeaderSearch()
     }
 
@@ -186,19 +220,34 @@ class InterfaceController {
         this.toggleCarouselUsage(matchSize.matches, carouselList, true)
     }
 
-    handleSignUp() {
-        let signUpContainer = document.querySelector('#sign-up-container')
+    handleSign() {
+        let signContainer = document.querySelector('#sign-container')
+        let signBoxTitle = document.querySelector('#sign-box-title')
 
-        document.querySelector('#sign-up-close-button').addEventListener('click', e => {
-            signUpContainer.classList.toggle('on')
+        document.querySelector('#sign-close-button').addEventListener('click', e => {
+            signContainer.classList.toggle('on')
         })
 
-        document.querySelector('#sign-up-open-button').addEventListener('click', e => {
-            signUpContainer.classList.toggle('on')
+        document.querySelectorAll('.sign-open-button').forEach(item => {
+            item.addEventListener('click', e => {
+                signContainer.classList.toggle('on')
+            })
+        })
+
+        this.handleMultistepForm({
+            formDOM: '#sign-form-list form',
+            stepsButtons: {
+                dom: '.toggle-form-button',
+                nextBtn: 'btn-skip',
+                backBtn: 'btn-prev'
+            },
+            callback: isNextStep => {
+                signBoxTitle.textContent = isNextStep ? 'LOG IN WITH YOUR ACCOUNT' : 'CREATE ACCOUNT'
+            }
         })
     }
 
-    handleRevealTransitions() {
+    handleHomePageRevealTransitions() {
         window.addEventListener('scroll', e => {
             document.querySelectorAll('.reveal').forEach(item => {
                 let windowHeight = window.innerHeight
@@ -216,43 +265,6 @@ class InterfaceController {
         window.dispatchEvent(new Event('scroll'))
     }
 
-    static handleCheckoutProgressStatus(hr: HTMLElement) {
-        let lastStepEl = document.querySelector('#checkout-progress .step:last-child')
-
-        hr.addEventListener('transitionend', e => {
-            // se o HR está com 100% de width, o segundo estágio do progresso fica verde, se não, branco.
-            lastStepEl.querySelector('i').style.borderColor = (e.target as HTMLElement).style.width == '100%' ? 'green' : 'white'
-        })
-    }
-
-    static handleMultistepForm() {
-        let forms = document.querySelectorAll('#checkout-form-list form') as NodeListOf<HTMLElement>
-        let checkoutProgressHrEl = document.querySelector('#checkout-progress hr') as HTMLElement;
-
-        InterfaceController.handleCheckoutProgressStatus(checkoutProgressHrEl);
-
-        (document.querySelectorAll('#checkout-form-list .btn-checkout') as NodeListOf<HTMLElement>).forEach(item => {
-            item.onclick = () => {
-                let newPosition: string
-
-                switch(item.id) {
-                    case 'btn-next-1':
-                        newPosition = 'translateX(-100%)'
-                        checkoutProgressHrEl.style.width = '100%'
-                        break
-                    case 'btn-prev-1':
-                        newPosition = 'translateX(0%)'
-                        checkoutProgressHrEl.style.width = '0%'
-                        break
-                }
-
-                forms.forEach(f => {
-                    f.style.transform = newPosition
-                })
-            }
-        })
-    }
-
     handlePicker() {
         let items = document.querySelectorAll('.picker') as NodeListOf<HTMLElement>
 
@@ -263,6 +275,127 @@ class InterfaceController {
                 })
 
                 item.classList.add('selected')
+            }
+        })
+    }
+
+    handleLovedItemsCarousel() {
+        (<any>$('#bag-modal-preview')).slick({
+            dots: false,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            responsive: [
+                {
+                    breakpoint: 1100,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 900,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        });
+    }
+
+    handleMultistepForm({formDOM, stepsButtons, callback}: IHandleMultistepForm) {
+        let formArray = document.querySelectorAll(formDOM) as NodeListOf<HTMLElement>
+        let stepsButtonArray = document.querySelectorAll(stepsButtons.dom) as NodeListOf<HTMLElement>
+
+        stepsButtonArray.forEach(item => {
+            item.onclick = () => {
+                let newPosition: string
+                let isNextStep: boolean
+
+                switch(item.id) {
+                    case stepsButtons.nextBtn:
+                        newPosition = 'translateX(-100%)'
+                        isNextStep = true
+                        break
+                    case stepsButtons.backBtn:
+                        newPosition = 'translateX(0%)'
+                        isNextStep = false
+                        break
+                }
+
+                formArray.forEach(f => {
+                    f.style.transform = newPosition
+                })
+
+                callback && callback(isNextStep)
+            }
+        })
+    }
+
+    handleCheckoutProgressStatus(hr: HTMLElement) {
+        let lastStepEl = document.querySelector('#checkout-progress .step:last-child')
+
+        hr.addEventListener('transitionend', e => {
+            let hrCurrentWidth = (e.target as HTMLElement).style.width
+            // se o HR está com 100% de width, o segundo estágio do progresso fica verde, se não, branco.
+            lastStepEl.querySelector('i').style.borderColor = hrCurrentWidth == '100%' ? 'green' : 'white'
+        })
+    }
+
+    handleCheckoutForm() {
+        let checkoutProgressHrEl = document.querySelector('#checkout-progress hr') as HTMLElement;
+
+        this.handleCheckoutProgressStatus(checkoutProgressHrEl);
+
+        this.handleMultistepForm({
+            formDOM: '#checkout-form-list form',
+            stepsButtons: {
+                dom: '#checkout-form-list .btn-checkout',
+                nextBtn: 'btn-next-1',
+                backBtn: 'btn-prev-1'
+            },
+            callback: isNextStep => {
+                isNextStep ? checkoutProgressHrEl.style.width = '100%' : checkoutProgressHrEl.style.width = '0%'
+            }
+        })
+
+        Utils.formatInput({type: 'string', inputDOM: '#number-input', maxLength: 15})
+        Utils.formatInput({
+            inputDOM: '#cep-input',
+            maxLength: 9,
+            mask: '#####-###'
+        })
+        Utils.formatInput({
+            inputDOM: '#card-number-input',
+            maxLength: 19,
+            mask: '#### #### #### ####'
+        })
+        Utils.formatInput({inputDOM: '#card-cvv', maxLength: 4})
+    }
+
+    handleCheckoutAddressAPICall() {
+        let cepInput = document.querySelector('#cep-input') as HTMLInputElement
+
+        cepInput.addEventListener('keyup', e => {
+            if(cepInput.value.length == 9) {
+                let cepOnlyNumbers = cepInput.value.match(/\d/g).join('')
+
+                fetch(`https://viacep.com.br/ws/${cepOnlyNumbers}/json/`).then(res => res.json())
+                    .then(response => {
+                        let streetInput = document.querySelector('#street-input') as HTMLInputElement
+                        let complementInput = document.querySelector('#complement-input') as HTMLInputElement
+                        let cityInput = document.querySelector('#city-input') as HTMLInputElement
+                        let stateInput = document.querySelector('#state-input') as HTMLInputElement
+                        
+                        streetInput.value = response.logradouro
+                        complementInput.value = response.complemento
+                        cityInput.value = response.localidade
+                        stateInput.value = response.uf
+                    }).catch(err => {
+                        console.error(err)
+                    })
             }
         })
     }

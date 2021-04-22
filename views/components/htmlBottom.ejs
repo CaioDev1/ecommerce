@@ -1,23 +1,17 @@
-    <%- include('./footer') %>
+    <% if(hasFooter) { %>
+        <%- include('./footer') %>
+    <% } %>
     <script src="./utils/Utils.js"></script>
     <script src="./controller/InterfaceController.js"></script>
     <script src="index.js"></script>
 
-    <% switch(page) {
-        case 'Product': %>
-            <!-- SLICK CAROUSEL CDN -->
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-            <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-            <script>
-                appInterface.handleScrollArrow()
-                appInterface.handleCarouselSlider(<%-JSON.stringify(carouselList)%>)
-                appInterface.handlePicker()
-            </script>
-            <% break
-        case 'Catalog': %>
-            <script>
-                appInterface.handlePicker()    
-            </script>
+    <% if(['Product', 'Loved Items'].indexOf("page") !== 1) { %>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <% } %>
+
+    <script>
+        window.appInterface = new InterfaceController("<%= page %>")
+    </script>
 </body>
 </html>
