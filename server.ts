@@ -30,6 +30,10 @@ app.get('/checkout', (req, res) => {
     res.render('checkout-page')
 })
 
+app.get('/collections', (req, res) => {
+    res.render('collections')
+})
+
 app.listen(process.env.PORT || 3000, () => {
     console.log('Server iniciado na porta 3000')
 })

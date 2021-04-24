@@ -10,9 +10,9 @@ interface IHandleMultistepForm {
 
 class InterfaceController {
     constructor(page: string) {
-        let patternMethods = ['Home', 'Catalog', 'Bag', 'Product']
+        let patternMethods = ['Home', 'Catalog', 'Bag', 'Product', 'Collections']
         
-        if(patternMethods.indexOf(page) !== -1) {
+        if(patternMethods.includes(page)) {
             this.handleHeader()
             this.toggleContent()
         }
@@ -25,9 +25,11 @@ class InterfaceController {
                 this.handleScrollArrow()
                 this.handleCarouselSlider(['#product-photo-field', '#product-extra-items'])
                 this.handlePicker()
+                this.handleAddToWishListButton()
                 break
             case 'Catalog':
                 this.handlePicker()
+                this.handleAddToWishListButton()
                 break
             case 'Checkout':
                 this.handleCheckoutForm()
@@ -36,6 +38,55 @@ class InterfaceController {
             case 'Loved Items':
                 this.handleLovedItemsCarousel()
                 break
+            case 'Collections':
+                (<any>$('.collection')).slick({
+                    slidesToShow: 5,
+                    centerMode: true,
+                    centerPadding: '5%',
+                    infinite: true,
+                    arrows: true,
+                    responsive: [
+                        {
+                            breakpoint: 1700,
+                            settings: {
+                                slidesToShow: 4,
+                                centerMode: false,
+                                variableWidth: true,
+                                arrows: true,
+                                infinite: true,
+                            }
+                        },
+                        {
+                            breakpoint: 1366,
+                            settings: {
+                                centerMode: true,
+                                centerPadding: '60px',
+                                slidesToShow: 3,
+                                arrows: true,
+                                infinite: true
+                            } 
+                        },
+                        {
+                            breakpoint: 768,
+                            settings: {
+                                slidesToShow: 2,
+                                centerMode: false,
+                                variableWidth: true,
+                                arrows: true,
+                                infinite: true
+                            }
+                        },
+                        {
+                            breakpoint: 480,
+                            settings: {
+                                arrows: true,
+                                centerMode: true,
+                                centerPadding: '50px',
+                                slidesToShow: 1
+                            }
+                        }
+                    ]
+                });
         }
     }
 
@@ -128,29 +179,19 @@ class InterfaceController {
         el.querySelector('.toggle').replaceChild(createIcon(updatedIcon), el.querySelector('svg'))
     }
 
-    toggleContent(): boolean {
-        try {
-            document.querySelectorAll('.toggle').forEach(el => {
-                el.addEventListener('click', e => {
-                    let startEl = e.target as HTMLElement
-                    let isListOpen: boolean
+    toggleContent() {
+        document.querySelectorAll('.toggle').forEach(el => {
+            el.addEventListener('click', e => {
+                let startEl = e.target as HTMLElement
+                let isListOpen: boolean
 
-                    Utils.findElementThroughtParents(startEl, '.toggleable', el => {
-                        isListOpen = el.querySelector('.toggleable').classList.toggle('active')
+                Utils.findElementThroughtParents(startEl, '.toggleable', el => {
+                    isListOpen = el.querySelector('.toggleable').classList.toggle('active')
 
-                        this.togglePlusMinesIcon(isListOpen, el)
-                    })
-                
-                    return
+                    this.togglePlusMinesIcon(isListOpen, el)
                 })
             })
-        } catch (error) {
-            console.log(`
-                Erro na função changePlusMinesIcon:
-                Mensagem do navegador: ${error}
-            `)
-            return false
-        }
+        })
     }
 
     toggleScrollArrow(event: Event, arrowIcon: HTMLElement) {
@@ -183,7 +224,7 @@ class InterfaceController {
         })
     }
 
-    handleScrollArrow(parentElString: string = 'section#product-buy aside', arrowElString: string = '#arrow-icon') {
+    handleScrollArrow(parentElString: string ='section#product-buy aside', arrowElString: string ='#arrow-icon') {
         let parentOfArrowElement = document.querySelector(parentElString);
         let arrowIcon = document.querySelector(arrowElString) as HTMLElement
 
@@ -195,7 +236,7 @@ class InterfaceController {
         parentOfArrowElement.dispatchEvent(new Event('scroll'))
     }
 
-    toggleCarouselUsage(matches: boolean, carouselList: String[], firstCheck=false) {
+    toggleCarouselUsage(matches: boolean, carouselList: String[], firstCheck: boolean =false) {
         if(matches) {
             for(let item of carouselList) {
                 (<any>$(item)).slick({
@@ -225,12 +266,12 @@ class InterfaceController {
         let signBoxTitle = document.querySelector('#sign-box-title')
 
         document.querySelector('#sign-close-button').addEventListener('click', e => {
-            signContainer.classList.toggle('on')
+            signContainer.classList.remove('on')
         })
 
         document.querySelectorAll('.sign-open-button').forEach(item => {
             item.addEventListener('click', e => {
-                signContainer.classList.toggle('on')
+                signContainer.classList.add('on')
             })
         })
 
@@ -397,6 +438,18 @@ class InterfaceController {
                         console.error(err)
                     })
             }
+        })
+    }
+
+    handleAddToWishListButton() {
+        let wishListButtonArray = document.querySelectorAll('.wishlist-add') as NodeListOf<HTMLElement>
+
+        wishListButtonArray.forEach(item => {
+            item.addEventListener('click', e => {
+                item.classList.toggle('.added')
+            })
+
+
         })
     }
 }

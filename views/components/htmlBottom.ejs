@@ -5,7 +5,7 @@
     <script src="./controller/InterfaceController.js"></script>
     <script src="index.js"></script>
 
-    <% if(['Product', 'Loved Items'].indexOf("page") !== 1) { %>
+    <% if(['Product', 'Loved Items', 'Collections'].includes(page)) { %>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <% } %>

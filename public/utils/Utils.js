@@ -32,7 +32,7 @@ var Utils = /** @class */ (function () {
     };
     Utils.isExceptionKeys = function (e, exceptionString) {
         var exceptionKeys = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Tab'];
-        return exceptionKeys.indexOf(e.key) !== -1 || e.key == exceptionString;
+        return exceptionKeys.includes(e.key) || e.key == exceptionString;
     };
     Utils.formatInput = function (_a) {
         var _this = this;

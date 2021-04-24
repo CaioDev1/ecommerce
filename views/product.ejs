@@ -27,8 +27,8 @@
                     }) %>
                 </div>
                 <div id='product-buy-field'>
-                    <button>ADD TO BAG</button>
-                    <button>
+                    <button id='product-buy-button'>ADD TO BAG</button>
+                    <button class='wishlist-add'>
                         <svg width="37" height="32" viewBox="0 0 37 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M33.5847 2.97082C31.6715 1.06487 29.1387 0.0231494 26.4355 0.0231494C23.7324 0.0231494 21.1918 1.07258 19.2787 2.97854L18.2795 3.97396L17.2648 2.96311C15.3517 1.05715 12.8034 0 10.1002 0C7.40477 0 4.86424 1.04943 2.95884 2.94767C1.04569 4.85363 -0.00770312 7.38462 4.24124e-05 10.0776C4.24124e-05 12.7707 1.06118 15.2939 2.97433 17.1999L17.5204 31.6913C17.7218 31.892 17.9929 32 18.2563 32C18.5196 32 18.7907 31.8997 18.9921 31.6991L33.5692 17.2308C35.4823 15.3248 36.5357 12.7938 36.5357 10.1008C36.5435 7.40776 35.4978 4.87678 33.5847 2.97082ZM32.0975 15.7569L18.2563 29.4922L4.44598 15.7338C2.92785 14.2214 2.09134 12.2151 2.09134 10.0776C2.09134 7.9402 2.92011 5.93393 4.43823 4.42923C5.94861 2.92452 7.96245 2.09115 10.1002 2.09115C12.2457 2.09115 14.2673 2.92452 15.7854 4.43694L17.5359 6.18085C17.9464 6.58982 18.6048 6.58982 19.0153 6.18085L20.7503 4.45237C22.2684 2.93996 24.29 2.10658 26.4278 2.10658C28.5656 2.10658 30.5794 2.93996 32.0975 4.44466C33.6157 5.95708 34.4444 7.96335 34.4444 10.1008C34.4522 12.2382 33.6157 14.2445 32.0975 15.7569Z" fill="white"/>
                         </svg>
@@ -68,8 +68,12 @@
         <section id='product-extra'>
             <div id='extra-0'><h1 id='product-extra-items-title'>Complete <br> the look</h1></div>
             <div id='product-extra-items'>
-                <img src="https://image.freepik.com/free-photo/portrait-handsome-smiling-man-wearing-summer-jeans-clothes-model-male-taking-picture-old-vintage-photo-camera_158538-5041.jpg" alt="" class="extra-item">
-                <img src="https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="" class="extra-item">
+                <a href='/product' class="extra-item">
+                    <img src="https://image.freepik.com/free-photo/portrait-handsome-smiling-man-wearing-summer-jeans-clothes-model-male-taking-picture-old-vintage-photo-camera_158538-5041.jpg" alt="">
+                </a>
+                <a href='/product' class="extra-item">
+                    <img src="https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+                </a>
             </div>
         </section>
         <%- include('./components/arrivals', {

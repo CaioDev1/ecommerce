@@ -1,7 +1,7 @@
 var InterfaceController = /** @class */ (function () {
     function InterfaceController(page) {
-        var patternMethods = ['Home', 'Catalog', 'Bag', 'Product'];
-        if (patternMethods.indexOf(page) !== -1) {
+        var patternMethods = ['Home', 'Catalog', 'Bag', 'Product', 'Collections'];
+        if (patternMethods.includes(page)) {
             this.handleHeader();
             this.toggleContent();
         }
@@ -13,9 +13,11 @@ var InterfaceController = /** @class */ (function () {
                 this.handleScrollArrow();
                 this.handleCarouselSlider(['#product-photo-field', '#product-extra-items']);
                 this.handlePicker();
+                this.handleAddToWishListButton();
                 break;
             case 'Catalog':
                 this.handlePicker();
+                this.handleAddToWishListButton();
                 break;
             case 'Checkout':
                 this.handleCheckoutForm();
@@ -24,6 +26,55 @@ var InterfaceController = /** @class */ (function () {
             case 'Loved Items':
                 this.handleLovedItemsCarousel();
                 break;
+            case 'Collections':
+                $('.collection').slick({
+                    slidesToShow: 5,
+                    centerMode: true,
+                    centerPadding: '5%',
+                    infinite: true,
+                    arrows: true,
+                    responsive: [
+                        {
+                            breakpoint: 1700,
+                            settings: {
+                                slidesToShow: 4,
+                                centerMode: false,
+                                variableWidth: true,
+                                arrows: true,
+                                infinite: true
+                            }
+                        },
+                        {
+                            breakpoint: 1366,
+                            settings: {
+                                centerMode: true,
+                                centerPadding: '60px',
+                                slidesToShow: 3,
+                                arrows: true,
+                                infinite: true
+                            }
+                        },
+                        {
+                            breakpoint: 768,
+                            settings: {
+                                slidesToShow: 2,
+                                centerMode: false,
+                                variableWidth: true,
+                                arrows: true,
+                                infinite: true
+                            }
+                        },
+                        {
+                            breakpoint: 480,
+                            settings: {
+                                arrows: true,
+                                centerMode: true,
+                                centerPadding: '50px',
+                                slidesToShow: 1
+                            }
+                        }
+                    ]
+                });
         }
     }
     // troca entre o header do desktop e mobile
@@ -92,23 +143,16 @@ var InterfaceController = /** @class */ (function () {
     };
     InterfaceController.prototype.toggleContent = function () {
         var _this = this;
-        try {
-            document.querySelectorAll('.toggle').forEach(function (el) {
-                el.addEventListener('click', function (e) {
-                    var startEl = e.target;
-                    var isListOpen;
-                    Utils.findElementThroughtParents(startEl, '.toggleable', function (el) {
-                        isListOpen = el.querySelector('.toggleable').classList.toggle('active');
-                        _this.togglePlusMinesIcon(isListOpen, el);
-                    });
-                    return;
+        document.querySelectorAll('.toggle').forEach(function (el) {
+            el.addEventListener('click', function (e) {
+                var startEl = e.target;
+                var isListOpen;
+                Utils.findElementThroughtParents(startEl, '.toggleable', function (el) {
+                    isListOpen = el.querySelector('.toggleable').classList.toggle('active');
+                    _this.togglePlusMinesIcon(isListOpen, el);
                 });
             });
-        }
-        catch (error) {
-            console.log("\n                Erro na fun\u00E7\u00E3o changePlusMinesIcon:\n                Mensagem do navegador: " + error + "\n            ");
-            return false;
-        }
+        });
     };
     InterfaceController.prototype.toggleScrollArrow = function (event, arrowIcon) {
         var element = event.target;
@@ -149,6 +193,7 @@ var InterfaceController = /** @class */ (function () {
         // ATIVA A VERIFICAÇÃO JÁ NO LOADING DA PÁGINA
         parentOfArrowElement.dispatchEvent(new Event('scroll'));
     };
+    // MÉTODO PODE SER SUBSTITUIDO POR UM "SETTINGS: 'UNSLICK'" DO PRÓPRIO SLICK USANDO BREAKPOINTS
     InterfaceController.prototype.toggleCarouselUsage = function (matches, carouselList, firstCheck) {
         if (firstCheck === void 0) { firstCheck = false; }
         if (matches) {
@@ -170,20 +215,42 @@ var InterfaceController = /** @class */ (function () {
         }
     };
     InterfaceController.prototype.handleCarouselSlider = function (carouselList) {
-        var _this = this;
-        var matchSize = window.matchMedia('(max-width: 1000px)');
-        matchSize.onchange = function (e) { return _this.toggleCarouselUsage(e.matches, carouselList); };
-        this.toggleCarouselUsage(matchSize.matches, carouselList, true);
+        carouselList.forEach(function (carousel) {
+            $(carousel).slick({
+                /* autoplay: true,
+                autoplaySpeed: 3000, */
+                responsive: [
+                    {
+                        mobileFirst: true,
+                        breakpoint: 1001,
+                        settings: "unslick"
+                    },
+                    {
+                        mobileFirst: false
+                        breakpoint: 1000,
+                        settings: {
+                            autoplay: true,
+                            autoplaySpeed: 3000,
+                        }
+                    }
+                ]
+            });
+        });
+        /* let matchSize = window.matchMedia('(max-width: 1000px)')
+
+        matchSize.onchange = (e) => this.toggleCarouselUsage(e.matches, carouselList)
+        
+        this.toggleCarouselUsage(matchSize.matches, carouselList, true) */
     };
     InterfaceController.prototype.handleSign = function () {
         var signContainer = document.querySelector('#sign-container');
         var signBoxTitle = document.querySelector('#sign-box-title');
         document.querySelector('#sign-close-button').addEventListener('click', function (e) {
-            signContainer.classList.toggle('on');
+            signContainer.classList.remove('on');
         });
         document.querySelectorAll('.sign-open-button').forEach(function (item) {
             item.addEventListener('click', function (e) {
-                signContainer.classList.toggle('on');
+                signContainer.classList.add('on');
             });
         });
         this.handleMultistepForm({
@@ -329,6 +396,14 @@ var InterfaceController = /** @class */ (function () {
                     console.error(err);
                 });
             }
+        });
+    };
+    InterfaceController.prototype.handleAddToWishListButton = function () {
+        var wishListButtonArray = document.querySelectorAll('.wishlist-add');
+        wishListButtonArray.forEach(function (item) {
+            item.addEventListener('click', function (e) {
+                item.classList.toggle('.added');
+            });
         });
     };
     return InterfaceController;

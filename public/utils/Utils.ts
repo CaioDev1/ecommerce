@@ -1,5 +1,5 @@
 interface IformatInput {
-    type?: string,
+    type?: 'number' | 'string',
     inputDOM: string,
     maxLength: number,
     exceptionString?: string,
@@ -43,7 +43,7 @@ class Utils {
     static isExceptionKeys(e: KeyboardEvent, exceptionString: string) {
         let exceptionKeys = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Tab']
 
-        return exceptionKeys.indexOf(e.key) !== -1 || e.key == exceptionString
+        return exceptionKeys.includes(e.key) || e.key == exceptionString
     }
 
     static formatInput({inputDOM, type='number', exceptionString='', mask, maxLength}: IformatInput) {

@@ -83,7 +83,7 @@
                     height: 100%;
                 }
 
-                #product-buy-field button:first-child {
+                #product-buy-button {
                     width: 75%;
 
                     margin-right: 2px;
@@ -93,7 +93,7 @@
                     font-size: 1rem;
                 }
 
-                #product-buy-field button:last-child {
+                .wishlist-add {
                     width: 25%;
 
                     display: flex;
@@ -102,10 +102,10 @@
                     justify-content: center;
                 }
 
-                #product-buy-field button:last-child svg {
-                    height: 20px;
-                    width: 20px;
-                }
+                    .wishlist-add svg {
+                        height: 20px;
+                        width: 20px;
+                    }
 
             #product-info button {
                 display: flex;
@@ -210,8 +210,19 @@
             .extra-item {
                 max-width: 50%;
 
-                object-fit: cover;
+                filter: brightness(90%);
             }
+
+                .extra-item img {
+                    height: 100%;
+                    width: 100%;
+
+                    object-fit: cover;
+                }
+
+                .extra-item:hover {
+                    filter: brightness(100%);
+                }
 
     @media screen and (max-width: 800px) {
         section#product-buy {

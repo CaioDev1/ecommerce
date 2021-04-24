@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <!-- SLICK STYLE CDN -->
-    <% if(page && page == 'Product') { %>
+    <% if(['Product', 'Collections'].includes(page)) { %>
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css"/>
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css"/>
     <% } %>
@@ -33,6 +33,9 @@
             <% break
         case 'Bag': %>
             <%- include('./bagPage/style/style-bag-page') %>
+            <% break
+        case 'Collections': %>
+            <%- include('./collectionsPage/style/style-collections-page') %>
             <% break %>
     <% } %>
 </head>
