@@ -11,7 +11,7 @@ var InterfaceController = /** @class */ (function () {
                 break;
             case 'Product':
                 this.handleScrollArrow();
-                this.handleCarouselSlider(['#product-photo-field', '#product-extra-items']);
+                this.handleCarouselMatchMediaTrigger(['#product-photo-field', '#product-extra-items']);
                 this.handlePicker();
                 this.handleAddToWishListButton();
                 break;
@@ -24,57 +24,10 @@ var InterfaceController = /** @class */ (function () {
                 this.handleCheckoutAddressAPICall();
                 break;
             case 'Loved Items':
-                this.handleLovedItemsCarousel();
+                this.handlePageCarouselConfig('Loved Items');
                 break;
             case 'Collections':
-                $('.collection').slick({
-                    slidesToShow: 5,
-                    centerMode: true,
-                    centerPadding: '5%',
-                    infinite: true,
-                    arrows: true,
-                    responsive: [
-                        {
-                            breakpoint: 1700,
-                            settings: {
-                                slidesToShow: 4,
-                                centerMode: false,
-                                variableWidth: true,
-                                arrows: true,
-                                infinite: true
-                            }
-                        },
-                        {
-                            breakpoint: 1366,
-                            settings: {
-                                centerMode: true,
-                                centerPadding: '60px',
-                                slidesToShow: 3,
-                                arrows: true,
-                                infinite: true
-                            }
-                        },
-                        {
-                            breakpoint: 768,
-                            settings: {
-                                slidesToShow: 2,
-                                centerMode: false,
-                                variableWidth: true,
-                                arrows: true,
-                                infinite: true
-                            }
-                        },
-                        {
-                            breakpoint: 480,
-                            settings: {
-                                arrows: true,
-                                centerMode: true,
-                                centerPadding: '50px',
-                                slidesToShow: 1
-                            }
-                        }
-                    ]
-                });
+                this.handlePageCarouselConfig('Collections');
         }
     }
     // troca entre o header do desktop e mobile
@@ -213,7 +166,7 @@ var InterfaceController = /** @class */ (function () {
             }
         }
     };
-    InterfaceController.prototype.handleCarouselSlider = function (carouselList) {
+    InterfaceController.prototype.handleCarouselMatchMediaTrigger = function (carouselList) {
         var _this = this;
         var matchSize = window.matchMedia('(max-width: 1000px)');
         matchSize.onchange = function (e) { return _this.toggleCarouselUsage(e.matches, carouselList); };
@@ -269,30 +222,78 @@ var InterfaceController = /** @class */ (function () {
             };
         });
     };
-    InterfaceController.prototype.handleLovedItemsCarousel = function () {
-        $('#bag-modal-preview').slick({
-            dots: false,
-            infinite: true,
-            speed: 300,
-            slidesToShow: 3,
-            slidesToScroll: 3,
-            responsive: [
-                {
-                    breakpoint: 1100,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 1
-                    }
-                },
-                {
-                    breakpoint: 900,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1
-                    }
-                }
-            ]
-        });
+    InterfaceController.prototype.handlePageCarouselConfig = function (page) {
+        switch (page) {
+            case 'Loved Items':
+                $('#bag-modal-preview').slick({
+                    dots: false,
+                    infinite: true,
+                    speed: 300,
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    responsive: [
+                        {
+                            breakpoint: 1100,
+                            settings: {
+                                slidesToShow: 2,
+                                slidesToScroll: 1
+                            }
+                        },
+                        {
+                            breakpoint: 900,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1
+                            }
+                        }
+                    ]
+                });
+                break;
+            case 'Collections':
+                $('.collection').slick({
+                    slidesToShow: 5,
+                    centerMode: true,
+                    centerPadding: '5%',
+                    infinite: true,
+                    arrows: true,
+                    responsive: [
+                        /* {
+                            breakpoint: 1700,
+                            settings: {
+                                slidesToShow: 4,
+                                centerMode: false,
+                                variableWidth: true,
+                            }
+                        }, */
+                        {
+                            breakpoint: 1366,
+                            settings: {
+                                centerPadding: '60px',
+                                slidesToShow: 3,
+                            }
+                        },
+                        /* {
+                            breakpoint: 768,
+                            settings: {
+                                slidesToShow: 2,
+                                centerMode: false,
+                                variableWidth: true,
+                            }
+                        }, */
+                        {
+                            breakpoint: 600,
+                            settings: {
+                                centerPadding: '100px',
+                                slidesToShow: 1
+                            }
+                        }
+                    ]
+                });
+
+                // gambiarra que conserta o problema de não ativar o breakpoint automanticamente ao carregar a página
+                $('.collection').slick('slickSetOption', 'mobileFirst', false, refresh=true)
+                break;
+        }
     };
     InterfaceController.prototype.handleMultistepForm = function (_a) {
         var formDOM = _a.formDOM, stepsButtons = _a.stepsButtons, callback = _a.callback;
