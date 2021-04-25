@@ -193,7 +193,6 @@ var InterfaceController = /** @class */ (function () {
         // ATIVA A VERIFICAÇÃO JÁ NO LOADING DA PÁGINA
         parentOfArrowElement.dispatchEvent(new Event('scroll'));
     };
-    // MÉTODO PODE SER SUBSTITUIDO POR UM "SETTINGS: 'UNSLICK'" DO PRÓPRIO SLICK USANDO BREAKPOINTS
     InterfaceController.prototype.toggleCarouselUsage = function (matches, carouselList, firstCheck) {
         if (firstCheck === void 0) { firstCheck = false; }
         if (matches) {
@@ -215,32 +214,10 @@ var InterfaceController = /** @class */ (function () {
         }
     };
     InterfaceController.prototype.handleCarouselSlider = function (carouselList) {
-        carouselList.forEach(function (carousel) {
-            $(carousel).slick({
-                /* autoplay: true,
-                autoplaySpeed: 3000, */
-                responsive: [
-                    {
-                        mobileFirst: true,
-                        breakpoint: 1001,
-                        settings: "unslick"
-                    },
-                    {
-                        mobileFirst: false
-                        breakpoint: 1000,
-                        settings: {
-                            autoplay: true,
-                            autoplaySpeed: 3000,
-                        }
-                    }
-                ]
-            });
-        });
-        /* let matchSize = window.matchMedia('(max-width: 1000px)')
-
-        matchSize.onchange = (e) => this.toggleCarouselUsage(e.matches, carouselList)
-        
-        this.toggleCarouselUsage(matchSize.matches, carouselList, true) */
+        var _this = this;
+        var matchSize = window.matchMedia('(max-width: 1000px)');
+        matchSize.onchange = function (e) { return _this.toggleCarouselUsage(e.matches, carouselList); };
+        this.toggleCarouselUsage(matchSize.matches, carouselList, true);
     };
     InterfaceController.prototype.handleSign = function () {
         var signContainer = document.querySelector('#sign-container');
