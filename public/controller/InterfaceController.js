@@ -226,6 +226,8 @@ var InterfaceController = /** @class */ (function () {
         switch (page) {
             case 'Loved Items':
                 $('#bag-modal-preview').slick({
+                    autoplay: true,
+                    autoplaySpeed: 3000,
                     dots: false,
                     infinite: true,
                     speed: 300,
@@ -257,29 +259,13 @@ var InterfaceController = /** @class */ (function () {
                     infinite: true,
                     arrows: true,
                     responsive: [
-                        /* {
-                            breakpoint: 1700,
-                            settings: {
-                                slidesToShow: 4,
-                                centerMode: false,
-                                variableWidth: true,
-                            }
-                        }, */
                         {
                             breakpoint: 1366,
                             settings: {
                                 centerPadding: '60px',
-                                slidesToShow: 3,
+                                slidesToShow: 3
                             }
                         },
-                        /* {
-                            breakpoint: 768,
-                            settings: {
-                                slidesToShow: 2,
-                                centerMode: false,
-                                variableWidth: true,
-                            }
-                        }, */
                         {
                             breakpoint: 600,
                             settings: {
@@ -289,9 +275,8 @@ var InterfaceController = /** @class */ (function () {
                         }
                     ]
                 });
-
                 // gambiarra que conserta o problema de não ativar o breakpoint automanticamente ao carregar a página
-                $('.collection').slick('slickSetOption', 'mobileFirst', false, refresh=true)
+                $('.collection').slick('slickSetOption', 'mobileFirst', false, true);
                 break;
         }
     };

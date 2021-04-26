@@ -277,6 +277,8 @@ class InterfaceController {
         switch(page) {
             case 'Loved Items':
                 (<any>$('#bag-modal-preview')).slick({
+                    autoplay: true,
+                    autoplaySpeed: 3000,
                     dots: false,
                     infinite: true,
                     speed: 300,
@@ -326,7 +328,7 @@ class InterfaceController {
                 });
 
                 // gambiarra que conserta o problema de não ativar o breakpoint automanticamente ao carregar a página
-                (<any>$('.collection')).slick('slickSetOption', 'mobileFirst', false, refresh=true)
+                (<any>$('.collection')).slick('slickSetOption', 'mobileFirst', false, true)
                 break
         }
     }
