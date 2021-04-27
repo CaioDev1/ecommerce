@@ -50,7 +50,7 @@ class Utils {
         let input = document.querySelector(inputDOM) as HTMLInputElement
 
         input.onkeydown = e => {
-            if(this.isExceptionKeys(e, exceptionString)) {
+            if(e.ctrlKey || this.isExceptionKeys(e, exceptionString)) {
                 return
             } else {
                 mask && this.applyInputMask(mask, input)

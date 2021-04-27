@@ -1,6 +1,14 @@
+<% function sliceText(string, maxLength) {
+    if(string.length > maxLength - 3) {
+        return `${string.substring(0, maxLength - 3)}...`
+    }
+
+    return string
+} %>
+
 <div class="hover-content">
     <div class="hover-content-info">
-        <h1><%= title %></h1>
-        <p><%= content %></p>
+        <h1><%= sliceText(title, 30) %></h1>
+        <p><%= sliceText(content, 50) %></p>
     </div>
 </div>

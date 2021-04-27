@@ -357,8 +357,13 @@ class InterfaceController {
                     f.style.transform = newPosition
                 })
 
-                callback && callback(isNextStep)
+                callback && isNextStep != undefined &&
+                callback(isNextStep)
             }
+        })
+
+        window.addEventListener('keydown', e => {
+            e.ctrlKey
         })
     }
 
@@ -412,15 +417,17 @@ class InterfaceController {
 
                 fetch(`https://viacep.com.br/ws/${cepOnlyNumbers}/json/`).then(res => res.json())
                     .then(response => {
-                        let streetInput = document.querySelector('#street-input') as HTMLInputElement
-                        let complementInput = document.querySelector('#complement-input') as HTMLInputElement
-                        let cityInput = document.querySelector('#city-input') as HTMLInputElement
-                        let stateInput = document.querySelector('#state-input') as HTMLInputElement
-                        
-                        streetInput.value = response.logradouro
-                        complementInput.value = response.complemento
-                        cityInput.value = response.localidade
-                        stateInput.value = response.uf
+                        if(!response.erro) {
+                            let streetInput = document.querySelector('#street-input') as HTMLInputElement
+                            let complementInput = document.querySelector('#complement-input') as HTMLInputElement
+                            let cityInput = document.querySelector('#city-input') as HTMLInputElement
+                            let stateInput = document.querySelector('#state-input') as HTMLInputElement
+                            
+                            streetInput.value = response.logradouro
+                            complementInput.value = response.complemento
+                            cityInput.value = response.localidade
+                            stateInput.value = response.uf
+                        }
                     }).catch(err => {
                         console.error(err)
                     })
@@ -433,7 +440,7 @@ class InterfaceController {
 
         wishListButtonArray.forEach(item => {
             item.addEventListener('click', e => {
-                item.classList.toggle('.added')
+                item.classList.toggle('added')
             })
 
 

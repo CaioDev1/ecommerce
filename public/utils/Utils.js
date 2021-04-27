@@ -39,7 +39,7 @@ var Utils = /** @class */ (function () {
         var inputDOM = _a.inputDOM, _b = _a.type, type = _b === void 0 ? 'number' : _b, _c = _a.exceptionString, exceptionString = _c === void 0 ? '' : _c, mask = _a.mask, maxLength = _a.maxLength;
         var input = document.querySelector(inputDOM);
         input.onkeydown = function (e) {
-            if (_this.isExceptionKeys(e, exceptionString)) {
+            if (e.ctrlKey || _this.isExceptionKeys(e, exceptionString)) {
                 return;
             }
             else {

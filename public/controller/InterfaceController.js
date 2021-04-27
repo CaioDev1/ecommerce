@@ -301,7 +301,8 @@ var InterfaceController = /** @class */ (function () {
                 formArray.forEach(function (f) {
                     f.style.transform = newPosition;
                 });
-                callback && callback(isNextStep);
+                callback && isNextStep != undefined &&
+                    callback(isNextStep);
             };
         });
     };
@@ -347,14 +348,16 @@ var InterfaceController = /** @class */ (function () {
                 var cepOnlyNumbers = cepInput.value.match(/\d/g).join('');
                 fetch("https://viacep.com.br/ws/" + cepOnlyNumbers + "/json/").then(function (res) { return res.json(); })
                     .then(function (response) {
-                    var streetInput = document.querySelector('#street-input');
-                    var complementInput = document.querySelector('#complement-input');
-                    var cityInput = document.querySelector('#city-input');
-                    var stateInput = document.querySelector('#state-input');
-                    streetInput.value = response.logradouro;
-                    complementInput.value = response.complemento;
-                    cityInput.value = response.localidade;
-                    stateInput.value = response.uf;
+                    if (!response.erro) {
+                        var streetInput = document.querySelector('#street-input');
+                        var complementInput = document.querySelector('#complement-input');
+                        var cityInput = document.querySelector('#city-input');
+                        var stateInput = document.querySelector('#state-input');
+                        streetInput.value = response.logradouro;
+                        complementInput.value = response.complemento;
+                        cityInput.value = response.localidade;
+                        stateInput.value = response.uf;
+                    }
                 })["catch"](function (err) {
                     console.error(err);
                 });
@@ -365,7 +368,7 @@ var InterfaceController = /** @class */ (function () {
         var wishListButtonArray = document.querySelectorAll('.wishlist-add');
         wishListButtonArray.forEach(function (item) {
             item.addEventListener('click', function (e) {
-                item.classList.toggle('.added');
+                item.classList.toggle('added');
             });
         });
     };
