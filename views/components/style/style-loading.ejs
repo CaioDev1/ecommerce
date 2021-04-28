@@ -1,0 +1,32 @@
+<style>
+    .loading-container {
+        display: flex;
+
+        position: fixed;
+
+        opacity: 0;
+
+        height: 100vh;
+        width: 100vw;
+
+        justify-content: center;
+        align-items: center;
+
+        background-color: rgba(128, 128, 128, 0.329);
+
+        backdrop-filter: blur(5px);
+
+        transition: opacity 0.4s ease-in-out;
+    }
+
+        .loading-container.active {
+            opacity: 1;
+
+            z-index: 6;
+        }
+
+        .loading-container img {
+            height: 70px;
+            width: 70px;
+        }
+</style>

@@ -1,5 +1,6 @@
 var InterfaceController = /** @class */ (function () {
     function InterfaceController(page) {
+        this.handleLoadingImages();
         var patternMethods = ['Home', 'Catalog', 'Bag', 'Product', 'Collections'];
         if (patternMethods.includes(page)) {
             this.handleHeader();
@@ -30,6 +31,14 @@ var InterfaceController = /** @class */ (function () {
                 this.handlePageCarouselConfig('Collections');
         }
     }
+    InterfaceController.prototype.handleLoadingImages = function () {
+        Promise.all(Array.from(document.images)
+            .filter(function (img) { return !img.complete; }).map(function (img) { return new Promise(function (resolve) {
+            img.onload = img.onerror = resolve;
+        }); })).then(function () {
+            document.querySelector('.loading-container').classList.remove('active');
+        });
+    };
     // troca entre o header do desktop e mobile
     InterfaceController.prototype.switchHeader = function (device) {
         document.querySelector('.home-page-header.desktop').style.display = device == 'desktop' ? 'flex' : 'none';
@@ -304,6 +313,9 @@ var InterfaceController = /** @class */ (function () {
                 callback && isNextStep != undefined &&
                     callback(isNextStep);
             };
+        });
+        window.addEventListener('keydown', function (e) {
+            e.ctrlKey;
         });
     };
     InterfaceController.prototype.handleCheckoutProgressStatus = function (hr) {

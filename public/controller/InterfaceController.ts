@@ -10,6 +10,8 @@ interface IHandleMultistepForm {
 
 class InterfaceController {
     constructor(page: string) {
+        this.handleLoadingImages()
+        
         let patternMethods = ['Home', 'Catalog', 'Bag', 'Product', 'Collections']
         
         if(patternMethods.includes(page)) {
@@ -41,6 +43,15 @@ class InterfaceController {
             case 'Collections':
                 this.handlePageCarouselConfig('Collections')
         }
+    }
+
+    handleLoadingImages() {
+        Promise.all(Array.from(document.images)
+            .filter(img => !img.complete).map(img => new Promise(resolve => { 
+                img.onload = img.onerror = resolve; 
+            }))).then(() => {
+                document.querySelector('.loading-container').classList.remove('active')
+            });
     }
 
     // troca entre o header do desktop e mobile

@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= page %></title>
     <%- include('./style/style-preset') -%>
+    <%- include('./style/style-loading') %> 
     <%- include('./style/style-header') -%>
     <%- include('./style/style-sign-up') -%>
     <%- include('./style/style-hover-content') %> <!-- hover --> 
@@ -40,5 +41,6 @@
     <% } %>
 </head>
 <body>
+    <%- include('./loading') %> 
     <%- include('./header') -%>
     <%- include('./sign-up') -%>
