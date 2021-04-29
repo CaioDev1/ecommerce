@@ -50,7 +50,11 @@ class InterfaceController {
             .filter(img => !img.complete).map(img => new Promise(resolve => { 
                 img.onload = img.onerror = resolve; 
             }))).then(() => {
-                document.querySelector('.loading-container').classList.remove('active')
+                try {
+                    document.querySelector('.loading-container').classList.remove('active')
+                } catch(e) {
+
+                }
             });
     }
 

@@ -36,7 +36,11 @@ var InterfaceController = /** @class */ (function () {
             .filter(function (img) { return !img.complete; }).map(function (img) { return new Promise(function (resolve) {
             img.onload = img.onerror = resolve;
         }); })).then(function () {
-            document.querySelector('.loading-container').classList.remove('active');
+            try {
+                document.querySelector('.loading-container').classList.remove('active');
+            }
+            catch (e) {
+            }
         });
     };
     // troca entre o header do desktop e mobile

@@ -30,6 +30,8 @@
 
     html {
         scroll-behavior: smooth;
+
+        background-color: #131516;
     }
 
     * {
@@ -52,10 +54,18 @@
         display: flex;
 
         align-items: center;
+
+        color: #dbd9d7;
     }
 
-    h3, h4 {
+    svg * {
+        fill: #dbd9d7;
+    }
+
+    h3, h4, p, input::placeholder {
         font-family: HelveticaNeue45;
+
+        color: #dbd9d7;
     }
 
     a {
@@ -83,6 +93,10 @@
     select {
         border: none;
 
+        background: transparent;
+
+        color: #dbd9d7;
+
         outline: 0;
 
         cursor: pointer;
@@ -107,6 +121,24 @@
         background-size: 100%;
         background-repeat: no-repeat;
         background-size: cover;
+    }
+
+    html, body, input, textarea, select, button {
+        border-color: #5c564b;
+        color: #dbd9d7;
+    }
+
+    ::-webkit-scrollbar {
+        background-color: #1a1c1d;
+        color: #89837a;
+    }
+
+    ::-webkit-scrollbar-corner {
+        background-color: #131516;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #373b3e;
     }
 
     .slick-list, .slick-track, .slick-track img {
