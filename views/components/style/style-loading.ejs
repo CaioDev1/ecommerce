@@ -1,12 +1,8 @@
 <style>
     .loading-container {
-        display: flex;
-
-        position: fixed;
-
         display: none;
 
-        opacity: 0;
+        position: fixed;
 
         height: 100vh;
         width: 100vw;
@@ -18,11 +14,11 @@
 
         backdrop-filter: blur(5px);
 
-        transition: opacity 0.4s ease-in-out;
+        transition: all 0.4s ease-in-out;
     }
 
         .loading-container.active {
-            opacity: 1;
+            display: flex;
 
             z-index: 6;
         }
