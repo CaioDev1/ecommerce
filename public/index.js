@@ -1,1 +1,0 @@
-window.appInterface = new InterfaceController()
