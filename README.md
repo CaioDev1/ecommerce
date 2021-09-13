@@ -137,7 +137,7 @@ Link do projeto: [https://github.com/CaioDev1/ecommerce](https://github.com/Caio
 [license-shield]: https://img.shields.io/github/license/CaioDev1/ecommerce.svg?style=for-the-badge
 [license-url]: https://github.com/CaioDev1/ecommerce/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://www.linkedin.com/in/caio-cardoso-158133196
+[linkedin-url]: https://www.linkedin.com/in/caiodev1/
 [product-screenshot]: public/ecommerce-gif1.gif
 [product-screenshot2]: public/ecommerce-gif2.gif
 [product-screenshot3]: public/ecommerce-gif3.gif
