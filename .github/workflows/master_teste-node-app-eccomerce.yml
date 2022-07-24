@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'TESTE-NODE-APP-ECCOMERCE'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_7CD4A57E6EF44F55AEB4898552140E61 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_314C519750CD49539AD9C3C517A9B8E6 }}
           package: .
